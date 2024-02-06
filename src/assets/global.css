@@ -1,0 +1,81 @@
+:root {
+	--primaryYellow: #fca311;
+	--primaryBlue: #14213d;
+	--primaryBlack: #111111;
+	--primaryGray: #e5e5e5;
+	--primaryFont: 'Open Sans', sans-serif;
+	--stylishFont: 'Dancing Script', cursive;
+}
+
+html {
+	font-size: 62.5%;
+}
+
+/* apply a natural box layout model to all elements, but allowing components to change */
+/*natural border box*/
+html {
+	box-sizing: border-box;
+}
+*,
+*:before,
+*:after {
+	box-sizing: inherit;
+}
+
+p,
+ul {
+	margin: 0;
+}
+
+body {
+	font-size: 1.6rem;
+	font-family: var(--primaryFont);
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+.header {
+	background-color: #fca311;
+	width: 100vw;
+}
+
+.header__ul {
+	display: flex;
+	justify-content: space-between;
+	padding: 1.5rem 10rem;
+	list-style: none;
+	height: 8rem;
+}
+
+.header__li {
+	flex-basis: 1 0 0;
+	width: 5rem;
+	height: 5rem;
+	display: inline-block;
+	text-align: center;
+}
+
+.header__name:any-link {
+	font-family: var(--stylishFont);
+	line-height: 5rem;
+	font-size: 3rem;
+	text-decoration: none;
+	font-weight: 700;
+	color: #ffffff;
+}
+
+.header__menuButton {
+	cursor: pointer;
+	border: none;
+	background-color: transparent;
+	height: inherit;
+	width: inherit;
+	background-image: url('./menu.png');
+	background-repeat: no-repeat;
+	background-size: contain;
+	background-position: center center;
+	filter: invert();
+}
