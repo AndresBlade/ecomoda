@@ -1,8 +1,9 @@
 :root {
 	--primaryYellow: #fca311;
 	--primaryBlue: #14213d;
-	--primaryBlack: #111111;
+	--primaryBlack: #121111;
 	--primaryGray: #e5e5e5;
+	--outletColor: #FAFAFA;
 	--primaryFont: 'Sora', sans-serif;
 	--stylishFont: 'Dancing Script', cursive;
 }
@@ -30,12 +31,15 @@ ul {
 body {
 	font-size: 1.6rem;
 	font-family: var(--primaryFont);
+	background-color: var(--outletColor);
 }
 
 img {
 	max-width: 100%;
 	max-height: 100%;
 }
+
+/* Header styles */
 
 .header {
 	background-color: #fca311;
@@ -64,7 +68,7 @@ img {
 	font-size: 3rem;
 	text-decoration: none;
 	font-weight: 700;
-	color: #ffffff;
+	color: #000000;
 }
 
 .header__menuButton {
@@ -79,3 +83,32 @@ img {
 	background-position: center center;
 	filter: invert();
 }
+
+/* ------------------------------------------------ */
+
+/*  Sidebar Styles */
+.sidebar {
+	background-color: #ffffff;
+	width: 30%;
+}
+.sidebar__logo{
+
+}
+.header__name{
+
+}
+.sidebar__menu{
+
+}
+.sidebar__data{
+
+}
+.sidebar__sesionButton{
+
+}
+.sesionButton{
+
+}
+
+
+/* ------------------------------- */
