@@ -10,7 +10,6 @@ export const SidebarData = [
     path: '/compras',
     icon: <MdOutlineShoppingBag />,
     iconClosed: <MdKeyboardArrowDown />,
-    iconOpened: <MdKeyboardArrowUp />,    
     Subnav: [
       {
         title: 'Opcion',
@@ -24,7 +23,6 @@ export const SidebarData = [
     path: '/ventas',
     icon: <AiOutlineInbox />,
     iconClosed: <MdKeyboardArrowDown />,
-    iconOpened: <MdKeyboardArrowUp />,
     Subnav: [
       {
         title: 'Opcion',
@@ -38,7 +36,6 @@ export const SidebarData = [
     path: '/diseno',
     icon: <MdOutlineDesignServices />,
     iconClosed: <MdKeyboardArrowDown />,
-    iconOpened: <MdKeyboardArrowUp />,
     Subnav: [
       {
         title: 'Colecciones',
@@ -67,7 +64,6 @@ export const SidebarData = [
     path: '/produccion',
     icon: <AiOutlineInbox />,
     iconClosed: <MdKeyboardArrowDown />,
-    iconOpened: <MdKeyboardArrowUp />,
     Subnav: [
       {
         title: 'Opcion',
@@ -81,7 +77,6 @@ export const SidebarData = [
     path: '/RRHH',
     icon: <AiOutlineInbox />,
     iconClosed: <MdKeyboardArrowDown />,
-    iconOpened: <MdKeyboardArrowUp />,
     Subnav: [
       {
         title: 'Opcion',
@@ -95,7 +90,6 @@ export const SidebarData = [
     path: '/finanzas',
     icon: <AiOutlineInbox />,
     iconClosed: <MdKeyboardArrowDown />,
-    iconOpened: <MdKeyboardArrowUp />,
     Subnav: [
       {
         title: 'Opcion',

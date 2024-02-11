@@ -2,7 +2,7 @@
 	--primaryYellow: #fca311;
 	--primaryBlue: #14213d;
 	--primaryBlack: #121111;
-	--primaryGray: #e5e5e5;
+	--primaryGray: #5C5C5C;
 	--outletColor: #FAFAFA;
 	--primaryFont: 'Sora', sans-serif;
 	--stylishFont: 'Dancing Script', cursive;
@@ -88,23 +88,68 @@ img {
 
 /*  Sidebar Styles */
 .sidebar {
-	background-color: #ffffff;
-	width: 30%;
+	position: fixed;
+	top: 0;
+	left: 0;
+	display: flex;
+	flex-direction: column;
+	border-radius: 0 20px 20px 0;
+	gap: 10px;
+	width: 220px;
+	height: 100%;
+	padding: 0 16px;
+	background: #ffffff;
+	transition: width 0.4s;
 }
+
 .sidebar__logo{
-
+  display: flex;
+  justify-content: center;
 }
-.header__name{
 
-}
 .sidebar__menu{
-
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 10px;
+  padding-left: 0;
+  height: 100vh;
 }
+
+.sidebar__menuData{
+	position: relative;
+	list-style: none;
+	width: 100%;
+	border-radius: 6px;
+	font-family: inherit;
+	font-size: 18px;
+	font-weight: 500;
+	padding: 0 16px;
+	color: var(--primaryGray);
+	transition: background 0.3s;
+
+	a{
+	  text-decoration: none;
+	  color: inherit;
+	}
+}
+
+.sidebar__details{
+	display: flex;
+	gap: 25px;
+}
+
+.sidebar__details:hover{
+	background-color: red;
+}
+
+
 .sidebar__data{
 
 }
 .sidebar__sesionButton{
-
+	padding: 2rem 0;
+	margin: 0 auto;
 }
 .sesionButton{
 
