@@ -6,18 +6,17 @@ import { SidebarData } from './Sidebar_data';
 export const Sidebar = () => {
   return (
 	<nav className='sidebar'>
-		<div className='sidebar__logo'>
-			<Link to="/" className="header__name">
-				Ecomoda
-			</Link>
-		</div>
+		<Link to="/" className='sidebar__logo'>
+			<img className='logo' src="./aguja_Logo.svg" alt="logo" />
+			<span className="header__name">Ecomoda</span>
+		</Link>
 		<ul className='sidebar__menu'>
 			{SidebarData.map((item, index) => (
 				<SubMenu key={index} item={item} />
 			))}
 		</ul>
 		<div className='sidebar__sesionButton'>
-			<button className='sesionButton'>Salir de sesión</button>
+			<a className='sesionButton'>Salir de sesión</a>
 		</div>
 	</nav>
   );

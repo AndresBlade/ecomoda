@@ -1,4 +1,4 @@
-import { MdOutlineInventory2, MdKeyboardArrowDown , MdKeyboardArrowUp , MdOutlineShoppingBag, MdOutlineDesignServices } from "react-icons/md";
+import { MdOutlineInventory2, MdKeyboardArrowDown, MdOutlineShoppingBag, MdOutlineDesignServices } from "react-icons/md";
 import { AiOutlineInbox } from "react-icons/ai";
 import { HiOutlineCollection } from "react-icons/hi";
 import { LuShirt } from "react-icons/lu";
@@ -8,93 +8,93 @@ export const SidebarData = [
   {
     title: 'Compras',
     path: '/compras',
-    icon: <MdOutlineShoppingBag />,
-    iconClosed: <MdKeyboardArrowDown />,
+    icon: <MdOutlineShoppingBag size={14}/>,
+    iconClosed: <MdKeyboardArrowDown size={14} />,
     Subnav: [
       {
         title: 'Opcion',
         path: '/',
-        icon: <HiOutlineCollection />
+        icon: <HiOutlineCollection size={14}/>
       }
     ]
   },
   {
     title: 'Ventas',
     path: '/ventas',
-    icon: <AiOutlineInbox />,
-    iconClosed: <MdKeyboardArrowDown />,
+    icon: <AiOutlineInbox size={14}/>,
+    iconClosed: <MdKeyboardArrowDown size={14}/>,
     Subnav: [
       {
         title: 'Opcion',
         path: '/',
-        icon: <HiOutlineCollection />
+        icon: <HiOutlineCollection size={14}/>
       }
     ]
   },
   {
     title: 'Diseño',
     path: '/diseno',
-    icon: <MdOutlineDesignServices />,
-    iconClosed: <MdKeyboardArrowDown />,
+    icon: <MdOutlineDesignServices size={14}/>,
+    iconClosed: <MdKeyboardArrowDown size={14}/>,
     Subnav: [
       {
         title: 'Colecciones',
         path: '/diseno/colecciones',
-        icon: <HiOutlineCollection />
+        icon: <HiOutlineCollection size={14}/>
       },
       {
         title: 'Prendas',
         path: '/diseno/prendas',
-        icon: <LuShirt />
+        icon: <LuShirt size={14}/>
       },
       {
         title: 'Materiales',
         path: '/diseno/materiales',
-        icon: <MdOutlineInventory2 />
+        icon: <MdOutlineInventory2 size={14}/>
       },
       {
         title: 'Categoría',
         path: '/diseno/categoria',
-        icon: <BiCategoryAlt />
+        icon: <BiCategoryAlt size={14}/>
       }
     ]
   },
   {
     title: 'Producción',
     path: '/produccion',
-    icon: <AiOutlineInbox />,
-    iconClosed: <MdKeyboardArrowDown />,
+    icon: <AiOutlineInbox size={14}/>,
+    iconClosed: <MdKeyboardArrowDown size={14}/>,
     Subnav: [
       {
         title: 'Opcion',
         path: '/',
-        icon: <HiOutlineCollection />
+        icon: <HiOutlineCollection size={14}/>
       }
     ]
   },
   {
     title: 'RRHH',
     path: '/RRHH',
-    icon: <AiOutlineInbox />,
-    iconClosed: <MdKeyboardArrowDown />,
+    icon: <AiOutlineInbox size={14}/>,
+    iconClosed: <MdKeyboardArrowDown size={14}/>,
     Subnav: [
       {
         title: 'Opcion',
         path: '/',
-        icon: <HiOutlineCollection />
+        icon: <HiOutlineCollection size={14}/>
       }
     ]
   },
   {
     title: 'Finanzas',
     path: '/finanzas',
-    icon: <AiOutlineInbox />,
-    iconClosed: <MdKeyboardArrowDown />,
+    icon: <AiOutlineInbox size={14}/>,
+    iconClosed: <MdKeyboardArrowDown size={14}/>,
     Subnav: [
       {
         title: 'Opcion',
         path: '/',
-        icon: <HiOutlineCollection />
+        icon: <HiOutlineCollection size={14}/>
       }
     ]
   }
