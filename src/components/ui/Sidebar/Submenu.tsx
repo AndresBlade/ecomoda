@@ -17,35 +17,36 @@ export const SubMenu: React.FC<{ item: SidebarItem }> = ({ item }) => {
     setStatus(!status)
 }
 
+const active = status ? 'visible' : ''
 const currentStatus = status 
 ? 'iconOpened' 
 : 'iconClosed'
 const subnavStatus = status 
-? 'invisible' 
-: 'visible'
+? 'visible__subnav' 
+: 'invisible'
 
 return (
-      <li className="sidebar__menuData">
-        <Link to={item.path} onClick={handleStatus}>
-          <div className="sidebar__details">
-              <span>{item.icon}</span>
-            <div className="sidebar__title">
-              <span>{item.title}</span>
-              <span className={`icon ${currentStatus}`}>{item.iconClosed}</span>
-            </div>
-          </div>
-        </Link>
+  <li className="sidebar__menuData">
+    <Link to={item.path} onClick={handleStatus}>
+      <div className={`sidebar__details ${active}`}>
+          <span>{item.icon}</span>
+        <div className="sidebar__title">
+          <span>{item.title}</span>
+          <span className={`icon ${currentStatus}`}>{item.iconClosed}</span>
+        </div>
+      </div>
+    </Link>
 
-        {item.Subnav && (
-          <ul className={subnavStatus}>
-            {item.Subnav.map((subItem, index) => (
-              <li className="submenu__details" key={index}>
-                <span>{subItem.icon}</span>
-                <Link to={subItem.path}>{subItem.title}</Link>
-              </li>
-            ))}
-          </ul>
-        )}
-    </li>
-    );
-  };
+    {item.Subnav && (
+      <ul className={subnavStatus}>
+        {item.Subnav.map((subItem, index) => (
+          <li className="submenu__details" key={index}>
+            <span>{subItem.icon}</span>
+            <Link to={subItem.path}>{subItem.title}</Link>
+          </li>
+        ))}
+      </ul>
+    )}
+</li>
+);
+};

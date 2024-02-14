@@ -101,6 +101,7 @@ img {
 	background: #fff;
 	transition: width 0.4s;
 	overflow-y: auto;
+	overflow-x: hidden;
 }
 
 .sidebar__logo{
@@ -171,7 +172,7 @@ img {
 	}
 }
 
-.sidebar__details::before {
+.sidebar__details:hover::before {
 	content: ""; 
 	position: absolute; 
 	top: 0;
@@ -183,11 +184,27 @@ img {
 	z-index: 1;
   }
 
+  .sidebar__details.visible::before{
+	content: ""; 
+	position: absolute; 
+	top: 0;
+	left: -15px;
+	width: 150%;
+	height: 100%;
+	background-color: var(--primaryYellow);
+	clip-path: circle(5% at 0% 50%);
+	z-index: 1;
+  }
+  
+.visible{
+	display: flex;
+}
+
 .invisible{
 	display: none;
 }
 
-.visible{
+.visible__subnav {
 	display: flex;
 	flex-direction: column;
 	padding-left: 20px;
