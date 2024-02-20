@@ -16,8 +16,9 @@ export const SubMenu: React.FC<{
 	menuNumber: number;
 }> = ({ item, status, setActiveMenu, menuNumber }) => {
 	const active = status ? 'visible' : '';
+	const activeSubnav = status ? 'submenu__details' : 'invisible';
 	const currentStatus = status ? 'iconOpened' : 'iconClosed';
-	const subnavStatus = status ? 'visible__subnav' : 'invisible';
+	const subnavStatus = status ? 'subnav subnav__visible' : 'subnav subnav__invisible';
 
 	return (
 		<li className="sidebar__menuData">
@@ -30,7 +31,7 @@ export const SubMenu: React.FC<{
 				}
 			>
 				<div className={`sidebar__details ${active}`}>
-					<span>{item.icon}</span>
+					<span className='icon'>{item.icon}</span>
 					<div className="sidebar__title">
 						<span>{item.title}</span>
 						<span className={`icon ${currentStatus}`}>
@@ -43,7 +44,7 @@ export const SubMenu: React.FC<{
 			{item.Subnav && (
 				<ul className={subnavStatus}>
 					{item.Subnav.map((subItem, index) => (
-						<li className="submenu__details" key={index}>
+						<li className={activeSubnav} key={index}>
 							<span>{subItem.icon}</span>
 							<Link to={subItem.path}>{subItem.title}</Link>
 						</li>

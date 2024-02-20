@@ -65,7 +65,7 @@ img {
 .header__name {
 	font-family: var(--stylishFont);
 	line-height: 4rem;
-	font-size: 2.5rem;
+	font-size: 4rem;
 	text-decoration: none;
 	font-weight: 700;
 	color: #000000;
@@ -87,6 +87,17 @@ img {
 /* ------------------------------------------------ */
 
 /*  Sidebar Styles */
+
+.sidebarGrid {
+	display: none;
+
+	@media (width >= 620px) {
+		display: grid;
+		grid-template-columns: 1fr 3fr;
+		padding: 2rem;		
+	}
+}
+
 .sidebar {
 	position: fixed;
 	top: 0;
@@ -95,7 +106,7 @@ img {
 	flex-direction: column;
 	border-radius: 0 20px 20px 0;
 	gap: 10px;
-	width: 20%;
+	width: 25%;
 	min-width: 140px;
 	height: 100%;
 	background: #fff;
@@ -104,75 +115,90 @@ img {
 	overflow-x: hidden;
 }
 
-.sidebar__logo{
+.sidebar__logo {
   display: flex;
   width: 90%;
   margin: 0 auto;
   gap: 15%;
   justify-content: center;
   text-decoration: none;
-  padding: 1rem;
-  
-  .logo{
-	width: 32px;
+  padding: 2rem;
+
+  .logo__img{
+	  width: 32px;
+	}
+
+  .logo__name {
+	font-family: var(--stylishFont);
+	line-height: 4rem;
+	font-size: 3rem;
+	text-decoration: none;
+	font-weight: 700;
+	color: #000000;
   }
+
 }
 
+
 .sidebar__menu{
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  gap: 10px;
-  padding-left: 0;
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	gap: 10px;
+	padding-left: 0;
+	margin-bottom: 2rem;
 }
 
 .sidebar__menuData {
 	list-style: none;
-	width: 100%;
+	width: 95%;
 	border-radius: 6px;
-	font-size: 11px;
+	font-size: 12px;
 	font-weight: 500;
 	padding: 0 16px;
 	color: var(--primaryGray);
 	transition: background 0.3s;
-
-  a {
-	  text-decoration: none;
-	  color: inherit;
+	margin-bottom: 1rem;
+	
+	a {
+		text-decoration: none;
+		color: inherit;
 	}
 }
-  
+
+
 .sidebar__details{
 	display: flex;
 	gap: 6px;
 	position: relative; 
 	margin-bottom: 1rem;
 	align-items: center;
-
+	
+	.icon{
+		display: flex;
+		align-items: center;
+		transition: 0.4s;
+	}
+	
 	.sidebar__title{
 		display: flex;
 		align-items: center;
 		width: 100%;
 		justify-content: space-between;
-
-		.icon{
-			display: flex;
-			align-items: center;
-			transition: 0.4s;
-			}
-
+		
 		.iconOpened{
 			transform: rotate(0deg);
 		}
-
+		
 		.iconClosed{
 			transform: rotate(-180deg);
 		}
-
+		
 	}
 }
 
-.sidebar__details:hover::before {
+.sidebar__details:hover::before,
+.sidebar__details.visible::before {
 	content: ""; 
 	position: absolute; 
 	top: 0;
@@ -182,20 +208,8 @@ img {
 	background-color: var(--primaryYellow);
 	clip-path: circle(5% at 0% 50%);
 	z-index: 1;
-  }
+}
 
-  .sidebar__details.visible::before{
-	content: ""; 
-	position: absolute; 
-	top: 0;
-	left: -15px;
-	width: 150%;
-	height: 100%;
-	background-color: var(--primaryYellow);
-	clip-path: circle(5% at 0% 50%);
-	z-index: 1;
-  }
-  
 .visible{
 	display: flex;
 }
@@ -204,17 +218,34 @@ img {
 	display: none;
 }
 
-.visible__subnav {
+.subnav {
 	display: flex;
 	flex-direction: column;
 	padding-left: 20px;
-	gap: 10px;
+	gap: 15px;
 	
 	.submenu__details{
 		display: flex;
 		gap: 10px;
 		list-style: none;
 	}
+
+	.submenu__details:last-child{
+		margin-bottom: 1rem;
+	}
+}
+
+.subnav__invisible{
+	opacity: 0;
+	transform: translateY(-20px);
+	transition: opacity .1s, transform .4s;
+	max-height: 0;
+}
+
+.subnav__visible {
+	opacity: 1;
+	transform: translateY(0);
+	transition: opacity 1s, transform .3s ease-in;
 }
 
 .sidebar__sesionButton{
@@ -222,20 +253,48 @@ img {
 	justify-content: center;
 	align-items: center;
 	width: 100%;
-	height: 100vh;
 }
+
 .sesionButton {
 	display: inline-block;
 	padding: 10px 20px;
 	color: white;
-	background-color: var(--primaryYellow); /* Color de fondo naranja */
+	background-color: var(--primaryYellow);
 	border-radius: 5px;
 	text-decoration: none;
 	text-align: center;
 	font-weight: 400;
 	font-size: 10px;
 	cursor: pointer;
-  }
+	width: 80%;
+}
 
+@media (width >= 850px) {
+	.sidebar__logo .logo__img{
+		width: 48px;
+	}
+
+	.sidebar__logo .logo__name{
+		font-size: 4rem;
+	}
+
+	.sidebar__menuData {
+		font-size: 18px;
+		width: 100%;
+	}
+
+	.sesionButton {
+		font-size: 14px;
+	}
+
+	.sidebar__details{
+		margin-bottom: 2rem;
+	}
+
+	.sidebar__details:hover::before, 
+	.sidebar__details.visible::before {
+		clip-path: circle(3% at 0% 50%);
+	}
+}
 
 /* ------------------------------- */

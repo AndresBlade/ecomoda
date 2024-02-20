@@ -6,8 +6,10 @@ export const App = () => {
 	return (
 		<>
 			{/* <Header /> */}
-			<Sidebar />
-			<Outlet />
+			<section className='sidebarGrid'>
+				<aside><Sidebar /></aside>
+				<article><Outlet /></article>
+			</section>
 		</>
 	);
 };

@@ -8,8 +8,8 @@ export const Sidebar = () => {
 	return (
 		<nav className="sidebar">
 			<Link to="/" className="sidebar__logo">
-				<img className="logo" src="./aguja_Logo.svg" alt="logo" />
-				<span className="header__name">Ecomoda</span>
+				<img className="logo__img" src="./aguja_Logo.svg" alt="logo" />
+				<span className="logo__name">Ecomoda</span>
 			</Link>
 			<ul className="sidebar__menu">
 				{sidebarData.map((item, index) => (
