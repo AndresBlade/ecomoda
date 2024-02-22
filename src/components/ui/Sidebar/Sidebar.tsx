@@ -1,14 +1,17 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { SubMenu } from './Submenu';
 import { sidebarData } from './sidebarData';
 import { IoIosArrowRoundBack } from "react-icons/io";
 
-export const Sidebar = () => {
+interface SidebarProps {
+    handleMenu: () => void;
+    openedMenu: boolean;
+}
+
+export const Sidebar: React.FC<SidebarProps> = ({handleMenu, openedMenu}) => {
 	const [activeMenu, setActiveMenu] = useState(-1);
 	
-	const [openedMenu, setOpenedMenu] = useState(false)
-	const handleMenu = () => setOpenedMenu(!openedMenu)
 	const visibleMenu = openedMenu ? 'closed' : '';
 
 	return (
@@ -19,7 +22,7 @@ export const Sidebar = () => {
 					<span className="logo__name">Ecomoda</span>
 				</Link>
 				<span className='sidebar__closeTag' onClick={handleMenu}>
-					<IoIosArrowRoundBack size={20}/>
+					<IoIosArrowRoundBack size={25} color='#fff'/>
 				</span>
 			</header>
 			<ul className="sidebar__menu">

@@ -90,7 +90,9 @@ img {
 
 .sidebarGrid {
 	display: flex;
-	padding: 2rem;		
+	flex-direction: column;
+	gap: 2rem;
+	padding: 3rem 2rem;	
 }
 
 .sidebar {
@@ -104,22 +106,23 @@ img {
     width: 100%;
     height: 100%;
     background-color: #fff;
-    transition: transform 0.4s ease; 
+    transition: transform .5s; 
     overflow-y: auto;
     overflow-x: hidden;
     transform: translateX(0); 
 }
 
 .sidebar.closed {
-    transform: translateX(-90%); 
+    transform: translateX(-100%); 
 }
 
 .sidebar__closeTag{
 	display: flex;
-	background-color: var(--outletColor);
+	background-color: var(--primaryYellow);
 	border-radius: 50%;
 	align-items: center;
 	cursor: pointer;
+	width: 2.5rem;
 }
 
 @media (width >= 650px) {
@@ -150,6 +153,7 @@ img {
   display: flex;
   width: 90%;
   gap: 10%;
+  align-items: center;
   text-decoration: none;
   padding: 2rem;
 
