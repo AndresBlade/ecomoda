@@ -450,3 +450,159 @@ img {
 	gap: 3rem;
 }
 /* ------------------------------- */
+/*This is where the styles of finance begin*/
+.principal-finances {
+	display: flex;
+	justify-content: center;
+}
+.loan-creation {
+	background-color: #ffffff;
+}
+.loan-creation__title {
+	display: flex;
+	place-content: center;
+	height: 6rem;
+	border-radius: 1rem;
+	background-color: var(--primaryYellow);
+	margin: 0 auto;
+	margin-top: 2rem;
+	box-shadow: 0 1rem 0.5rem #e5e5e5;
+}
+.loan-creation__elements {
+	display: flex;
+	flex-direction: column;
+	margin: 0 auto;
+	width: 100%;
+}
+.loan-creation__image--width {
+	width: 4rem;
+}
+.loan-creation__container--input {
+	display: flex;
+	margin: 0 auto;
+	margin-top: 4rem;
+}
+.loan-creation__container--input > div {
+	margin-right: 1rem;
+}
+
+/* .loan-creation__container--input-id{
+	grid-area: col1;
+}
+.loan-creation__container--input-fecha{
+	grid-area: col2;
+}
+.loan-creation__container--input-descripcion{
+	grid-area: col3;
+}
+.loan-creation__container--input-tipo{
+	grid-area: col4;
+} */
+.loan__creation--input {
+	margin-top: 1rem;
+	border-color: #fca311;
+	border-width: 0 0 0.2rem 0;
+	box-shadow: 0 1rem 0.5rem #e5e5e5;
+}
+.loan-creation__input-submit {
+	display: flex;
+	justify-content: center;
+}
+.button-finances__center {
+	display: flex;
+	justify-content: center;
+}
+
+.button-finances {
+	background-color: var(--primaryBlack);
+	border: var(--primaryBlack);
+	border-radius: 5rem;
+	color: #ffffff;
+	width: 15rem;
+	margin-right: 1rem;
+	margin-top: 2rem;
+	padding: 0.5rem;
+}
+.applicant-data {
+	background-color: #ffffff;
+	margin-left: 2rem;
+}
+.applicant-data__input {
+	margin-top: 2rem;
+}
+.applicant-data__tittle {
+	margin-top: 2rem;
+	text-align: center;
+	border-radius: 1rem;
+	background-color: var(--primaryYellow);
+	margin-right: 3rem;
+	box-shadow: 0 1rem 0.5rem #e5e5e5;
+	width: 20rem;
+	height: 6rem;
+}
+.applicant-data__flex {
+	display: flex;
+	align-items: center;
+}
+.applicant-data__margin {
+	margin-right: 1rem;
+}
+.applicant-data__width {
+	margin-top: 4rem;
+}
+
+/*MEDIA QUERY FINANCES(RESPONSIVE)*/
+@media (max-width: 900px) {
+	.principal-finances {
+		flex-direction: column;
+		align-items: center;
+	}
+}
+
+@media (width >= 450px) {
+	.loan-creation__elements {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		grid-template-areas:
+			'col1 col2'
+			'col3 col4';
+	}
+	.loan-creation__container--input-id {
+		grid-area: col1;
+	}
+	.loan-creation__container--input-fecha {
+		grid-area: col2;
+	}
+	.loan-creation__container--input-descripcion {
+		grid-area: col3;
+	}
+	.loan-creation__container--input-tipo {
+		grid-area: col4;
+	}
+}
+@media (width >= 660px) {
+	.loan-creation__elements {
+		margin: 0 auto;
+		grid-template-columns: repeat(3, 1fr);
+		grid-template-rows: repeat(3, 1fr);
+		grid-template-areas:
+			'col1 . col3'
+			'col4 . col6'
+			'.    col8 .';
+	}
+	.loan-creation__container--input-id {
+		grid-area: col1;
+	}
+	.loan-creation__container--input-fecha {
+		grid-area: col3;
+	}
+	.loan-creation__container--input-descripcion {
+		grid-area: col4;
+	}
+	.loan-creation__container--input-tipo {
+		grid-area: col6;
+	}
+	.loan-creation__container--input-monto {
+		grid-area: col8;
+	}
+}
