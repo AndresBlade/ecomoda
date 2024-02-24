@@ -131,6 +131,10 @@ img {
 		grid-template-columns: 1fr 3fr;
 	}
 
+	.sidebar.closed {
+		transform: translateX(0); 
+	}
+
 	.sidebar{
 		width: 25%;
 	}
@@ -172,7 +176,6 @@ img {
 
 }
 
-
 .sidebar__menu{
 	display: flex;
 	flex-direction: column;
@@ -209,6 +212,8 @@ img {
 	
 	.icon{
 		display: flex;
+		background-color: var(--outletColor);
+		border-radius: 50%;
 		align-items: center;
 		transition: 0.4s;
 	}
@@ -258,9 +263,13 @@ img {
 	gap: 15px;
 	
 	.submenu__details{
+		list-style: none;
+	}
+
+	.submenu__details a{
 		display: flex;
 		gap: 10px;
-		list-style: none;
+		align-items: center;
 	}
 
 	.submenu__details:last-child{

@@ -19,7 +19,13 @@ export const router = createBrowserRouter([
 			{ path: 'RRHH', element: <>En RRHH</> },
 			{ path: 'finanzas', element: <>En finanzas</> },
 			{ path: 'produccion', element: <>En producción</> },
-			{ path: 'diseno', element: <>En diseno</> },
+			{ 
+				path: 'diseno', 
+				children: [
+					{ path: '/diseno/materiales', element: <>En materiales</> /* <MaterialsPage /> */},
+					{ index: true, element: <div>En departamento de diseno</div>},
+				],
+			},
 		],
 	},
 ]);

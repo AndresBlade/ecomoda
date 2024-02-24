@@ -104,15 +104,3 @@ export const sidebarData = [
 		],
 	},
 ];
-
-/* 
-	children: [
-			{ index: true, element: <div>Bienvenido a ecomoda</div> },
-			{
-				path: 'ventas',
-				children: [
-					{ path: 'clientes', element: <ClientsPage /> },
-					{ index: true, element: <SalesPage /> },
-				],
-			},
-*/

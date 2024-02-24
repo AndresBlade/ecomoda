@@ -12,12 +12,12 @@ interface SidebarProps {
 export const Sidebar: React.FC<SidebarProps> = ({handleMenu, openedMenu}) => {
 	const [activeMenu, setActiveMenu] = useState(-1);
 	
-	const visibleMenu = openedMenu ? 'closed' : '';
+	const visibleMenu = openedMenu ? '' : 'closed';
 
 	return (
 		<nav className={`sidebar ${visibleMenu}`}>
 			<header className='sidebar__header'>
-				<Link to="/" className="sidebar__logo">
+				<Link to="/" className="sidebar__logo" onClick={handleMenu}>
 					<img className="logo__img" src="./aguja_Logo.svg" alt="logo" />
 					<span className="logo__name">Ecomoda</span>
 				</Link>
@@ -33,6 +33,7 @@ export const Sidebar: React.FC<SidebarProps> = ({handleMenu, openedMenu}) => {
 						status={index === activeMenu}
 						setActiveMenu={setActiveMenu}
 						menuNumber={index}
+						handleMenu={handleMenu}
 					/>
 				))}
 			</ul>
