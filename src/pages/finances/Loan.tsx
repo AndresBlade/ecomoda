@@ -3,10 +3,12 @@ import imagen from '../../assets/icons_finances/codigo-de-barras.png';
 import imagen1 from '../../assets/icons_finances/buscando-trabajo (1).png';
 import imagen2 from '../../assets/icons_finances/calendario (1).png';
 import imagen3 from '../../assets/icons_finances/dar-dinero (1).png';
+import imagen7 from '../../assets/icons_finances/advertencia (1).png';
 import ApplicantData from './components/ApplicantData';
 import Input from './components/Input';
 import React, { useRef, useState } from 'react';
-
+import Alert from './components/Alert';
+import ModalQuery from './components/ModalQuery';
 
 export const Loan = () => {
     const [id, setId] = useState(0);
@@ -14,13 +16,36 @@ export const Loan = () => {
     const [descripcion, setDescripcion] = useState("");
     const [tipo, setTipo] = useState("");
     const [monto, setMonto] = useState(0);
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [error, setError] = useState(false);
 
+    //Funcion para limpiar los campos del formulario
+    const form = useRef<HTMLFormElement>(null);
+
+    const clearInputs = ()=>{
+        if(form.current){
+            form.current.reset();
+        }
+        setId(0);
+        setFecha("");
+        setDescripcion('')
+        setTipo('');
+        setMonto(0);
+    }
 
     const handleSubmit = async (e:React.FormEvent<HTMLFormElement>)=>{
         e.preventDefault();
+        
+        if([id,fecha,descripcion,tipo,monto].includes('')){
+            setError(true);
+            return;
+        }
+        setError(false)
 
         const response = await fetch('url',{
             method:'POST',
+            mode : 'cors',
+            credentials: 'same-origin',
             headers:{
                 'Content-type':'application/json',
             },
@@ -32,26 +57,29 @@ export const Loan = () => {
                 tipo:tipo,
                 monto:monto,
             })
+        }).then(Response=>{
+            if(!Response.ok){
+                
+                throw new Error(Response.statusText)
+    
+                alert(Response.statusText);
+            }
+            return Response.json();
         })
+        console.log(response);
 
-        if(!response.ok){
-            alert(response);
-        }
+        clearInputs();
 
-        const data = await response.json();
     };
 
-    //Funcion para limpiar los campos del formulario
-    const form = useRef<HTMLFormElement>(null);
-
-    const clearInputs = ()=>{
-        if(form.current){
-            form.current.reset();
-        }
-    }
     return (
         <div className="principal-finances">  
         <form ref={form} action="" method="post" onSubmit={handleSubmit}>
+            {error && <Alert
+                            imgSrc={imagen7} altImg={'error'}
+                            children="Hay algún campo vacio ó uno de los datos no corresponden al formato solicitado"
+                        />}
+            
             <div className="loan-creation"> {/* div for loan creation */}
                 <div className="loan-creation__title">
                         <h2>Crear Prestamo</h2>
@@ -89,7 +117,7 @@ export const Loan = () => {
                                 (event)=>{
                                     setTipo(event.target.value);
                                 }
-                            } type='number' className='loan__creation--input' placeholder='Tipo' title='tipo' imgSrc={imagen} altImg={'ID'} classImg='loan-creation__image--width' children='Tipo' /> 
+                            } type='text' className='loan__creation--input' placeholder='Tipo' title='tipo' imgSrc={imagen} altImg={'ID'} classImg='loan-creation__image--width' children='Tipo' /> 
                         </div>
                         <div className="loan-creation__container--input loan-creation__container--input-monto">
                             <Input onChange={
@@ -105,6 +133,7 @@ export const Loan = () => {
                     <div className='button-finances__center'>
                         <Buttons type='submit' title='solicitar' children="Solicitar" className='button-finances button-finances-grid'/>
                         <Buttons onClick={clearInputs} type='reset' title='limpiar' children="Limpiar" className='button-finances'/>
+                        <Buttons onClick={()=>setIsModalOpen(true)} type='button' title='consultar' children='Consultar' className='button-finances button-finances-grid'/>
                     </div>
                 </div> 
             </form>

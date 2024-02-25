@@ -551,6 +551,82 @@ img {
 	margin-top: 4rem;
 }
 
+.alert{
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	right: 0;
+	left: auto;
+	width: 100%;
+	background-color: rgba(18, 17, 17, 0.6);
+	
+
+}
+.alert-container{
+	transition: all 0.5s linear;
+	position: relative;
+	top: 20%;
+	left: 25%;
+	width: 50%;
+	height: 50%;
+	background: rgb(229,229,229);
+	background: linear-gradient(180deg, rgba(229,229,229,1) 0%, rgba(252,163,17,1) 100%);
+	/* background-color: #fca311; */
+	border-radius: 1rem;
+	display: flex;
+	flex-direction: column;
+	justify-items: center;
+	align-items: center;
+	padding: 2rem;
+	animation: rotate 0.5s 1 0s;
+
+}
+
+.alert-container__imagen{
+	width: 8rem;
+
+
+}
+/* @keyframes move {
+	to {
+	transform: translateY(50px);
+	}
+} */
+
+@keyframes rotate {
+	0% {
+		transform: rotate(2deg);
+	}
+	50% {
+		transform: rotate(-2deg);
+	}
+	100%{
+		transform: rotate(2deg);
+	}
+	
+}
+.alert-container__p{
+	color: #121111;
+	text-align: center;
+	margin-top: 2rem;
+	text-transform: uppercase;
+	font-size: medium;
+	font-weight: 700;
+}
+.modalcontent{
+	display: flex;
+	justify-content: space-around;
+}
+.modalquery{
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	right: 0;
+	width: 100%;
+	background-color: rgba(18, 17, 17, 0.6);
+
+
+}
 /*MEDIA QUERY FINANCES(RESPONSIVE)*/
 @media (width <= 1100px) {
 	.principal-finances {

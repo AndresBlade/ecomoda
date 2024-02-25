@@ -9,7 +9,7 @@ interface InputProps{
     altImg:string;
     classImg:string;
     children:string;
-    onChange: (event:ChangeEvent<HTMLInputElement>)=>void;
+    onChange?: (event:ChangeEvent<HTMLInputElement>)=>void;
 } 
 
 export interface InputsProps extends InputHTMLAttributes<HTMLInputElement>{}
