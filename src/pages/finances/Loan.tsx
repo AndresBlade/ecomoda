@@ -16,7 +16,7 @@ export const Loan = () => {
     const [descripcion, setDescripcion] = useState("");
     const [tipo, setTipo] = useState("");
     const [monto, setMonto] = useState(0);
-    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [isOpen, setIsOpen] = useState(false);
     const [error, setError] = useState(false);
 
     //Funcion para limpiar los campos del formulario
