@@ -11,9 +11,6 @@ export const Modal = ({ children, isOpen, setIsOpen }: ModalProps) => {
 
 	const closeModalWithKeyboard = useCallback(
 		(e: KeyboardEvent) => {
-			console.log('aguas');
-
-			console.log(e.key);
 			if (e.key === 'Escape') {
 				e.preventDefault();
 				setIsOpen(false);
@@ -36,14 +33,7 @@ export const Modal = ({ children, isOpen, setIsOpen }: ModalProps) => {
 	}, [isOpen, closeModalWithKeyboard]);
 	return (
 		<>
-			<dialog
-				className="modal"
-				ref={dialogRef}
-				onKeyDown={e => {
-					e.preventDefault();
-					if (e.key === 'escape') setIsOpen(false);
-				}}
-			>
+			<dialog className="modal" ref={dialogRef}>
 				<button
 					className="modal__close-button"
 					autoFocus
