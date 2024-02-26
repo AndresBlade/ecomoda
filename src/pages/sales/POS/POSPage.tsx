@@ -1,7 +1,12 @@
 import { useState } from 'react';
 import { Modal } from '../../../components/ui/modal/Modal';
+import { useForm } from '../../../hooks/useForm';
 export const POSPage = () => {
 	const [isOpen, setIsOpen] = useState(false);
+	const { onInputChange, code, name } = useForm({
+		code: '',
+		name: '',
+	});
 	return (
 		<>
 			<div className="POS__container">
@@ -38,6 +43,8 @@ export const POSPage = () => {
 								required
 								type="text"
 								className="POS__input"
+								value={code}
+								onChange={onInputChange}
 							/>
 						</div>
 						<div className="POS__field-wrapper">
@@ -50,6 +57,8 @@ export const POSPage = () => {
 								name="name"
 								type="text"
 								className="POS__input"
+								value={name}
+								onChange={onInputChange}
 							/>
 						</div>
 					</fieldset>
