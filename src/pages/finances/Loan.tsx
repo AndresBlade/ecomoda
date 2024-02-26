@@ -8,7 +8,8 @@ import ApplicantData from './components/ApplicantData';
 import Input from './components/Input';
 import React, { useRef, useState } from 'react';
 import Alert from './components/Alert';
-import ModalQuery from './components/ModalQuery';
+import {Modal} from '../../components/ui/modal/Modal';
+import ModalTable from './components/ModalTable';
 
 export const Loan = () => {
     const [id, setId] = useState(0);
@@ -133,11 +134,14 @@ export const Loan = () => {
                     <div className='button-finances__center'>
                         <Buttons type='submit' title='solicitar' children="Solicitar" className='button-finances button-finances-grid'/>
                         <Buttons onClick={clearInputs} type='reset' title='limpiar' children="Limpiar" className='button-finances'/>
-                        <Buttons onClick={()=>setIsModalOpen(true)} type='button' title='consultar' children='Consultar' className='button-finances button-finances-grid'/>
+                        <Buttons onClick={()=>setIsOpen(true)} type='button' title='consultar' children='Consultar' className='button-finances button-finances-grid'/>
                     </div>
                 </div> 
             </form>
                 {/* Here end div Principal-Finances */}
+            <Modal isOpen={isOpen} setIsOpen={setIsOpen}>
+                <ModalTable descripcion='descripcion' fecha='Fecha' monto='Monto' />
+            </Modal>
             <ApplicantData/>
         </div>
     )

@@ -613,20 +613,85 @@ img {
 	font-size: medium;
 	font-weight: 700;
 }
-.modalcontent{
+.modal-table{
+	display: flex;
+	flex-direction: column;
+
+}
+.modal-table__thead{
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	margin-top: 3rem;
+	padding-right: 3rem;
+
+}
+.modal-content__fecha{
+	margin-left: -3rem;
+}
+.modal-content__monto{
+	margin-left: -2rem;
+}
+.loan-creation__title__modal{
+	width: 100%;
+}
+thead{
+	padding-inline: 1rem;
+}
+.modal-content{
 	display: flex;
 	justify-content: space-around;
-}
-.modalquery{
-	position: absolute;
-	top: 0;
-	bottom: 0;
-	right: 0;
-	width: 100%;
-	background-color: rgba(18, 17, 17, 0.6);
-
+	border-bottom: solid #121111 1px;
+	padding-right: 3rem;
+	padding-top: 1rem;
+	padding-bottom: 1;
 
 }
+.modal-content:hover{
+	background-color: #e5e5e5;
+}
+.search{
+	display: flex;
+	justify-content: center;
+	margin-top: 2rem;
+	padding: 1rem;
+}
+.search-input{
+	margin-left: 2rem;
+	font-size: 18px;
+	padding: 5px 10px;
+	width: 80%;
+	padding-left: 35px;
+	outline: none;
+	background: #FFFFFF;
+	color: #000000;
+	border: 1px solid #121111;
+	border-radius: 5px;
+	box-shadow: 3px 3px 2px 0px #E2E2E2;
+	transition: .3s ease;
+}
+.search-imagen{
+	object-fit: contain;
+	width: 3rem;
+}
+.modal-table__find{
+	display: flex;
+
+}
+.modal-content:first-child{
+	border-top: solid #121111 2px;
+}
+.button-image{
+	width: 2rem;
+}
+.button-image:hover{
+	filter: drop-shadow(0px 0px 5px #fca311);
+}
+.button-content{
+	border: none;
+	background:none;
+}
+
 /*MEDIA QUERY FINANCES(RESPONSIVE)*/
 @media (width <= 1100px) {
 	.principal-finances {

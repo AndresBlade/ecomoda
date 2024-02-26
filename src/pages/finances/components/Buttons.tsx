@@ -10,7 +10,6 @@ interface ButtonsProps{
 }
 export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement>{}
 
-
 const Buttons: FC<ButtonsProps> = ({type = 'button',children,title, onClick}) => {
 
         return(

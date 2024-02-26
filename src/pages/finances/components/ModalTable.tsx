@@ -1,6 +1,6 @@
 import React from "react";
 import ModalContent from "./ModalContent";
-
+import Search from "./Search";
 interface ModalTableProps{
     descripcion:string;
     fecha?: string;
@@ -10,11 +10,12 @@ export interface modaltableprops extends React.HTMLAttributes<HTMLTableElement>{
 
 const ModalTable: React.FC<ModalTableProps> = ({descripcion,fecha,monto}) => {
     return (
-        <table className="modalcontent">
-            <div className="loan-creation__title">
+        <table className="modal-table">
+            <div className="loan-creation__title loan-creation__title__modal">
                 <h2>Consulta prestamos</h2>
             </div>
-            <thead>
+            <Search/>
+            <thead className="modal-table modal-table__thead">
                 <td>Id</td>
                 <td>{descripcion}</td>
                 <td>{fecha}</td>
