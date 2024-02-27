@@ -468,7 +468,7 @@ img {
 	margin-top: 2rem;
 	box-shadow: 0 1rem 0.5rem #e5e5e5;
 }
-.loan-creation__elements {
+.loan-creation__elements{
 	display: flex;
 	flex-direction: column;
 	margin: 0 auto;
@@ -498,7 +498,9 @@ img {
 .loan-creation__container--input-tipo{
 	grid-area: col4;
 } */
-.loan__creation--input {
+
+.loan__creation--input,
+.account-register__description{
 	margin-top: 1rem;
 	border-color: #fca311;
 	border-width: 0 0 0.2rem 0;
@@ -512,7 +514,6 @@ img {
 	display: flex;
 	justify-content: center;
 }
-
 .button-finances {
 	background-color: var(--primaryBlack);
 	border: var(--primaryBlack);
@@ -530,7 +531,7 @@ img {
 .applicant-data__input {
 	margin-top: 2rem;
 }
-.applicant-data__tittle {
+.applicant-data__tittle{
 	margin-top: 2rem;
 	text-align: center;
 	border-radius: 1rem;
@@ -618,7 +619,8 @@ img {
 	flex-direction: column;
 
 }
-.modal-table__thead{
+.modal-table__thead,
+.table{
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
@@ -626,6 +628,7 @@ img {
 	padding-right: 3rem;
 
 }
+
 .modal-content__fecha{
 	margin-left: -3rem;
 }
@@ -638,10 +641,11 @@ img {
 thead{
 	padding-inline: 1rem;
 }
-.modal-content{
+.modal-content,
+.table-thead{
 	display: flex;
 	justify-content: space-around;
-	border-bottom: solid #121111 1px;
+	border-bottom: solid #e5e5e5 1px;
 	padding-right: 3rem;
 	padding-top: 1rem;
 	padding-bottom: 1;
@@ -690,6 +694,26 @@ thead{
 .button-content{
 	border: none;
 	background:none;
+}
+.button-finances__account{
+	margin-top:2rem;
+	margin-bottom: 10rem;
+}
+.account{
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+	margin: 0 auto;
+	width: 100%;
+	gap: 1rem;
+}
+.account-table{
+	grid-column: 1/3;
+}
+.account-register__elements{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin-top: 2rem;
 }
 
 /*MEDIA QUERY FINANCES(RESPONSIVE)*/

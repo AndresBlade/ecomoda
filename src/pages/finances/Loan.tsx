@@ -80,12 +80,10 @@ export const Loan = () => {
                             imgSrc={imagen7} altImg={'error'}
                             children="Hay algún campo vacio ó uno de los datos no corresponden al formato solicitado"
                         />}
-            
             <div className="loan-creation"> {/* div for loan creation */}
                 <div className="loan-creation__title">
-                        <h2>Crear Prestamo</h2>
-                    </div>
-                    
+                    <h2>Crear Prestamo</h2>
+                </div>
                     <div className="loan-creation__elements">
                         <div className="loan-creation__container--input loan-creation__container--input-id">
                             <Input onChange={
@@ -140,7 +138,7 @@ export const Loan = () => {
             </form>
                 {/* Here end div Principal-Finances */}
             <Modal isOpen={isOpen} setIsOpen={setIsOpen}>
-                <ModalTable descripcion='descripcion' fecha='Fecha' monto='Monto' />
+                <ModalTable className='modal-table modal-table__thead' titulo='Consulta Prestamos' descripcion='descripcion' fecha='Fecha' monto='Monto' />
             </Modal>
             <ApplicantData/>
         </div>

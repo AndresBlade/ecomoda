@@ -5,17 +5,20 @@ interface ModalTableProps{
     descripcion:string;
     fecha?: string;
     monto?: string;
+    children?: React.ReactNode;
+    titulo: string
+    className: string;
 }
 export interface modaltableprops extends React.HTMLAttributes<HTMLTableElement>{}
 
-const ModalTable: React.FC<ModalTableProps> = ({descripcion,fecha,monto}) => {
+const ModalTable: React.FC<ModalTableProps> = ({descripcion,fecha,monto,children,titulo, className}) => {
     return (
         <table className="modal-table">
             <div className="loan-creation__title loan-creation__title__modal">
-                <h2>Consulta prestamos</h2>
+                <h2>{titulo}</h2>
             </div>
             <Search/>
-            <thead className="modal-table modal-table__thead">
+            <thead className={className}>
                 <td>Id</td>
                 <td>{descripcion}</td>
                 <td>{fecha}</td>
@@ -23,10 +26,7 @@ const ModalTable: React.FC<ModalTableProps> = ({descripcion,fecha,monto}) => {
                 <td>Acciones</td>
             </thead>
             <tbody>
-                <ModalContent id={'1'} descripcion={"Compra de maquinaria"} fecha={"01/01/2024"} monto={'800.00'} />
-                <ModalContent id={'1'} descripcion={"Compra de maquinaria"} fecha={"01/01/2024"} monto={'800.00'} />
-                <ModalContent id={'1'} descripcion={"Compra de maquinaria"} fecha={"01/01/2024"} monto={'800.00'} />
-                <ModalContent id={'1'} descripcion={"Compra de maquinaria"} fecha={"01/01/2024"} monto={'800.00'} />
+                {children}
             </tbody>
         </table>
     )

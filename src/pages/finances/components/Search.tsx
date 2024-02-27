@@ -2,20 +2,12 @@ import React from 'react'
 import imagenLupa from "../../../assets/icons_finances/lupa.png";
 import { useState,useEffect, useRef } from 'react';
 
-const useReadOnly = (initialState:boolean) => {
-    const [isReadOnly, setIsReadOnly] = useState(initialState);
-
-    const toggleReadOnly = (e:React.MouseEvent<HTMLButtonElement>) => {
-        e.preventDefault();
-        setIsReadOnly(!isReadOnly);
-    };
-
-    return [isReadOnly, toggleReadOnly];
-    };
 
 const Search = () => {
-    const [search, setSearch]=useState("")
-    const [isReadOnly, toggleReadOnly] = useReadOnly(true);
+    const [prestamos, setPrestamos]=useState([]);
+    const [search, setSearch]=useState("");
+
+
     // const showData = async()=>{
 
     //     const response = await fetch(url);
@@ -26,13 +18,22 @@ const Search = () => {
 
     const searcher = (e:React.ChangeEvent<HTMLInputElement>)=>{
         setSearch(e.target.value)
-        console.log(e);
+        // console.log(e.target.value);
     };
+    // let results=[];
+    // if(!search){
+    //     results=user;
+    // }else{
+    //     results = user.filter((dato)=>
+    //     dato.name.toLowerCase().includes(search.toLocaleLowerCase()));
+
+    // }
+
     return (
         <div className='search'>
             <img src={imagenLupa} alt="Buscar" className="search-imagen"/>
-            <input value={search} readOnly={isReadOnly} onChange={searcher} type="text" id="" placeholder='Search...' className='search-input'/>
-            <button onClick={toggleReadOnly}>Cambiar estado</button>
+            <input value={search} onChange={searcher} type="text" id="" placeholder='Search...' className='search-input'/>
+
         </div>
 
     )

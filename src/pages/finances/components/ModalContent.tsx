@@ -6,7 +6,7 @@ import imagenEditar from "../../../assets/icons_finances/escritura.png";
 interface ModalContentProps{
     id: string;
     descripcion:string;
-    fecha: string;
+    fecha?: string;
     monto?: string;
 }
 

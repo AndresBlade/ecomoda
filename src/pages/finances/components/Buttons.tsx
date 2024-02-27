@@ -4,7 +4,7 @@ import { ButtonHTMLAttributes, FC } from 'react'
 interface ButtonsProps{
     type: 'button' | 'submit' | 'reset';
     children: React.ReactNode;
-    title: 'solicitar' | 'limpiar' | 'consultar' | 'editar' | 'eliminar';
+    title: 'solicitar' | 'limpiar' | 'consultar' | 'editar' | 'eliminar' | 'crear';
     className: string;
     onClick?: React.MouseEventHandler<HTMLButtonElement>;
 }
