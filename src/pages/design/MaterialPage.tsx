@@ -1,6 +1,8 @@
 import { MaterialBox } from './MaterialBox'
+import { useMaterials } from './helpers/useMaterials';
 
 export const MaterialsPage = () => {
+    const materials = useMaterials();
 	return (
         <body>
             <section>
@@ -17,10 +19,15 @@ export const MaterialsPage = () => {
                 </article>
 
                 <article>
-                    <MaterialBox />
-                    <MaterialBox />
-                    <MaterialBox />
-                    <MaterialBox />
+                    {materials?.map(material => (
+                        <MaterialBox
+                            key={material.id}
+                            id={material.id}
+                            material={material.material}
+                            description={material.description}
+                            unit={material.unit}
+                        />
+                    ))}
                 </article>
             </section>
         </body>

@@ -1,15 +1,19 @@
-export const MaterialBox = () => {
+import { materialProps } from './interfaces/Materials'
+
+export const MaterialBox: React.FC<materialProps> = ({ id, material, description, unit }) => {
+
+
 	return (
     <div className="rectangulo">
         <div className="rectangulo-materiales">
             <div className="seccion">
-                <label className="nombre">Algodon</label>
-                <label>ID:0001</label>
+                <label className="nombre">{material}</label>
+                <label>ID:{id}</label>
             </div>
 
             <div className="seccion">
                 <label className="descripcion-materiales">Descripción</label>
-                <p className="descripcion-materiales">Es suave, transpirable y cómodo, ideal para ropa de verano y ropa interior.</p>
+                <p className="descripcion-materiales">{description}</p>
             </div>
 
             <div className="seccion">
