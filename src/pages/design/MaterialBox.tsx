@@ -1,10 +1,19 @@
 import { materialProps } from './interfaces/Materials'
+import { Modal } from '../../components/ui/modal/Modal';
+import { useState } from 'react';
 
 export const MaterialBox: React.FC<materialProps> = ({ id, material, description, unit }) => {
 
+    const sliderActive = unit === 'meters' ? 'sliderOn' : '';
 
+        const [isOpen, setIsOpen] = useState(false);
+      
+        const handleEditModal = () => {
+          setIsOpen(!isOpen);
+        };
+    
 	return (
-    <div className="rectangulo">
+    <article className="rectangulo">
         <div className="rectangulo-materiales">
             <div className="seccion">
                 <label className="nombre">{material}</label>
@@ -19,16 +28,20 @@ export const MaterialBox: React.FC<materialProps> = ({ id, material, description
             <div className="seccion">
                 <label className="medida-materiales">CM | M</label> 
                 <label className="switch">
-                    <input type="checkbox"/>
-                    <span className="slider round"></span>
+                    <span className={`slider round ${sliderActive}`}></span>
                 </label>
             </div>
 
             <div className="seccion">
-                <button>Editar</button>
+                <button onClick={handleEditModal}>Editar</button>
                 <button>Eliminar</button>       
             </div>
         </div>
-    </div>
+        <Modal isOpen={isOpen} setIsOpen={setIsOpen}>
+            <h2>¡Hola! Soy un modal</h2>
+            <p>Este es un ejemplo de un modal de ventana emergente.</p>
+            <button onClick={handleEditModal}>Cerrar Modal</button>
+        </Modal>
+    </article>
     );
 };

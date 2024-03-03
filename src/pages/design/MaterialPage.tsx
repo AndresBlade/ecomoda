@@ -1,8 +1,17 @@
 import { MaterialBox } from './MaterialBox'
 import { useMaterials } from './helpers/useMaterials';
+import { Modal } from '../../components/ui/modal/Modal';
+import { useState } from 'react';
 
 export const MaterialsPage = () => {
-    const materials = useMaterials();
+    const getMaterials = useMaterials();
+
+    const [isOpen, setIsOpen] = useState(false);
+      
+    const handleCreateModal = () => {
+      setIsOpen(!isOpen);
+    };
+
 	return (
         <body>
             <section>
@@ -11,7 +20,12 @@ export const MaterialsPage = () => {
                 </div>
                 
                 <article className='header_materiales'>
-                    <button className='materiales_button'>Crear material</button>
+                    <button className='materiales_button' onClick={handleCreateModal}>Crear material</button>
+                    <Modal isOpen={isOpen} setIsOpen={setIsOpen}>
+                        <article>
+                            <p>cositas</p>
+                        </article>
+                    </Modal>
                     <div className="buscador-materiales">
                         <input type="text" name="buscador" placeholder="Buscar"/>
                         <button type="submit"></button>
@@ -19,7 +33,7 @@ export const MaterialsPage = () => {
                 </article>
 
                 <article>
-                    {materials?.map(material => (
+                    {getMaterials?.map(material => (
                         <MaterialBox
                             key={material.id}
                             id={material.id}
