@@ -3,7 +3,6 @@ import { materialProps } from "../interfaces/Materials";
 
 export const useMaterials = () => {
     const [materials, setMaterials] = useState<materialProps[]>([]);
-    const [updateGet, setUpdateGet] = useState<number>(0); 
 
     const getAllMaterials = async () => {
         try {
@@ -22,7 +21,7 @@ export const useMaterials = () => {
 
     useEffect(() => {
         getAllMaterials();
-    }, [updateGet]);
+    }, []);
  
     const createMaterial = async (materialData: materialProps) => {
         try {
@@ -37,7 +36,7 @@ export const useMaterials = () => {
             if (!response.ok) {
                 throw new Error('Error al crear el material');
             }
-            setUpdateGet(prev => prev + 1);
+            getAllMaterials()
         } catch (error) {
             console.error('Error al crear el material:', error);
         }
@@ -52,11 +51,34 @@ export const useMaterials = () => {
             if (!response.ok) {
                 throw new Error('Error al eliminar el material');
             }
-            setUpdateGet(prev => prev + 1);
         } catch (error) {
             console.error('Error al eliminar el material:', error);
         }
     };
+    const updateMaterial = async (materialId: number | undefined, updatedData: materialProps) => {
+        try {
+            const response = await fetch(`http://localhost:3000/api/materials/updatematerial/${materialId}`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json' 
+                },
+                body: JSON.stringify(updatedData)
+            });
+            
+            if (!response.ok) {
+                throw new Error('Error al editar el material');
+            }
+        } catch (error) {
+            console.error('Error al editar el material:', error);
+        }
+    };
 
-    return { materials, getAllMaterials, createMaterial, deleteMaterial };
+    const searchMaterials = (searchTerm: string) => {
+        return materials.filter(material =>
+            material.material.toLowerCase().includes(searchTerm.toLowerCase())
+        );
+    };
+
+
+    return { materials, getAllMaterials, createMaterial, deleteMaterial, updateMaterial, searchMaterials };
 };

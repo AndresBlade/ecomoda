@@ -1,12 +1,9 @@
 import { useMaterials } from './useMaterials';
 import { Modal } from '../../../components/ui/modal/Modal';
-import { modalProps } from '../interfaces/modalProps';
+import { deleteProps } from '../interfaces/DeleteProps';
 
-interface DeleteModalProps extends modalProps {
-    materialId: number | undefined
-}
 
-export const DeleteModal: React.FC<DeleteModalProps> = ({materialId, isOpen, setIsOpen}) => {
+export const DeleteModal: React.FC<deleteProps> = ({materialId, isOpen, setIsOpen}) => {
     const { deleteMaterial } = useMaterials();
 
     const handleDeleteMaterial = () => {

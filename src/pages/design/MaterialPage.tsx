@@ -5,12 +5,16 @@ import { useState } from 'react';
 
 export const MaterialsPage = () => {
 
-    const {materials} = useMaterials();
+    const { searchMaterials } = useMaterials();
     const [isOpen, setIsOpen] = useState(false);
+    const [searchMaterial, setSearchMaterial] = useState('');
 
     const handleCreateModal = () => {
         setIsOpen(!isOpen);
-      };
+        setSearchMaterial('');
+    };
+
+    const filteredMaterials = searchMaterials(searchMaterial)
 
 	return (
         <section>
@@ -22,13 +26,16 @@ export const MaterialsPage = () => {
                 <button className='materiales_button' onClick={handleCreateModal}>Crear material</button>
                 <CreateModal isOpen={isOpen} setIsOpen={setIsOpen}/>
                 <div className="buscador-materiales">
-                    <input type="text" name="buscador" placeholder="Buscar"/>
+                    <input type="text" name="buscador" placeholder="Buscar"
+                    value={searchMaterial}
+                    onChange={(e) => setSearchMaterial(e.target.value)}
+                    />
                     <button type="submit"></button>
                 </div>
             </article>
 
             <article>
-                {materials?.map(material => (
+                {filteredMaterials?.map(material => (
                     <MaterialBox
                         key={material.id}
                         id={material.id}

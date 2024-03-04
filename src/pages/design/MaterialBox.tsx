@@ -1,7 +1,7 @@
 import { materialProps } from './interfaces/Materials'
-import { Modal } from '../../components/ui/modal/Modal';
 import { useState } from 'react';
 import { DeleteModal } from './helpers/DeleteModal';
+import { UpdateModal } from './helpers/UpdateModal';
 
 export const MaterialBox: React.FC<materialProps> = ({ id, material, description, unit }) => {
 
@@ -44,11 +44,15 @@ export const MaterialBox: React.FC<materialProps> = ({ id, material, description
                 <button onClick={handleDeleteModal}>Eliminar</button>       
             </div>
         </div>
-        <Modal isOpen={isOpen} setIsOpen={setIsOpen}>
-            <h2>¡Hola! Soy un modal</h2>
-            <p>Este es un ejemplo de un modal de ventana emergente.</p>
-            <button onClick={handleEditModal}>Cerrar Modal</button>
-        </Modal>
+
+        <UpdateModal 
+            materialId={id} 
+            material={material} 
+            description={description}
+            unit={unit}
+            isOpen={isOpen} 
+            setIsOpen={setIsOpen}
+        />
 
         <DeleteModal materialId={id} isOpen={isOpenDeleted} setIsOpen={setIsOpenDeleted}/>
     </article>
