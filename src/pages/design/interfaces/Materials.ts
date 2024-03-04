@@ -1,5 +1,5 @@
 export interface materialProps {
-    id: number;
+    id?: number;
     material: string;
     unit: 'meters' | 'unit';
     description?: string;

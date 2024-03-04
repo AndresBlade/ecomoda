@@ -1,15 +1,21 @@
 import { materialProps } from './interfaces/Materials'
 import { Modal } from '../../components/ui/modal/Modal';
 import { useState } from 'react';
+import { DeleteModal } from './helpers/DeleteModal';
 
 export const MaterialBox: React.FC<materialProps> = ({ id, material, description, unit }) => {
 
     const sliderActive = unit === 'meters' ? 'sliderOn' : '';
 
         const [isOpen, setIsOpen] = useState(false);
+        const [isOpenDeleted, setIsOpenDeleted] = useState(false);
       
         const handleEditModal = () => {
           setIsOpen(!isOpen);
+        };
+
+        const handleDeleteModal = () => {
+          setIsOpenDeleted(!isOpenDeleted);
         };
     
 	return (
@@ -17,7 +23,7 @@ export const MaterialBox: React.FC<materialProps> = ({ id, material, description
         <div className="rectangulo-materiales">
             <div className="seccion">
                 <label className="nombre">{material}</label>
-                <label>ID:{id}</label>
+                <label>ID: {id}</label>
             </div>
 
             <div className="seccion">
@@ -34,7 +40,8 @@ export const MaterialBox: React.FC<materialProps> = ({ id, material, description
 
             <div className="seccion">
                 <button onClick={handleEditModal}>Editar</button>
-                <button>Eliminar</button>       
+
+                <button onClick={handleDeleteModal}>Eliminar</button>       
             </div>
         </div>
         <Modal isOpen={isOpen} setIsOpen={setIsOpen}>
@@ -42,6 +49,8 @@ export const MaterialBox: React.FC<materialProps> = ({ id, material, description
             <p>Este es un ejemplo de un modal de ventana emergente.</p>
             <button onClick={handleEditModal}>Cerrar Modal</button>
         </Modal>
+
+        <DeleteModal materialId={id} isOpen={isOpenDeleted} setIsOpen={setIsOpenDeleted}/>
     </article>
     );
 };
