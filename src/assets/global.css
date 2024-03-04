@@ -256,6 +256,11 @@ img {
 	display: none;
 }
 
+.invisibleMsg{
+	opacity: 0;
+	transition: .8s;
+}
+
 .subnav {
 	display: flex;
 	flex-direction: column;
@@ -580,7 +585,7 @@ img {
   }
 
   .modalMaterial__header {
-	margin-bottom: 4rem;
+	margin-bottom: 2rem;
 	h2{
 		margin-bottom: 1rem;
 	}
@@ -627,6 +632,14 @@ img {
 		}
 	}
 
+	.NotFound{
+		text-align: center;
+		padding-top: 5rem;
+		
+		@media (width >= 650px) {
+			font-size: 2rem;
+		}
+	}
 /* ------------------------------------------------ */
 
 /* ------------------------------- */

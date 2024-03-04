@@ -2,10 +2,13 @@ import { MaterialBox } from './MaterialBox'
 import { useMaterials } from './helpers/useMaterials';
 import { CreateModal } from './helpers/CreateModal'
 import { useState } from 'react';
+import CircularProgress from '@mui/material/CircularProgress';
+
 
 export const MaterialsPage = () => {
 
-    const { searchMaterials } = useMaterials();
+    const { searchMaterials, loading } = useMaterials();
+
     const [isOpen, setIsOpen] = useState(false);
     const [searchMaterial, setSearchMaterial] = useState('');
 
@@ -35,15 +38,23 @@ export const MaterialsPage = () => {
             </article>
 
             <article>
-                {filteredMaterials?.map(material => (
-                    <MaterialBox
-                        key={material.id}
-                        id={material.id}
-                        material={material.material}
-                        description={material.description}
-                        unit={material.unit}
-                    />
-                ))}
+                {loading ? 
+                (<div className='NotFound'><CircularProgress color="primary" /></div>)
+                : (
+                    filteredMaterials.length === 0 ? 
+                    (<p className='NotFound'>No hay materiales disponibles</p>) :
+                    (
+                        filteredMaterials?.map(material => (
+                            <MaterialBox
+                                key={material.id}
+                                id={material.id}
+                                material={material.material}
+                                description={material.description}
+                                unit={material.unit}
+                            />
+                        ))  
+                    )
+                )}
             </article>
         </section>
 );

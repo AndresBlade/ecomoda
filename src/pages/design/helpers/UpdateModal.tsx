@@ -3,6 +3,7 @@ import { useMaterials } from './useMaterials';
 import { Modal } from '../../../components/ui/modal/Modal';
 import { materialProps } from '../interfaces/Materials';
 import { updateProps } from '../interfaces/UpdateProps';
+import Alert from '@mui/material/Alert';
 
 export const UpdateModal: React.FC<updateProps> = ({materialId, material, description, unit, isOpen, setIsOpen}) => {
     const { updateMaterial } = useMaterials();
@@ -12,8 +13,16 @@ export const UpdateModal: React.FC<updateProps> = ({materialId, material, descri
     const [newName, setNewName] = useState(material);
     const [newDescription, setNewDescription] = useState(description);
     const [newIsMeters, setNewIsMeters] = useState(unitCurrent);
+    const [errorMsg, setErrorMsg] = useState('invisibleMsg');
+
 
     const handleUpdateMaterial = () => {
+        if (!newName.trim()) {
+            setErrorMsg('');
+            setTimeout(() => setErrorMsg('invisibleMsg'), 3000);
+            return;
+        }
+
         const materialData: materialProps = {
             material: newName,
             description: newDescription,
@@ -30,6 +39,10 @@ export const UpdateModal: React.FC<updateProps> = ({materialId, material, descri
                 <div className='modalMaterial__header'>
                     <h2>Editar Material</h2>
                     <span>Edita los campos que quieras</span>
+                    <span className={errorMsg}>
+                        <Alert sx={{marginTop: 1, fontSize: 15}} 
+                        severity="error">Campo de 'nombre' vacio</Alert>
+                    </span>
                 </div>
                 <div className='modalMaterial__content'>
                     <input 

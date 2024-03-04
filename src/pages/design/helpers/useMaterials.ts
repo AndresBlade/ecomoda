@@ -3,20 +3,25 @@ import { materialProps } from "../interfaces/Materials";
 
 export const useMaterials = () => {
     const [materials, setMaterials] = useState<materialProps[]>([]);
+    const [loading, setLoading] = useState(true);
 
     const getAllMaterials = async () => {
         try {
-            const response = await fetch('http://localhost:3000/api/materials/getallmaterial')
+            setLoading(true); 
+            const response = await fetch('http://localhost:3000/api/materials/getallmaterial');
             if (!response.ok) {
                 throw new Error('Error al obtener los materiales');
             }
             const data = await response.json();
             const materialsData = data.materials;
             setMaterials(materialsData);
-            } 
-            catch (error) {
-                console.error('Error al obtener los materiales', error);
-            }
+        } catch (error) {
+            console.error('Error al obtener los materiales', error);
+        } finally {
+            setTimeout(() => {
+                setLoading(false);
+            }, 800); 
+        }
     };
 
     useEffect(() => {
@@ -80,5 +85,5 @@ export const useMaterials = () => {
     };
 
 
-    return { materials, getAllMaterials, createMaterial, deleteMaterial, updateMaterial, searchMaterials };
+    return { materials, loading, getAllMaterials, createMaterial, deleteMaterial, updateMaterial, searchMaterials };
 };

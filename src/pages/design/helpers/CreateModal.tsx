@@ -3,6 +3,7 @@ import { useMaterials } from './useMaterials';
 import { Modal } from '../../../components/ui/modal/Modal';
 import { modalProps } from '../interfaces/modalProps';
 import { materialProps } from '../interfaces/Materials';
+import Alert from '@mui/material/Alert';
 
 export const CreateModal: React.FC<modalProps> = ({isOpen, setIsOpen}) => {
 
@@ -11,8 +12,16 @@ export const CreateModal: React.FC<modalProps> = ({isOpen, setIsOpen}) => {
     const [name, setName] = useState('');
     const [description, setDescription] = useState('');
     const [isMeters, setIsMeters] = useState(false);
+    const [errorMsg, setErrorMsg] = useState('invisibleMsg');
+
 
     const handleCreateMaterial = () => {
+        if (!name.trim()) {
+            setErrorMsg('');
+            setTimeout(() => setErrorMsg('invisibleMsg'), 3000);
+            return;
+        }
+
         const materialData: materialProps = {
             material: name,
             description: description,
@@ -29,6 +38,10 @@ export const CreateModal: React.FC<modalProps> = ({isOpen, setIsOpen}) => {
                 <div className='modalMaterial__header'>
                     <h2>Nuevo Material</h2>
                     <span>Rellena los campos</span>
+                    <span className={errorMsg}>
+                        <Alert sx={{marginTop: 1, fontSize: 15}} 
+                        severity="error">Campo de 'nombre' vacio</Alert>
+                    </span>
                 </div>
                 <div className='modalMaterial__content'>
                     <input 
