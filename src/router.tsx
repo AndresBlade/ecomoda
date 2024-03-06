@@ -1,7 +1,7 @@
 import { createBrowserRouter } from 'react-router-dom';
 import { ClientsPage, SalesPage } from './pages';
 import { App } from './App';
-import { MaterialsPage, CollectionsPage } from './pages';
+import { MaterialsPage, CollectionsPage, GarmentsPage, SizesPage, CategoriesPage } from './pages';
 
 export const router = createBrowserRouter([
 	{
@@ -23,8 +23,11 @@ export const router = createBrowserRouter([
 			{ 
 				path: 'diseno', 
 				children: [
-					{ path: '/diseno/materiales', element: <MaterialsPage /> },
 					{ path: '/diseno/colecciones', element: <CollectionsPage /> },
+					{ path: '/diseno/prendas', element: <GarmentsPage /> },
+					{ path: '/diseno/materiales', element: <MaterialsPage /> },
+					{ path: '/diseno/categorias', element: <CategoriesPage /> },
+					{ path: '/diseno/tallas', element: <SizesPage /> },
 					{ index: true, element: <div>En departamento de diseno</div>},
 				],
 			},

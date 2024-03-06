@@ -8,6 +8,8 @@ import { AiOutlineInbox } from 'react-icons/ai';
 import { HiOutlineCollection } from 'react-icons/hi';
 import { LuShirt } from 'react-icons/lu';
 import { BiCategoryAlt } from 'react-icons/bi';
+import { GiClothes } from "react-icons/gi";
+
 
 export const sidebarData = [
 	{
@@ -59,8 +61,13 @@ export const sidebarData = [
 			},
 			{
 				title: 'Categoría',
-				path: '/diseno/categoria',
+				path: '/diseno/categorias',
 				icon: <BiCategoryAlt size={20} />,
+			},
+			{
+				title: 'Tallas',
+				path: '/diseno/tallas',
+				icon: <GiClothes size={20} />,
 			},
 		],
 	},
