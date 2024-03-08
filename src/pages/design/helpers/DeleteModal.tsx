@@ -4,10 +4,11 @@ import { deleteProps } from '../interfaces/DeleteProps';
 
 
 export const DeleteModal: React.FC<deleteProps> = ({materialId, isOpen, setIsOpen}) => {
-    const { deleteMaterial } = useMaterials();
+    const { deleteMaterial, handleRefresh } = useMaterials();
 
     const handleDeleteMaterial = () => {
         deleteMaterial(materialId);
+        handleRefresh();
         setIsOpen(false);
     }
 

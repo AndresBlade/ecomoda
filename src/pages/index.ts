@@ -3,10 +3,10 @@ export * from './sales/SalesPage';
 
 /* ------- Rutas de paginas de diseño -------- */
 
-export * from './design/CollectionsPage';
-export * from './design/MaterialPage';
-export * from './design/CategoryPage';
-export * from './design/SizePage';
-export * from './design/GarmentsPage';
+export * from './design/Collections/CollectionsPage';
+export * from './design/Materials/MaterialPage';
+export * from './design/Category/CategoryPage';
+export * from './design/Size/SizePage';
+export * from './design/Garments/GarmentsPage';
 
 /* ---------------------------------------- */

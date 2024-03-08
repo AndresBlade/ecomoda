@@ -3,9 +3,15 @@ import { materialProps } from "../interfaces/Materials";
 
 export const useMaterials = () => {
     const [materials, setMaterials] = useState<materialProps[]>([]);
+    const [refresh, setRefresh] = useState<boolean>(true);
     const [loading, setLoading] = useState(true);
 
-    const getAllMaterials = async () => {
+    const handleRefresh = () => {
+        setRefresh(!refresh);
+        window.alert(refresh);
+    };    
+
+/*     const getAllMaterials = async () => {
         try {
             setLoading(true); 
             const response = await fetch('http://localhost:3000/api/materials/getallmaterial');
@@ -22,11 +28,37 @@ export const useMaterials = () => {
                 setLoading(false);
             }, 800); 
         }
+    }; */
+
+    const getAllMaterials = () => {
+        setLoading(true);
+    
+        fetch('http://localhost:3000/api/materials/getallmaterial')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Error al obtener los materiales');
+                }
+                return response.json();
+            })
+            .then(data => {
+                const materialsData = data.materials;
+                setMaterials(materialsData);
+                console.log(materials)
+            })
+            .catch(error => {
+                console.error('Error al obtener los materiales', error);
+                throw error;
+            })
+            .finally(() => {
+                setTimeout(() => {
+                    setLoading(false);
+                }, 800);
+            });
     };
 
     useEffect(() => {
         getAllMaterials();
-    }, []);
+    }, [refresh]);
  
     const createMaterial = async (materialData: materialProps) => {
         try {
@@ -41,7 +73,7 @@ export const useMaterials = () => {
             if (!response.ok) {
                 throw new Error('Error al crear el material');
             }
-            getAllMaterials()
+
         } catch (error) {
             console.error('Error al crear el material:', error);
         }
@@ -60,6 +92,7 @@ export const useMaterials = () => {
             console.error('Error al eliminar el material:', error);
         }
     };
+
     const updateMaterial = async (materialId: number | undefined, updatedData: materialProps) => {
         try {
             const response = await fetch(`http://localhost:3000/api/materials/updatematerial/${materialId}`, {
@@ -85,5 +118,5 @@ export const useMaterials = () => {
     };
 
 
-    return { materials, loading, getAllMaterials, createMaterial, deleteMaterial, updateMaterial, searchMaterials };
+    return { materials, loading, getAllMaterials, createMaterial, deleteMaterial, updateMaterial, searchMaterials, handleRefresh };
 };

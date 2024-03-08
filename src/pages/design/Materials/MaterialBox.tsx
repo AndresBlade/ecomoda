@@ -1,7 +1,7 @@
-import { materialProps } from './interfaces/Materials'
+import { materialProps } from '../interfaces/Materials'
 import { useState } from 'react';
-import { DeleteModal } from './helpers/DeleteModal';
-import { UpdateModal } from './helpers/UpdateModal';
+import { DeleteModal } from '../helpers/DeleteModal';
+import { UpdateModal } from '../helpers/UpdateModal';
 
 export const MaterialBox: React.FC<materialProps> = ({ id, material, description, unit }) => {
 

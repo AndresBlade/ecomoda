@@ -7,7 +7,7 @@ import Alert from '@mui/material/Alert';
 
 export const CreateModal: React.FC<modalProps> = ({isOpen, setIsOpen}) => {
 
-    const { createMaterial } = useMaterials();
+    const { createMaterial, handleRefresh } = useMaterials();
 
     const [name, setName] = useState('');
     const [description, setDescription] = useState('');
@@ -29,6 +29,7 @@ export const CreateModal: React.FC<modalProps> = ({isOpen, setIsOpen}) => {
         };
 
         createMaterial(materialData);
+        handleRefresh();
         setIsOpen(false);
     }
 
