@@ -846,14 +846,14 @@ img {
 
 }
 .modal-table__thead,
-.table{
+/* .table{
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
 	margin-top: 3rem;
 	padding-right: 3rem;
 
-}
+} */
 
 .modal-content__fecha{
 	margin-left: -3rem;
@@ -867,10 +867,26 @@ img {
 thead{
 	padding-inline: 1rem;
 }
-.modal-content,
+.modal-content{
+	display: flex;
+	justify-content: space-between;
+	border-bottom: solid #e5e5e5 1px;
+	padding-right: 3rem;
+	padding-top: 1rem;
+	padding-bottom: 1;
+}
+.table-content{
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+.modal-content:nth-child(2n){
+	background-color: #e5e5e5;
+}
 .table-thead{
 	display: flex;
-	justify-content: space-around;
+	justify-content: space-between;
 	border-bottom: solid #e5e5e5 1px;
 	padding-right: 3rem;
 	padding-top: 1rem;

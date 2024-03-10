@@ -1,11 +1,12 @@
 import React from "react";
-import ModalContent from "./ModalContent";
+import ModalContent, { modalcontentprops } from "./ModalContent";
 import Search from "./Search";
+
 interface ModalTableProps{
     descripcion:string;
     fecha?: string;
     monto?: string;
-    children?: React.ReactNode;
+    children?: modalcontentprops[] | modalcontentprops;
     titulo: string
     className: string;
 }
@@ -19,14 +20,16 @@ const ModalTable: React.FC<ModalTableProps> = ({descripcion,fecha,monto,children
             </div>
             <Search/>
             <thead className={className}>
-                <td>Id</td>
-                <td>{descripcion}</td>
-                <td>{fecha}</td>
-                <td>{monto}</td>
-                <td>Acciones</td>
+                    <td>Id</td>
+                    <td>{descripcion}</td>
+                    <td>{fecha}</td>
+                    <td>{monto}</td>
+                    <td>Acciones</td>
             </thead>
             <tbody>
-                {children}
+                <tr>
+                    <td><ModalContent id={""} descripcion={""} /></td>
+                </tr>
             </tbody>
         </table>
     )

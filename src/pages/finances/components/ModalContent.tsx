@@ -2,27 +2,31 @@ import React from "react"
 import Buttons from "./Buttons";
 import imagenEliminar from "../../../assets/icons_finances/basura.png";
 import imagenEditar from "../../../assets/icons_finances/escritura.png";
+import {updateAccount} from "../helpers/UpdateAccount";
+import { Modal } from "../../../components/ui/modal/Modal";
 
 interface ModalContentProps{
     id: string;
-    descripcion:string;
-    fecha?: string;
-    monto?: string;
+    descripcion?:string;
 }
 
 export interface modalcontentprops extends React.HTMLAttributes<HTMLDivElement>{}
 
+const ModalContent:React.FC<ModalContentProps> = ({id,descripcion}) => {
+    const accountId= id;
+    const accountDescription= descripcion;
+    const handleUpdate = async (id:string, descripcion:string | undefined)=>{
+        <Modal/>
+    }
 
-const ModalContent:React.FC<ModalContentProps> = ({id,descripcion,fecha,monto}) => {
+    console.log(handleUpdate)
     return (
         <div className="modal-content">
             <p>{id}</p>
             <p>{descripcion}</p>
-            <p className="modal-content__fecha">{fecha}</p>
-            <p className="modal-content__monto">{monto}</p>
             <div>
                 <button className="button-content"><img src={imagenEliminar} alt="eliminar" className="button-image"/></button>
-                <button className="button-content"><img src={imagenEditar} alt="eliminar"className="button-image" /></button>
+                <button className="button-content" onClick={()=>handleUpdate(accountId,accountDescription)}><img src={imagenEditar} alt="eliminar"className="button-image" /></button>
                 
             </div>
         </div>
