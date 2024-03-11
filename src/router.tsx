@@ -1,6 +1,8 @@
 import { createBrowserRouter } from 'react-router-dom';
 import { ClientsPage, POSPage } from './pages';
 import { App } from './App';
+import { getAllPOS } from './pages/sales/POS/helpers/getAllPOS';
+import { createPOS } from './pages/sales/POS/helpers/createPOS';
 
 export const router = createBrowserRouter([
 	{
@@ -12,7 +14,24 @@ export const router = createBrowserRouter([
 				path: 'ventas',
 				children: [
 					{ path: 'clientes', element: <ClientsPage /> },
-					{ path: 'POS', element: <POSPage /> },
+					{
+						path: 'POS',
+						element: <POSPage />,
+						loader: async () => {
+							const POSWrapper = await getAllPOS();
+
+							return POSWrapper;
+						},
+						action: async ({ request }) => {
+							const formData = await request.formData();
+
+							const name = formData.get('name') as string;
+
+							console.log(await createPOS(name));
+
+							return request;
+						},
+					},
 				],
 			},
 			{ path: 'compras', element: <>En compras</> },

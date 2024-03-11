@@ -398,7 +398,7 @@ img {
 	color: var(--primaryBlack);
 }
 
-.POS__title {
+.POS__form-title {
 	margin: 0;
 	padding: 0;
 }
@@ -448,5 +448,42 @@ img {
 	display: flex;
 	flex-direction: column;
 	gap: 3rem;
+}
+
+.POS__title {
+	text-align: center;
+	padding-bottom: 2rem;
+	border-bottom: #e5e5e5 solid 2px;
+}
+
+.POS__list-headers {
+	display: flex;
+	background-color: var(--primaryYellow);
+	width: 100%;
+	justify-content: space-around;
+	font-weight: 700;
+	font-size: 2rem;
+	padding: 2rem;
+	border-radius: 1rem 1rem 0 0;
+}
+
+.POS__list {
+	display: flex;
+	flex-direction: column;
+	border-radius: 0 0 1rem 1rem;
+}
+
+.POS__item {
+	display: flex;
+	justify-content: space-around;
+	padding: 2rem;
+}
+
+.POS__item--position--even {
+	background-color: #fff;
+}
+
+.POS__item--position--odd {
+	background-color: #d0d0d0;
 }
 /* ------------------------------- */
