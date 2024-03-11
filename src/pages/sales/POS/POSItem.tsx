@@ -11,7 +11,7 @@ export const POSItem = ({ pointOfSale, index }: Props) => (
 			index % 2 ? 'POS__item--position--odd' : 'POS__item--position--even'
 		}`}
 	>
-		<p className="POS__ID">{pointOfSale.id}</p>
-		<p className="POS__name">{pointOfSale.name}</p>
+		<p className="POS__item-element">{pointOfSale.id}</p>
+		<p className="POS__item-element">{pointOfSale.name}</p>
 	</div>
 );

@@ -12,8 +12,6 @@ export const POSPage = () => {
 	});
 
 	const { stores: pointsOfSale } = useLoaderData() as POSWrapper;
-
-	console.log(pointsOfSale);
 	return (
 		<>
 			<h1 className="POS__title">Lista de Puntos de Venta</h1>

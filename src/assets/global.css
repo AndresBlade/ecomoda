@@ -462,9 +462,14 @@ img {
 	width: 100%;
 	justify-content: space-around;
 	font-weight: 700;
-	font-size: 2rem;
 	padding: 2rem;
+	font-size: 2rem;
 	border-radius: 1rem 1rem 0 0;
+}
+
+.POS__list-header {
+	flex: 1 1 20rem;
+	text-align: center;
 }
 
 .POS__list {
@@ -477,6 +482,11 @@ img {
 	display: flex;
 	justify-content: space-around;
 	padding: 2rem;
+}
+
+.POS__item-element {
+	flex: 1 1 20rem;
+	text-align: center;
 }
 
 .POS__item--position--even {
