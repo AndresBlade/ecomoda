@@ -10,6 +10,7 @@ export const POSList = ({ pointsOfSale }: Props) => {
 			<div className="POS__list-headers">
 				<p className="POS__list-header">ID</p>
 				<p className="POS__list-header">Nombre</p>
+				<p className="POS__list-header">Acciones</p>
 			</div>
 			{pointsOfSale.map((pointOfSale, index) => (
 				<POSItem

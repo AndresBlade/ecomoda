@@ -478,22 +478,55 @@ img {
 	border-radius: 0 0 1rem 1rem;
 }
 
-.POS__item {
+.POS-item {
 	display: flex;
 	justify-content: space-around;
 	padding: 2rem;
+	align-items: center;
 }
 
-.POS__item-element {
+.POS-item__element {
 	flex: 1 1 20rem;
 	text-align: center;
 }
 
-.POS__item--position--even {
+.POS-item__buttons {
+	display: flex;
+	flex: 1 1 20rem;
+	gap: 2rem;
+	justify-content: center;
+}
+
+.POS-item--position--even {
 	background-color: #fff;
 }
 
-.POS__item--position--odd {
+.POS-item--position--odd {
 	background-color: #d0d0d0;
+	overflow: visible;
 }
+
+.POS-button {
+	display: block;
+	cursor: pointer;
+	border: none;
+	background-color: transparent;
+	padding: 0;
+	transition: all 0.3s;
+	outline: none;
+}
+
+.POS-button__content {
+	font-size: 3rem;
+	text-align: center;
+}
+
+.POS-button__content--edit {
+	color: #209040;
+}
+
+.POS-button__content--delete {
+	color: #b02020;
+}
+
 /* ------------------------------- */
