@@ -1,19 +1,25 @@
 import { POSItem } from './POSItem';
 import { POS } from './interfaces/POS';
+import { POSFormType } from './types/POSFormType';
+import posCss from './assets/POS.module.css';
 interface Props {
 	pointsOfSale: POS[];
+	setForm: React.Dispatch<React.SetStateAction<POSFormType>>;
+	setModalIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-export const POSList = ({ pointsOfSale }: Props) => {
+export const POSList = ({ pointsOfSale, setForm, setModalIsOpen }: Props) => {
 	return (
-		<div className="POS__list">
-			<div className="POS__list-headers">
-				<p className="POS__list-header">ID</p>
-				<p className="POS__list-header">Nombre</p>
-				<p className="POS__list-header">Acciones</p>
+		<div className={posCss['POS']}>
+			<div className={posCss['POS__headers']}>
+				<p className={'POS__header'}>ID</p>
+				<p className={'POS__header'}>Nombre</p>
+				<p className={'POS__header'}>Acciones</p>
 			</div>
 			{pointsOfSale.map((pointOfSale, index) => (
 				<POSItem
+					setModalIsOpen={setModalIsOpen}
+					setForm={setForm}
 					pointOfSale={pointOfSale}
 					key={pointOfSale.id}
 					index={index}

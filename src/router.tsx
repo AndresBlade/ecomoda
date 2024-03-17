@@ -3,6 +3,8 @@ import { ClientsPage, POSPage } from './pages';
 import { App } from './App';
 import { getAllPOS } from './pages/sales/POS/helpers/getAllPOS';
 import { createPOS } from './pages/sales/POS/helpers/createPOS';
+import { updatePOS } from './pages/sales/POS/helpers/updatePOS';
+import { deletePOS } from './pages/sales/POS/helpers/deletePOS';
 
 export const router = createBrowserRouter([
 	{
@@ -25,11 +27,19 @@ export const router = createBrowserRouter([
 						action: async ({ request }) => {
 							const formData = await request.formData();
 
+							const id = +(formData.get('id') as string);
 							const name = formData.get('name') as string;
 
-							console.log(await createPOS(name));
+							if (request.method === 'POST')
+								return await createPOS(name);
 
-							return request;
+							if (request.method === 'PUT')
+								return await updatePOS({
+									name,
+									id,
+								});
+
+							return await deletePOS(id);
 						},
 					},
 				],
