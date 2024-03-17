@@ -1,14 +1,13 @@
-import { useMaterials } from './useMaterials';
+import { useMaterials } from '../helpers/useMaterials';
 import { Modal } from '../../../components/ui/modal/Modal';
 import { deleteProps } from '../interfaces/DeleteProps';
 
 
 export const DeleteModal: React.FC<deleteProps> = ({materialId, isOpen, setIsOpen}) => {
-    const { deleteMaterial, handleRefresh } = useMaterials();
+    const { deleteMaterial } = useMaterials();
 
     const handleDeleteMaterial = () => {
         deleteMaterial(materialId);
-        handleRefresh();
         setIsOpen(false);
     }
 

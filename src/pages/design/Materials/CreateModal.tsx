@@ -1,35 +1,34 @@
 import { useState } from 'react';
-import { useMaterials } from './useMaterials';
+import { useMaterials } from '../helpers/useMaterials';
 import { Modal } from '../../../components/ui/modal/Modal';
+import { modalProps } from '../interfaces/modalProps';
 import { materialProps } from '../interfaces/Materials';
-import { updateProps } from '../interfaces/UpdateProps';
 import Alert from '@mui/material/Alert';
 
-export const UpdateModal: React.FC<updateProps> = ({materialId, material, description, unit, isOpen, setIsOpen}) => {
-    const { updateMaterial } = useMaterials();
+export const CreateModal: React.FC<modalProps> = ({isOpen, setIsOpen}) => {
 
-    const unitCurrent = unit === 'meters' ? true : false;
+    const { createMaterial } = useMaterials();
 
-    const [newName, setNewName] = useState(material);
-    const [newDescription, setNewDescription] = useState(description);
-    const [newIsMeters, setNewIsMeters] = useState(unitCurrent);
+    const [name, setName] = useState('');
+    const [description, setDescription] = useState('');
+    const [isMeters, setIsMeters] = useState(false);
     const [errorMsg, setErrorMsg] = useState('invisibleMsg');
 
 
-    const handleUpdateMaterial = () => {
-        if (!newName.trim()) {
+    const handleCreateMaterial = () => {
+        if (!name.trim()) {
             setErrorMsg('');
             setTimeout(() => setErrorMsg('invisibleMsg'), 3000);
             return;
         }
 
         const materialData: materialProps = {
-            material: newName,
-            description: newDescription,
-            unit: newIsMeters ? 'meters' : 'unit'
+            material: name,
+            description: description,
+            unit: isMeters ? 'meters' : 'unit'
         };
 
-        updateMaterial(materialId, materialData);
+        createMaterial(materialData);
         setIsOpen(false);
     }
 
@@ -37,8 +36,8 @@ export const UpdateModal: React.FC<updateProps> = ({materialId, material, descri
         <Modal isOpen={isOpen} setIsOpen={setIsOpen}>
             <article className='modalMaterial'>
                 <div className='modalMaterial__header'>
-                    <h2>Editar Material</h2>
-                    <span>Edita los campos que quieras</span>
+                    <h2>Nuevo Material</h2>
+                    <span>Rellena los campos</span>
                     <span className={errorMsg}>
                         <Alert sx={{marginTop: 1, fontSize: 15}} 
                         severity="error">Campo de 'nombre' vacio</Alert>
@@ -48,17 +47,17 @@ export const UpdateModal: React.FC<updateProps> = ({materialId, material, descri
                     <input 
                     className='content__name'
                     type="text" 
-                    placeholder={material}
-                    value={newName}
-                    onChange={(e) => setNewName(e.target.value)}
+                    placeholder='Nombre del Material'
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
                     />
                     
                     <input 
                     className='content__description'
                     type="text" 
-                    placeholder={description}
-                    value={newDescription}
-                    onChange={(e) => setNewDescription(e.target.value)}
+                    placeholder='Descripción'
+                    value={description}
+                    onChange={(e) => setDescription(e.target.value)}
                     />
 
                     <div className='unit'>
@@ -67,8 +66,8 @@ export const UpdateModal: React.FC<updateProps> = ({materialId, material, descri
                             <label className="switch">
                                 <input 
                                     type="checkbox"
-                                    checked={newIsMeters}
-                                    onChange={(e) => setNewIsMeters(e.target.checked)}
+                                    checked={isMeters}
+                                    onChange={(e) => setIsMeters(e.target.checked)}
                                     />
                                 <span className="slider round"></span>
                             </label>
@@ -76,8 +75,8 @@ export const UpdateModal: React.FC<updateProps> = ({materialId, material, descri
                     </div>
                 </div>
 
-                <button onClick={handleUpdateMaterial} 
-                className='materiales_button'>Editar material</button>
+                <button onClick={handleCreateMaterial} 
+                className='materiales_button'>Añadir material</button>
             </article>
         </Modal>
     )

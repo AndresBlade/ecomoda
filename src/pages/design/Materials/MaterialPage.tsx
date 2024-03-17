@@ -1,13 +1,13 @@
 import { MaterialBox } from './MaterialBox'
 import { useMaterials } from '../helpers/useMaterials';
-import { CreateModal } from '../helpers/CreateModal'
+import { CreateModal } from './CreateModal'
 import { useState } from 'react';
 import CircularProgress from '@mui/material/CircularProgress';
 
 
 export const MaterialsPage = () => {
 
-    const { searchMaterials, loading, handleRefresh } = useMaterials();
+    const { searchMaterials, loading } = useMaterials();
 
     const [isOpen, setIsOpen] = useState(false);
     const [searchMaterial, setSearchMaterial] = useState('');
@@ -33,7 +33,7 @@ export const MaterialsPage = () => {
                     value={searchMaterial}
                     onChange={(e) => setSearchMaterial(e.target.value)}
                     />
-                    <button onClick={handleRefresh} type="submit"></button>
+                    <button type="submit"></button>
                 </div>
             </article>
 

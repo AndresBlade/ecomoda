@@ -1,27 +1,34 @@
 import { useState, useEffect } from 'react';
 import categoryProps from '../interfaces/CategoryProps';
 
-export const useMaterials = () => {
+export const useCategory = () => {
     const [category, setCategory] = useState<categoryProps[]>([]);
     const [loading, setLoading] = useState(true);
 
     const getAllCategories = async () => {
-        try {
-            setLoading(true); 
-            const response = await fetch('http://localhost:3000/api/GarmentType/getalltype');
-            if (!response.ok) {
-                throw new Error('Error al obtener las categorias');
-            }
-            const data = await response.json();
-            const categoriesData = data.category;
-            setCategory(categoriesData);
-        } catch (error) {
-            console.error('Error al obtener los categorias', error);
-        } finally {
-            setTimeout(() => {
-                setLoading(false);
-            }, 800); 
-        }
+        setLoading(true);
+    
+        fetch('http://localhost:3000/api/GarmentType/getalltype')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Error al obtener las categorias');
+                }
+                return response.json();
+            })
+            .then(data => {
+                const categoriesData = data.types;
+                setCategory(categoriesData);
+                console.log(categoriesData)
+            })
+            .catch(error => {
+                console.error('Error al obtener los materiales', error);
+                throw error;
+            })
+            .finally(() => {
+                setTimeout(() => {
+                    setLoading(false);
+                }, 800);
+            });
     };
 
     useEffect(() => {
@@ -77,12 +84,12 @@ export const useMaterials = () => {
         }
     };
 
-    const searchCategory = (searchTerm: string) => {
+/*     const searchCategory = (searchTerm: string) => {
         return category.filter(categ =>
             categ.type.toLowerCase().includes(searchTerm.toLowerCase())
         );
-    };
+    }; */
 
 
-    return { category, loading, getAllCategories, createCategory, deleteCategory, updateCategory, searchCategory };
+    return { category, loading, getAllCategories, createCategory, deleteCategory, updateCategory };
 };

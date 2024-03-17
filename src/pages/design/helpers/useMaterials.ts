@@ -8,7 +8,6 @@ export const useMaterials = () => {
 
     const handleRefresh = () => {
         setRefresh(!refresh);
-        window.alert(refresh);
     };    
 
 /*     const getAllMaterials = async () => {
