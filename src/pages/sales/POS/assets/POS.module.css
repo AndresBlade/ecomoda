@@ -1,0 +1,146 @@
+.button {
+	background-color: var(--primaryYellow);
+	padding: 1rem 2rem;
+	border-radius: 0.5rem;
+	border: none;
+	color: white;
+	cursor: pointer;
+}
+
+.button--yes {
+	background: #802020;
+}
+
+.button--corner-fixed {
+	position: fixed;
+	right: 5rem;
+	bottom: 5rem;
+}
+
+.button--disabled {
+	cursor: not-allowed;
+}
+
+.form__send-button {
+	width: 20rem;
+	align-self: center;
+}
+
+.action-icon {
+	display: block;
+	cursor: pointer;
+	border: none;
+	background-color: transparent;
+	padding: 0;
+	transition: all 0.3s;
+	outline: none;
+}
+
+.action-icon__content {
+	font-size: 3rem;
+	text-align: center;
+}
+
+.action-icon__content--edit {
+	color: #209040;
+}
+
+.action-icon__content--delete {
+	color: #b02020;
+}
+
+.form__title {
+	margin: 0;
+	padding: 0;
+	text-align: center;
+}
+
+.form__fieldset {
+	border: 0.1rem solid var(--primaryYellow);
+	border-radius: 0.75rem;
+	padding: 3rem;
+	display: flex;
+	flex-direction: column;
+	gap: 4rem;
+}
+
+.form__field-wrapper {
+	display: flex;
+	flex-direction: column;
+	gap: 2rem;
+}
+
+.form__input {
+	border: none;
+	border-bottom: 0.1rem solid var(--primaryYellow);
+	outline: none;
+}
+
+.form {
+	padding: 0 2rem;
+	display: flex;
+	flex-direction: column;
+	gap: 3rem;
+}
+
+.form__title {
+	text-align: center;
+	padding-bottom: 2rem;
+	border-bottom: #e5e5e5 solid 2px;
+}
+
+.POS__headers {
+	display: flex;
+	background-color: var(--primaryYellow);
+	width: 100%;
+	justify-content: space-around;
+	font-weight: 700;
+	padding: 2rem;
+	font-size: 2rem;
+	border-radius: 1rem 1rem 0 0;
+}
+
+.POS__header {
+	flex: 1 1 20rem;
+	text-align: center;
+}
+
+.POS {
+	display: flex;
+	flex-direction: column;
+	border-radius: 0 0 1rem 1rem;
+}
+
+.item {
+	display: flex;
+	justify-content: space-around;
+	padding: 2rem;
+	align-items: center;
+}
+
+.item__element {
+	flex: 1 1 20rem;
+	text-align: center;
+}
+
+.item__actions {
+	display: flex;
+	flex: 1 1 20rem;
+	gap: 2rem;
+	justify-content: center;
+}
+
+.item--position--even {
+	background-color: #fff;
+}
+
+.item--position--odd {
+	background-color: #d0d0d0;
+	overflow: visible;
+}
+
+.form__decision--buttons {
+	display: flex;
+	justify-content: center;
+	gap: 4rem;
+}
