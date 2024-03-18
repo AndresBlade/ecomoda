@@ -93,7 +93,6 @@ export const POSPage = () => {
 								className={`${posCss['button']} ${posCss['form__send-button']}`}
 								onClick={() => {
 									setmodalIsOpen(false);
-									setForm({ method: 'POST' });
 								}}
 							>
 								Enviar
