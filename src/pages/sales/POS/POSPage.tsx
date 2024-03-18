@@ -104,7 +104,6 @@ export const POSPage = () => {
 									className={`${posCss['button--yes']} ${posCss['button']}`}
 									onClick={() => {
 										setmodalIsOpen(false);
-										setForm({ method: 'POST' });
 									}}
 								>
 									Eliminar
