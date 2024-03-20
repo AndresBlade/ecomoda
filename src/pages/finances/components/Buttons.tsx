@@ -18,5 +18,4 @@ const Buttons: FC<ButtonsProps> = ({type = 'button',children,title, onClick}) =>
         ) 
         
 }
-
 export default Buttons

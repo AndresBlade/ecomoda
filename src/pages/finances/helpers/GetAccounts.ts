@@ -3,6 +3,7 @@ import {useEffect, useState} from 'react';
 interface account{
     id: string,
     description: string;
+    status: string;
 
 }
 interface getallaccountsInterface{

@@ -15,6 +15,7 @@ const Account = () => {
     const accounts  = GetAccounts();
     const form = useRef<HTMLFormElement>(null);
 
+    //Aqui declaramos la funcion que recibe el Submit del formulario que procede a hacer el registro a la base de datos
     const handleSubmit = async (e:React.FormEvent<HTMLFormElement>)=>{
         e.preventDefault();
         const description = descripcion;
@@ -23,36 +24,40 @@ const Account = () => {
 
         form.current?.reset();
     };
-
-
-    
+    console.log(accounts);
     return (
         <div className='account'>
+            <div
+            className=''></div>
             <div className='account-table'>
             <table className="modal-table">
             <div className="loan-creation__title loan-creation__title__modal">
                 <h2>Consulta Cuenta</h2>
             </div>
+            {/* Aqui se llama el componente Search que es el encargado de hacer la busqueda de las cuentas */}
             <Search/>
-            <thead className='table table-thead'>
-                <td>Id</td>
-                <td>descripcion</td>
-                <td>Acciones</td>
+            <thead className='table '>
+                <tr className='table-thead'>
+                    <td>Id</td>
+                    <td>Descripcion</td>
+                    <td>Status</td>
+                    <td>Acciones</td>
+
+                </tr>
             </thead>
-            <tbody>
+            <tbody className='modal-body'> 
+
+            {/* En esta parte recorremos la información que nos trae la api para mostrarla en la tabla de consulta cuenta */}
                 {
-                    accounts.map(({id,description})=>(
-                        <tr>
-                            <td>
-                                <ModalContent id={id} descripcion={description}/>
-                            </td>
-                            
+                    accounts.map(({id,description,status})=>(
+                        <tr className='modal-body modal-color'>
+                                <ModalContent id={id} descripcion={description} estado={status} />
                         </tr>
                     ))
                 }
             </tbody>
         </table>
-    
+                {/* Formulario para el registro de las cuentas */}
             </div>
             <div className='account-register'>
                 <div className="loan-creation__title">

@@ -867,6 +867,11 @@ img {
 thead{
 	padding-inline: 1rem;
 }
+.modal-body{
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
 .modal-content{
 	display: flex;
 	justify-content: space-between;
@@ -875,15 +880,16 @@ thead{
 	padding-top: 1rem;
 	padding-bottom: 1;
 }
+.modal-color:nth-child(2n){
+	background-color: #e5e5e5;
+}
 .table-content{
 	width: 100%;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
 }
-.modal-content:nth-child(2n){
-	background-color: #e5e5e5;
-}
+
 .table-thead{
 	display: flex;
 	justify-content: space-between;

@@ -2,7 +2,6 @@ import { createBrowserRouter } from 'react-router-dom';
 import { ClientsPage, SalesPage } from './pages';
 import { Loan } from './pages/finances/Loan'
 import Account from './pages/finances/Account';
-
 import { App } from './App';
 import { MaterialsPage } from './pages/design/MaterialPage';
 
