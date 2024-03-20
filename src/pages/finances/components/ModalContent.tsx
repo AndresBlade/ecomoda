@@ -21,19 +21,20 @@ const ModalContent:React.FC<ModalContentProps> = ({id,descripcion,estado}) => {
     const [descripcionUpdate, setDescripcionUpdate]= useState("");
     const [deleteId, setDeleteId]= useState("");
     const [estadoUpdate, setEstadoUpdate]= useState("");
+
     const handleUpdate = async(e:React.FormEvent<HTMLFormElement>)=>{
         e.preventDefault();
         const id = accountId;
         const description = descripcionUpdate;
         const status = estadoUpdate;
-        updateAccount({id, description});
+        updateAccount({id, description, status});
 
         form.current?.reset();
         setIsOpen(false);
     }
-    console.log(deleteId)
+
     const handleDelete = async ()=>{
-        
+        deleteAccount({id:deleteId});
     }
     return(
     <>
@@ -91,7 +92,10 @@ const ModalContent:React.FC<ModalContentProps> = ({id,descripcion,estado}) => {
                 <p>{descripcion}</p>
                 <p>{estado}</p>
                 <div>
-                    <button className="button-content"><img src={imagenEliminar} alt="eliminar" className="button-image" onClick={()=>setDeleteId(id)} /></button>
+                    <button className="button-content"><img src={imagenEliminar} alt="eliminar" className="button-image" onClick={()=>{
+                        setDeleteId(id)
+                        handleDelete()
+                    }} /></button>
                     <button className="button-content" onClick={()=> setIsOpen(true)}><img src={imagenEditar} alt="eliminar"className="button-image" /></button>
                     
                 </div>

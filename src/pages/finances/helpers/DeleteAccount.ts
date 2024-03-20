@@ -14,16 +14,3 @@ async function deleteAccount({id}: {id: string}){
     return response;
 }
 export {deleteAccount};
-
-
-
-// .then(Response=>{
-//     console.log(Response)
-//     if(!Response.ok){
-        
-//         throw new Error(Response.statusText)
-
-//         alert(Response.statusText);
-//     }
-//     return Response.json();
-// })

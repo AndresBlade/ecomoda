@@ -1,4 +1,4 @@
-async function updateAccount({id,description}: {id: string, description:string}){
+async function updateAccount({id,description,status}: {id: string, description:string, status:string}){
     const response = await fetch(`http://127.0.0.1:3000/api/Accounts/updateAccount/${id}`,{
         method:'PUT',
         mode : 'cors',
@@ -6,7 +6,8 @@ async function updateAccount({id,description}: {id: string, description:string})
         headers:{
             'Content-type':'application/json',
         },body:JSON.stringify({
-            description:description
+            description:description,
+            status:status
         })
             
     })
