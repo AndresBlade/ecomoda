@@ -1,19 +1,22 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import { useMaterials } from '../helpers/useMaterials';
 import { Modal } from '../../../components/ui/modal/Modal';
-import { modalProps } from '../interfaces/modalProps';
-import { materialProps } from '../interfaces/Materials';
+import { modalPropsCrud } from '../interfaces/modalPropsCRUD';
+import { materials } from './interfaces/Materials';
 import Alert from '@mui/material/Alert';
+import { RefreshContext } from './context/refresh';
 
-export const CreateModal: React.FC<modalProps> = ({isOpen, setIsOpen}) => {
+export const CreateModal: React.FC<modalPropsCrud> = ({isOpen, setIsOpen}) => {
 
     const { createMaterial } = useMaterials();
+    const {refresh, setRefresh} = useContext(RefreshContext)
 
     const [name, setName] = useState('');
     const [description, setDescription] = useState('');
     const [isMeters, setIsMeters] = useState(false);
     const [errorMsg, setErrorMsg] = useState('invisibleMsg');
 
+    const handleRefresh = () => setRefresh(!refresh);
 
     const handleCreateMaterial = () => {
         if (!name.trim()) {
@@ -22,14 +25,20 @@ export const CreateModal: React.FC<modalProps> = ({isOpen, setIsOpen}) => {
             return;
         }
 
-        const materialData: materialProps = {
+        const materialData: materials = {
             material: name,
             description: description,
             unit: isMeters ? 'meters' : 'unit'
         };
 
-        createMaterial(materialData);
-        setIsOpen(false);
+        createMaterial(materialData)
+        .then(() => {
+            handleRefresh(); 
+            setIsOpen(false);
+        })
+        .catch(error => {
+            throw error; 
+        }) 
     }
 
     return (

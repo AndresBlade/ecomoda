@@ -1,35 +1,44 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { useMaterials } from '../helpers/useMaterials';
 import { Modal } from '../../../components/ui/modal/Modal';
-import { materialProps } from '../interfaces/Materials';
-import { updateProps } from '../interfaces/UpdateProps';
+import { materials } from './interfaces/Materials';
+import { updateProps } from './interfaces/UpdateProps';
 import Alert from '@mui/material/Alert';
+import { RefreshContext } from './context/refresh';
 
 export const UpdateModal: React.FC<updateProps> = ({materialId, material, description, unit, isOpen, setIsOpen}) => {
     const { updateMaterial } = useMaterials();
-
+    const { refresh, setRefresh } = useContext(RefreshContext)
     const unitCurrent = unit === 'meters' ? true : false;
 
-    const [newName, setNewName] = useState(material);
-    const [newDescription, setNewDescription] = useState(description);
-    const [newIsMeters, setNewIsMeters] = useState(unitCurrent);
+    const [form, setForm] = useState({
+    newName: material,
+    newDescription: description,
+    newIsMeters: unitCurrent
+    });
+
     const [errorMsg, setErrorMsg] = useState('invisibleMsg');
 
+    const handleRefresh = () => setRefresh(!refresh);
 
     const handleUpdateMaterial = () => {
-        if (!newName.trim()) {
+        if (!form.newName.trim()) {
             setErrorMsg('');
             setTimeout(() => setErrorMsg('invisibleMsg'), 3000);
             return;
         }
 
-        const materialData: materialProps = {
-            material: newName,
-            description: newDescription,
-            unit: newIsMeters ? 'meters' : 'unit'
+        const materialData: materials = {
+            material: form.newName,
+            description: form.newDescription,
+            unit: form.newIsMeters ? 'meters' : 'unit'
         };
 
-        updateMaterial(materialId, materialData);
+        updateMaterial(materialId, materialData)
+        .then(() => {
+            handleRefresh(); 
+            setIsOpen(false);
+        });
         setIsOpen(false);
     }
 
@@ -49,16 +58,16 @@ export const UpdateModal: React.FC<updateProps> = ({materialId, material, descri
                     className='content__name'
                     type="text" 
                     placeholder={material}
-                    value={newName}
-                    onChange={(e) => setNewName(e.target.value)}
+                    value={form.newName}
+                    onChange={(e) => setForm({...form, newName: e.target.value })}
                     />
                     
                     <input 
                     className='content__description'
                     type="text" 
                     placeholder={description}
-                    value={newDescription}
-                    onChange={(e) => setNewDescription(e.target.value)}
+                    value={form.newDescription}
+                    onChange={(e) => setForm({...form, newDescription: e.target.value })}
                     />
 
                     <div className='unit'>
@@ -67,8 +76,8 @@ export const UpdateModal: React.FC<updateProps> = ({materialId, material, descri
                             <label className="switch">
                                 <input 
                                     type="checkbox"
-                                    checked={newIsMeters}
-                                    onChange={(e) => setNewIsMeters(e.target.checked)}
+                                    checked={form.newIsMeters}
+                                    onChange={(e) => setForm({...form, newIsMeters: e.target.checked })}
                                     />
                                 <span className="slider round"></span>
                             </label>

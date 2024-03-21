@@ -1,22 +1,16 @@
-import { materialProps } from '../interfaces/Materials'
+import { materials } from './interfaces/Materials'
 import { useState } from 'react';
 import { DeleteModal } from './DeleteModal';
 import { UpdateModal } from './UpdateModal';
 
-export const MaterialBox: React.FC<materialProps> = ({ id, material, description, unit }) => {
+export const MaterialBox: React.FC<materials> = ({ id, material, description, unit }) => {
 
     const sliderActive = unit === 'meters' ? 'sliderOn' : '';
-
         const [isOpen, setIsOpen] = useState(false);
         const [isOpenDeleted, setIsOpenDeleted] = useState(false);
       
-        const handleEditModal = () => {
-          setIsOpen(!isOpen);
-        };
-
-        const handleDeleteModal = () => {
-          setIsOpenDeleted(!isOpenDeleted);
-        };
+        const handleEditModal = () => setIsOpen(!isOpen);
+        const handleDeleteModal = () => setIsOpenDeleted(!isOpenDeleted);
     
 	return (
     <article className="rectangulo">

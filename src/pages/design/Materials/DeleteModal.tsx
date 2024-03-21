@@ -1,13 +1,18 @@
 import { useMaterials } from '../helpers/useMaterials';
 import { Modal } from '../../../components/ui/modal/Modal';
-import { deleteProps } from '../interfaces/DeleteProps';
+import { modalPropsCrud } from '../interfaces/modalPropsCRUD';
+import { RefreshContext } from './context/refresh';
+import { useContext } from 'react';
 
-
-export const DeleteModal: React.FC<deleteProps> = ({materialId, isOpen, setIsOpen}) => {
+export const DeleteModal: React.FC<modalPropsCrud> = ({materialId, isOpen, setIsOpen }) => {
     const { deleteMaterial } = useMaterials();
+    const { refresh, setRefresh } = useContext(RefreshContext)
+
+    const handleRefresh = () => setRefresh(!refresh);
 
     const handleDeleteMaterial = () => {
         deleteMaterial(materialId);
+        handleRefresh();
         setIsOpen(false);
     }
 
