@@ -12,9 +12,9 @@ export const POSList = ({ pointsOfSale, setForm, setModalIsOpen }: Props) => {
 	return (
 		<div className={posCss['POS']}>
 			<div className={posCss['POS__headers']}>
-				<p className={'POS__header'}>ID</p>
-				<p className={'POS__header'}>Nombre</p>
-				<p className={'POS__header'}>Acciones</p>
+				<p className={posCss['POS__header']}>ID</p>
+				<p className={posCss['POS__header']}>Nombre</p>
+				<p className={posCss['POS__header']}>Acciones</p>
 			</div>
 			{pointsOfSale.map((pointOfSale, index) => (
 				<POSItem
