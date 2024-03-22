@@ -4,7 +4,7 @@ import { CreateModal } from './CreateModal';
 import { useState, useEffect, useContext } from 'react';
 import CircularProgress from '@mui/material/CircularProgress';
 import { materials } from './interfaces/Materials';
-import { RefreshContext } from './context/refresh';
+import { RefreshContext } from '../context/refresh';
 
 export const MaterialsPage = () => {
     const {refresh} = useContext(RefreshContext)
@@ -62,7 +62,7 @@ export const MaterialsPage = () => {
                 (<div className='NotFound'><CircularProgress color="primary" /></div>)
                 : (
                     filteredMaterials.length === 0 ? 
-                    (<p className='NotFound'>No hay materiales disponibles</p>) :
+                    (<p className='NotFound'>No hay categorias existentes</p>) :
                     (
                         filteredMaterials.map(material => (
                             <MaterialBox

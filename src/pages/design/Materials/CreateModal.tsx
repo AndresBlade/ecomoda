@@ -4,19 +4,17 @@ import { Modal } from '../../../components/ui/modal/Modal';
 import { modalPropsCrud } from '../interfaces/modalPropsCRUD';
 import { materials } from './interfaces/Materials';
 import Alert from '@mui/material/Alert';
-import { RefreshContext } from './context/refresh';
+import { RefreshContext } from '../context/refresh';
 
 export const CreateModal: React.FC<modalPropsCrud> = ({isOpen, setIsOpen}) => {
 
     const { createMaterial } = useMaterials();
-    const {refresh, setRefresh} = useContext(RefreshContext)
+    const { handleRefresh } = useContext(RefreshContext)
 
     const [name, setName] = useState('');
     const [description, setDescription] = useState('');
     const [isMeters, setIsMeters] = useState(false);
     const [errorMsg, setErrorMsg] = useState('invisibleMsg');
-
-    const handleRefresh = () => setRefresh(!refresh);
 
     const handleCreateMaterial = () => {
         if (!name.trim()) {

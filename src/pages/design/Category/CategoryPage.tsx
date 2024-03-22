@@ -1,12 +1,16 @@
 import { CategoryBox } from "./CategoryBox";
 import { CreateModal } from './CreateModal';
 import { useCategory } from "../helpers/useCategory";
-import { useState } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import CircularProgress from '@mui/material/CircularProgress';
+import categoriesProps from "./interfaces/categories";
+import { RefreshContext } from "../context/refresh";
 
 export const CategoriesPage = () => {
-
-    const { category } = useCategory();
+    const {refresh} = useContext(RefreshContext);
+    const { getAllCategories } = useCategory();
+    const [loading, setLoading] = useState(true);
+    const [allCategories, setAllCategories] = useState<categoriesProps[]>([]);
 
     const [isOpen, setIsOpen] = useState(false);
     const [searchCategories, setSearchCategory] = useState('');
@@ -15,6 +19,25 @@ export const CategoriesPage = () => {
         setIsOpen(!isOpen);
         setSearchCategory('');
     };
+
+    useEffect(() => {
+        setLoading(true);
+        getAllCategories()
+            .then(data => {
+                const categoriesData = data.types;
+                setAllCategories(categoriesData); 
+            })
+            .catch(error => {
+                throw error; 
+            })
+            .finally(() => {
+                setTimeout(() => setLoading(false), 800);
+            });
+    }, [refresh]);
+
+    const filteredCategories = allCategories.filter(category =>
+        category.type.toLowerCase().includes(searchCategories.toLowerCase())
+    );
 
 	return (
         <section>
@@ -35,10 +58,14 @@ export const CategoriesPage = () => {
                 </div>
             </article>
 
-            <article className="gridBox">
-            {
+            <article>
+                {loading ? 
+                (<div className='NotFound'><CircularProgress color="primary" /></div>)
+                : (
+                    filteredCategories.length === 0 ? 
+                    (<p className='NotFound'>No hay materiales disponibles</p>) :
                     (
-                        category?.map(categ => (
+                        filteredCategories?.map(categ => (
                             <CategoryBox
                                 key={categ.id}
                                 id={categ.id}
@@ -46,7 +73,7 @@ export const CategoriesPage = () => {
                             />
                         ))  
                     )
-                }
+                )}
             </article>
         </section>
     );

@@ -1,17 +1,18 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import { useCategory } from '../helpers/useCategory';
 import { Modal } from '../../../components/ui/modal/Modal';
 import { modalProps } from '../interfaces/modalProps';
 import Alert from '@mui/material/Alert';
-import categoryProps from '../interfaces/CategoryProps';
+import categoriesProps from "./interfaces/categories";
+import { RefreshContext } from '../context/refresh';
 
 export const CreateModal: React.FC<modalProps> = ({isOpen, setIsOpen}) => {
 
-    const { createCategory } = useCategory();
+    const { createCategories } = useCategory();
+    const {handleRefresh} = useContext(RefreshContext)
 
     const [name, setName] = useState('');
     const [errorMsg, setErrorMsg] = useState('invisibleMsg');
-
 
     const handleCreateCategory = () => {
         if (!name.trim()) {
@@ -20,19 +21,25 @@ export const CreateModal: React.FC<modalProps> = ({isOpen, setIsOpen}) => {
             return;
         }
 
-        const categoryData: categoryProps = {
+        const categoryData: categoriesProps = {
             type: name,
         };
 
-        createCategory(categoryData);
-        setIsOpen(false);
+        createCategories(categoryData)
+        .then(() => {
+            handleRefresh();
+            setIsOpen(false);
+        })
+        .catch(error => {
+            throw error; 
+        }) 
     }
 
     return (
         <Modal isOpen={isOpen} setIsOpen={setIsOpen}>
             <article className='modalMaterial'>
                 <div className='modalMaterial__header'>
-                    <h2>Nuevo Material</h2>
+                    <h2>Nueva Categoria</h2>
                     <span>Rellena los campos</span>
                     <span className={errorMsg}>
                         <Alert sx={{marginTop: 1, fontSize: 15}} 

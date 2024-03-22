@@ -1,12 +1,11 @@
 import { createBrowserRouter } from 'react-router-dom';
 import { ClientsPage, POSPage } from './pages';
 import { App } from './App';
-import { MaterialsPage, CollectionsPage, GarmentsPage, SizesPage, CategoriesPage } from './pages';
+import { MaterialsPage, CollectionsPage, GarmentsPage, SizePage, CategoriesPage } from './pages';
  import { getAllPOS } from './pages/sales/POS/helpers/getAllPOS';
 import { createPOS } from './pages/sales/POS/helpers/createPOS';
 import { updatePOS } from './pages/sales/POS/helpers/updatePOS';
 import { deletePOS } from './pages/sales/POS/helpers/deletePOS';
-import { RefreshProvider } from './pages/design/Materials/context/refresh';
 
 export const router = createBrowserRouter([
 	{
@@ -55,9 +54,9 @@ export const router = createBrowserRouter([
 				children: [
 					{ path: '/diseno/colecciones', element: <CollectionsPage /> },
 					{ path: '/diseno/prendas', element: <GarmentsPage /> },
-					{ path: '/diseno/materiales', element: <RefreshProvider><MaterialsPage /></RefreshProvider> },
+					{ path: '/diseno/materiales', element: <MaterialsPage /> },
 					{ path: '/diseno/categorias', element: <CategoriesPage /> },
-					{ path: '/diseno/tallas', element: <SizesPage /> },
+					{ path: '/diseno/tallas', element: <SizePage /> },
 					{ index: true, element: <div>En departamento de diseno</div>},
 					{
 						index: true,

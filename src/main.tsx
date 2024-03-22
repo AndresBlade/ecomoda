@@ -4,9 +4,13 @@ import './assets/normalize.css';
 import './assets/global.css';
 import { RouterProvider } from 'react-router-dom';
 import { router } from './router.tsx';
+import { RefreshProvider } from './pages/design/context/refresh.tsx';
+
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
 	<React.StrictMode>
-		<RouterProvider router={router} />
+		<RefreshProvider>
+			<RouterProvider router={router} />
+		</RefreshProvider>
 	</React.StrictMode>
 );

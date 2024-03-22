@@ -4,11 +4,11 @@ import { Modal } from '../../../components/ui/modal/Modal';
 import { materials } from './interfaces/Materials';
 import { updateProps } from './interfaces/UpdateProps';
 import Alert from '@mui/material/Alert';
-import { RefreshContext } from './context/refresh';
+import { RefreshContext } from '../context/refresh';
 
 export const UpdateModal: React.FC<updateProps> = ({materialId, material, description, unit, isOpen, setIsOpen}) => {
     const { updateMaterial } = useMaterials();
-    const { refresh, setRefresh } = useContext(RefreshContext)
+    const { handleRefresh } = useContext(RefreshContext)
     const unitCurrent = unit === 'meters' ? true : false;
 
     const [form, setForm] = useState({
@@ -18,8 +18,6 @@ export const UpdateModal: React.FC<updateProps> = ({materialId, material, descri
     });
 
     const [errorMsg, setErrorMsg] = useState('invisibleMsg');
-
-    const handleRefresh = () => setRefresh(!refresh);
 
     const handleUpdateMaterial = () => {
         if (!form.newName.trim()) {
@@ -38,6 +36,8 @@ export const UpdateModal: React.FC<updateProps> = ({materialId, material, descri
         .then(() => {
             handleRefresh(); 
             setIsOpen(false);
+        }).catch(error => {
+            throw error; 
         });
         setIsOpen(false);
     }

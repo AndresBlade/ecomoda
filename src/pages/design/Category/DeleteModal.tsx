@@ -1,13 +1,17 @@
+import { useContext } from 'react';
 import { useCategory } from '../helpers/useCategory';
 import { Modal } from '../../../components/ui/modal/Modal';
-import { deletePropsCategory } from '../interfaces/DeletePropsCat';
+import { RefreshContext } from '../context/refresh';
+import { modalPropsCrud } from '../interfaces/modalPropsCRUD';
 
 
-export const DeleteModal: React.FC<deletePropsCategory> = ({categoryId, isOpen, setIsOpen}) => {
-    const { deleteCategory } = useCategory();
+export const DeleteModal: React.FC<modalPropsCrud> = ({id, isOpen, setIsOpen}) => {
+    const { deleteCategories } = useCategory();
+    const { handleRefresh } = useContext(RefreshContext)
 
     const handleDeleteCategory = () => {
-        deleteCategory(categoryId);
+        deleteCategories(id);
+        handleRefresh();
         setIsOpen(false);
     }
 

@@ -1,9 +1,9 @@
 import { useState } from 'react';
-import { DeleteModal } from '../Category/DeleteModal';
-import { UpdateModal } from '../Category/UpdateModal';
-import categoriesProps from "./interfaces/categories";
+import { DeleteModal } from './DeleteModal';
+import { UpdateModal } from './UpdateModal';
+import size from "./interfaces/size";
 
-export const CategoryBox: React.FC<categoriesProps> = ({ id, type }) => { 
+export const SizeBox: React.FC<size> = ({ id, size }) => { 
     
     const [isOpen, setIsOpen] = useState(false);
     const [isOpenDeleted, setIsOpenDeleted] = useState(false);
@@ -15,7 +15,7 @@ export const CategoryBox: React.FC<categoriesProps> = ({ id, type }) => {
     <article className="rectangulo">
         <div className="rectangulo-materiales categories">
             <div className="seccion">
-                <label className="nombre">{type}</label>
+                <label className="nombre">{size}</label>
                 <label>ID: {id}</label>
             </div>
 
@@ -27,8 +27,8 @@ export const CategoryBox: React.FC<categoriesProps> = ({ id, type }) => {
         </div>
 
         <UpdateModal 
-            categoryId={id} 
-            type={type} 
+            sizeId={id} 
+            size={size} 
             isOpen={isOpen}
             setIsOpen={setIsOpen}
         />

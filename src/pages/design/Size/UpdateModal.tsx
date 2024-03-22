@@ -1,17 +1,17 @@
 import { useState, useContext } from 'react';
-import { useCategory } from '../helpers/useCategory';
+import { useSize } from '../helpers/useSize';
 import { Modal } from '../../../components/ui/modal/Modal';
-import { updatePropsCategory } from './interfaces/UpdatePropsCategory';
-import categoriesProps from './interfaces/categories';
+import { updatePropsSize } from './interfaces/UpdatePropsSize';
+import size from './interfaces/size';
 import { RefreshContext } from '../context/refresh';
 import Alert from '@mui/material/Alert';
 
 
-export const UpdateModal: React.FC<updatePropsCategory> = ({type, categoryId, isOpen, setIsOpen}) => {
-    const { updateCategories } = useCategory();
+export const UpdateModal: React.FC<updatePropsSize> = ({size, sizeId, isOpen, setIsOpen}) => {
+    const { updateSizes } = useSize();
     const { handleRefresh } = useContext(RefreshContext)
 
-    const [newName, setNewName] = useState(type);
+    const [newName, setNewName] = useState(size);
     const [errorMsg, setErrorMsg] = useState('invisibleMsg');
 
     const handleUpdate = () => {
@@ -21,11 +21,11 @@ export const UpdateModal: React.FC<updatePropsCategory> = ({type, categoryId, is
             return;
         }
 
-        const categoryData: categoriesProps = {
-            type: newName,
+        const sizeData: size = {
+            size: newName,
         };
 
-        updateCategories(categoryId, categoryData)
+        updateSizes(sizeId, sizeData)
         .then(() => {
             handleRefresh(); 
             setIsOpen(false);
@@ -51,7 +51,7 @@ export const UpdateModal: React.FC<updatePropsCategory> = ({type, categoryId, is
                     <input 
                     className='content__name'
                     type="text" 
-                    placeholder={type}
+                    placeholder={size}
                     value={newName}
                     onChange={(e) => setNewName(e.target.value)}
                     />

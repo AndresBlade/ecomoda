@@ -1,7 +1,7 @@
-import { materials } from './interfaces/Materials'
 import { useState } from 'react';
 import { DeleteModal } from './DeleteModal';
 import { UpdateModal } from './UpdateModal';
+import { materials } from './interfaces/Materials'
 
 export const MaterialBox: React.FC<materials> = ({ id, material, description, unit }) => {
 
@@ -48,7 +48,7 @@ export const MaterialBox: React.FC<materials> = ({ id, material, description, un
             setIsOpen={setIsOpen}
         />
 
-        <DeleteModal materialId={id} isOpen={isOpenDeleted} setIsOpen={setIsOpenDeleted}/>
+        <DeleteModal id={id} isOpen={isOpenDeleted} setIsOpen={setIsOpenDeleted}/>
     </article>
     );
 };

@@ -2,15 +2,16 @@ import React, { createContext, useState, ReactNode } from 'react';
 
 interface RefreshType {
   refresh: boolean;
-  setRefresh: React.Dispatch<React.SetStateAction<boolean>>;
+  handleRefresh: () => void
 }
 
 export const RefreshContext = createContext<RefreshType>(
-  { refresh: false, setRefresh: () => {} }
+  { refresh: false, handleRefresh: () => {}}
 ); // valores iniciales de los estados dentro del contexto
 
 export const RefreshProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   const [refresh, setRefresh] = useState(false);
+  const handleRefresh = () => setRefresh(!refresh);
 
-  return <RefreshContext.Provider value={{ refresh, setRefresh }}>{children}</RefreshContext.Provider>;
+  return <RefreshContext.Provider value={{ refresh, handleRefresh }}>{children}</RefreshContext.Provider>;
 };

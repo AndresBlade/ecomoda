@@ -1,47 +1,46 @@
 import { useState, useContext } from 'react';
-import { useCategory } from '../helpers/useCategory';
+import { useSize } from '../helpers/useSize';
 import { Modal } from '../../../components/ui/modal/Modal';
-import { updatePropsCategory } from './interfaces/UpdatePropsCategory';
-import categoriesProps from './interfaces/categories';
-import { RefreshContext } from '../context/refresh';
+import { modalProps } from '../interfaces/modalProps';
 import Alert from '@mui/material/Alert';
+import size from "./interfaces/size";
+import { RefreshContext } from '../context/refresh';
 
+export const CreateModal: React.FC<modalProps> = ({isOpen, setIsOpen}) => {
 
-export const UpdateModal: React.FC<updatePropsCategory> = ({type, categoryId, isOpen, setIsOpen}) => {
-    const { updateCategories } = useCategory();
-    const { handleRefresh } = useContext(RefreshContext)
+    const { createSizes } = useSize();
+    const {handleRefresh} = useContext(RefreshContext)
 
-    const [newName, setNewName] = useState(type);
+    const [name, setName] = useState('');
     const [errorMsg, setErrorMsg] = useState('invisibleMsg');
 
-    const handleUpdate = () => {
-        if (!newName.trim()) {
+    const handleCreateCategory = () => {
+        if (!name.trim()) {
             setErrorMsg('');
             setTimeout(() => setErrorMsg('invisibleMsg'), 3000);
             return;
         }
 
-        const categoryData: categoriesProps = {
-            type: newName,
+        const SizeData: size = {
+            size: name,
         };
 
-        updateCategories(categoryId, categoryData)
+        createSizes(SizeData)
         .then(() => {
-            handleRefresh(); 
+            handleRefresh();
             setIsOpen(false);
         })
         .catch(error => {
             throw error; 
-        });
-        setIsOpen(false);
+        }) 
     }
 
     return (
         <Modal isOpen={isOpen} setIsOpen={setIsOpen}>
             <article className='modalMaterial'>
                 <div className='modalMaterial__header'>
-                    <h2>Editar Categoria</h2>
-                    <span>Edita los campos que quieras</span>
+                    <h2>Nueva Talla</h2>
+                    <span>Rellena los campos</span>
                     <span className={errorMsg}>
                         <Alert sx={{marginTop: 1, fontSize: 15}} 
                         severity="error">Campo de 'nombre' vacio</Alert>
@@ -51,15 +50,14 @@ export const UpdateModal: React.FC<updatePropsCategory> = ({type, categoryId, is
                     <input 
                     className='content__name'
                     type="text" 
-                    placeholder={type}
-                    value={newName}
-                    onChange={(e) => setNewName(e.target.value)}
+                    placeholder='Nombre de la categoria'
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
                     />
-
                 </div>
 
-                <button onClick={handleUpdate} 
-                className='materiales_button'>Editar material</button>
+                <button onClick={handleCreateCategory} 
+                className='materiales_button'>Añadir Tallas</button>
             </article>
         </Modal>
     )
