@@ -10,12 +10,13 @@ import React, { useRef, useState } from 'react';
 import Alert from './components/Alert';
 import {Modal} from '../../components/ui/modal/Modal';
 import ModalTable from './components/ModalTable';
+import { LoanPost } from './helpers/LoanPost';
 
 export const Loan = () => {
-    const [id, setId] = useState(0);
+    //const [id, setId] = useState(0);
     const [fecha, setFecha] = useState("");
     const [descripcion, setDescripcion] = useState("");
-    const [tipo, setTipo] = useState("");
+    const [tipo, setTipo] = useState(0);
     const [monto, setMonto] = useState(0);
     const [isOpen, setIsOpen] = useState(false);
     const [error, setError] = useState(false);
@@ -27,80 +28,64 @@ export const Loan = () => {
         if(form.current){
             form.current.reset();
         }
-        setId(0);
-        setFecha("");
         setDescripcion('')
-        setTipo('');
+        setTipo(0);
         setMonto(0);
     }
 
     const handleSubmit = async (e:React.FormEvent<HTMLFormElement>)=>{
         e.preventDefault();
         
-        if([id,fecha,descripcion,tipo,monto].includes('')){
+        if([descripcion,tipo,monto].includes('')){
             setError(true);
             return;
+        }else{
+            LoanPost({descripcion,tipo,monto});
         }
         setError(false)
 
-        const response = await fetch('url',{
-            method:'POST',
-            mode : 'cors',
-            credentials: 'same-origin',
-            headers:{
-                'Content-type':'application/json',
-            },
-            body:
-            JSON.stringify({
-                id:id,
-                fecha:fecha,
-                descripcion:descripcion,
-                tipo:tipo,
-                monto:monto,
-            })
-        }).then(Response=>{
-            if(!Response.ok){
+        
+
+        // const response = await fetch('url',{
+        //     method:'POST',
+        //     mode : 'cors',
+        //     credentials: 'same-origin',
+        //     headers:{
+        //         'Content-type':'application/json',
+        //     },
+        //     body:
+        //     JSON.stringify({
+        //         id:id,
+        //         fecha:fecha,
+        //         descripcion:descripcion,
+        //         tipo:tipo,
+        //         monto:monto,
+        //     })
+        // }).then(Response=>{
+        //     if(!Response.ok){
                 
-                throw new Error(Response.statusText)
+        //         throw new Error(Response.statusText)
     
-                alert(Response.statusText);
-            }
-            return Response.json();
-        })
-        console.log(response);
-
+        //         alert(Response.statusText);
+        //     }
+        //     return Response.json();
+        // })
+        // console.log(response);
         clearInputs();
-
     };
-
     return (
         <div className="principal-finances">  
         <form ref={form} action="" method="post" onSubmit={handleSubmit}>
             {error && <Alert
-                            imgSrc={imagen7} altImg={'error'}
-                            children="Hay algún campo vacio ó uno de los datos no corresponden al formato solicitado"
-                        />}
+                imgSrc={imagen7} altImg={'error'}
+                children="Hay algún campo vacio ó uno de los datos no corresponden al formato solicitado"
+            />}
             <div className="loan-creation"> {/* div for loan creation */}
                 <div className="loan-creation__title">
                     <h2>Crear Prestamo</h2>
                 </div>
                     <div className="loan-creation__elements">
-                        <div className="loan-creation__container--input loan-creation__container--input-id">
-                            <Input onChange={
-                                (event)=>{
-                                    setId(Number(event.target.value));
-                                }
-                            } type='number' className='loan__creation--input' placeholder='Su id' title='id' imgSrc={imagen} altImg={'ID'} classImg='loan-creation__image--width' children='ID'/>                           
-                        </div>
-                        <div className="loan-creation__container--input
-                        loan-creation__container--input-fecha">
-                            <Input onChange={
-                                (event)=>{
-                                    setFecha(event.target.value);
-                                }
-                            }
-                            type='date' className='loan__creation--input' placeholder='' title='fecha' imgSrc={imagen2} altImg='fecha' classImg='loan-creation__image--width' children='Fecha' /> 
-                        </div>
+                    
                         <div className="loan-creation__container--input
                         loan-creation__container--input-descripcion">
                             <Input onChange={
@@ -114,7 +99,7 @@ export const Loan = () => {
                         loan-creation__container--input-tipo">
                             <Input onChange={
                                 (event)=>{
-                                    setTipo(event.target.value);
+                                    setTipo(Number(event.target.value));
                                 }
                             } type='text' className='loan__creation--input' placeholder='Tipo' title='tipo' imgSrc={imagen} altImg={'ID'} classImg='loan-creation__image--width' children='Tipo' /> 
                         </div>
@@ -132,14 +117,11 @@ export const Loan = () => {
                     <div className='button-finances__center'>
                         <Buttons type='submit' title='solicitar' children="Solicitar" className='button-finances button-finances-grid'/>
                         <Buttons onClick={clearInputs} type='reset' title='limpiar' children="Limpiar" className='button-finances'/>
-                        <Buttons onClick={()=>setIsOpen(true)} type='button' title='consultar' children='Consultar' className='button-finances button-finances-grid'/>
+                        <Buttons type='button' title='consultar' children='Consultar' className='button-finances button-finances-grid'/>
                     </div>
                 </div> 
             </form>
                 {/* Here end div Principal-Finances */}
-            <Modal isOpen={isOpen} setIsOpen={setIsOpen}>
-                <ModalTable className='modal-table modal-table__thead' titulo='Consulta Prestamos' descripcion='descripcion' fecha='Fecha' monto='Monto' />
-            </Modal>
             <ApplicantData/>
         </div>
     )
