@@ -7,7 +7,7 @@ interface RequestType{
 
 }
 interface getallRequestTypeInterface{
-    requestTypes: RequestType[];
+    requestsTypes: RequestType[];
 }
 
 export const GetRequestType = () => {
@@ -23,7 +23,7 @@ export const GetRequestType = () => {
             },
         }).then(res=> res.json())
         .then((res : getallRequestTypeInterface)=> {
-            setRequestType(res.requestTypes);
+            setRequestType(res.requestsTypes);
         }).catch((error)=>{
             console.log(error);
         })

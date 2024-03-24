@@ -66,17 +66,24 @@ const Account = () => {
             {/* En esta parte recorremos la información que nos trae la api para mostrarla en la tabla de consulta cuenta */}
                 {   
                     inactive? inactiveAccounts.map(({id,description,status})=>(
-                        <tr className='modal-body modal-color'>
-                            <ModalContent id={id} descripcion={description} estado={status} />
+                        <tr className='modal-body modal-color' key={id}>
+                            <td>
+                                <ModalContent id={id} descripcion={description} estado={status} />
+                            </td>
+                            
                         </tr>
                     )):
                     active? activeAccounts.map(({id,description,status})=>(
-                        <tr className='modal-body modal-color'>
+                        <tr className='modal-body modal-color' key={id}>
+                            <td>
                                 <ModalContent id={id} descripcion={description} estado={status} />
+                            </td>
                         </tr>
                     )):accounts.map(({id,description,status})=>(
-                        <tr className='modal-body modal-color'>
+                        <tr className='modal-body modal-color' key={id}>
+                            <td>
                                 <ModalContent id={id} descripcion={description} estado={status} />
+                            </td>
                         </tr>
                     ))
                 }
@@ -84,7 +91,6 @@ const Account = () => {
         </table>
         </div>
                 {/* Formulario para el registro de las cuentas */}
-
             <div className='account-register'>
                 <div className="loan-creation__title">
                     <h2>Crear Cuenta</h2>
