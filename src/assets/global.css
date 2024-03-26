@@ -524,6 +524,120 @@ img {
 	margin-top: 2rem;
 	padding: 0.5rem;
 }
+
+/* Componente de history */
+
+/*percentage bubble*/
+
+.percentage-bubble-container {
+	display: flex;
+	justify-content: center; /* Para alinear horizontalmente en el centro */
+	align-items: center; /* Para alinear verticalmente en el centro */
+	height: 20vh; /* Altura del contenedor igual al alto de la ventana */
+	gap: 25.25rem; 	
+  }
+  
+  .percentage-bubble {
+	width: 9.25rem; 
+	height: 6.25rem; 
+	margin: 1rem; 
+	position: relative;
+	display: inline-block; /* Para alinear de izquierda a derecha */
+  }
+  
+ /*  .percentage-bubble__svg {
+	width: 100%;
+	height: 100%;
+  } */
+  
+  .percentage-bubble__circle-bg {
+	stroke: #eee;
+  }
+  
+  .percentage-bubble__circle {
+	stroke: #FFA500;
+  }
+  
+  .percentage-bubble__percentage {
+	fill: #eee;
+	font-size: 0.5rem;
+  }
+  
+
+ 	/*//////////// DataTable ///////////*/
+
+	
+.info-component {
+	background-color: black;
+	color: white;
+	padding: 1rem;
+	position: relative;
+	box-shadow: 0px 0px 1rem rgba(0, 0, 0, 0.5);
+	width: 85%;
+	margin: 0 auto;
+  }
+  
+  .info-component__fecha {
+	text-align: left;
+  }
+  
+  .info-component__dolares,
+  .info-component__bs {
+	padding: 1rem;
+	text-align: right;
+  }
+
+  .info-component__hr-orange {
+	position: absolute;
+	top: -1.80rem;
+	left: 0;
+	width: 100%;
+	border: none;
+	height: 0.625rem;
+	background-color: #FCA311;
+	box-shadow: 0px 0px 1rem rgba(0, 0, 0, 0.5);
+  }
+  
+  
+  .info-component__table-row {
+	background-color: #000000;
+	color: #FFFFFF;
+  }
+  
+  
+  .info-component__info-table-container {
+	width: 90%;
+	margin: 0 auto;
+	overflow-x: auto;
+}
+
+.info-component__info-table {
+	width: 100%;
+	border-collapse: collapse;
+}
+
+.info-component__info-table th,
+.info-component__info-table td {
+	/*border: 0.5rem solid #fff;  Línea divisoras */
+	padding: 0.5rem; /* Espaciado interno */
+	text-align: left; /* Alineación del texto */
+}
+
+.info-component__info-table th,
+.info-component__info-table tbody tr:nth-child(even) {
+	background-color: #FCA311; 
+	color: #000000; /* Color de fondo para las celdas de encabezado y filas pares */
+}
+
+@media (max-width: 48rem) {
+	.info-component__table-cell {
+		width: 70%;
+	}
+}
+
+
+  
+/*FIN*/
 .applicant-data {
 	background-color: #ffffff;
 	margin-left: 2rem;
