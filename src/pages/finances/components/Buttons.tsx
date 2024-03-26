@@ -13,10 +13,9 @@ export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement>{}
 const Buttons: FC<ButtonsProps> = ({type = 'button',children,title, onClick}) => {
 
         return(
-        <button onClick={onClick} type={type} className='button-finances' title={title}>{children}
+        <button onClick={onClick} type={type} className='button-finances' title={title}>            {children}
         </button>
         ) 
         
 }
-
 export default Buttons
