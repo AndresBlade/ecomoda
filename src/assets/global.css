@@ -812,18 +812,23 @@ input:checked + .slider:before {
 	}
 }
 
-
-
-
 /* ------------------------------- */
 
 /* GarmentPage styles */
+
+.garmentContainer{
+	display: flex;
+	flex-direction: column-reverse;
+	gap: 2rem;
+}
+
 .cuadricula-prenda {
 	display: flex;
 	flex-wrap: wrap;
 	justify-content:space-around;
-	width: 80%;
+	width: 100%;
 	height: auto;
+	gap: 1rem;
 	border: none;
   }
   
@@ -831,16 +836,14 @@ input:checked + .slider:before {
 	position: relative;
 	width: 15em;
 	height: 18em;
-	padding: 1%;
+	padding: 2%;
 	margin-bottom: 2em;
 	box-sizing: border-box;
-	display: flexbox;
-	justify-content: center;
 	border: 1px solid #ccc;
 	border-radius: 10px;
-	box-shadow: 0px 1px 25px rgba(0, 0, 0, 0.5);
+	box-shadow: 0px 1px 15px rgba(0, 0, 0, 0.4);
   }
-  
+
   .imagen-producto {
 	display: block;
  	margin: 0 auto;
@@ -852,10 +855,11 @@ input:checked + .slider:before {
   
   .boton{
 	position: absolute;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 	bottom: 10px;
 	right: 10px;
-	display: block;
-	display: block;
 	padding: 10px;
 	background-color: var(--primaryYellow);
 	width: 30px;
@@ -864,9 +868,8 @@ input:checked + .slider:before {
 	border-radius: 50%;
   	border: none;
 	cursor: pointer;
-	font-size: 16px;
-	text-align: center;
   }
+
   .texto-cuadrante h5{
 	font-weight: 600;
 	opacity: 0.5;
@@ -882,56 +885,79 @@ input:checked + .slider:before {
 	left: 10px;
   }
   .filtro {
-	position: fixed;
-	top: 50%;
-	right: 60px;
-	transform: translateY(-50%);
 	background-color: #f5f5f5;
-	padding: 10px;
+	padding: 2rem;
 	border-radius: 5px;
 	box-shadow: 0px 0px 25px rgba(0, 0, 0, 00.5px);
-	justify-content: center;
-	padding: 3em;
+	height: fit-content;
+  }
 
+  .filtro-opciones{
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
   }
   
   .filtro-titulo {
-	font-weight: bold;
-	font-size: 40px;
-	margin-bottom: 5px;
+	font-weight: 600;
+	font-size: 3rem;
   }
 
   .filtro-seccion {
+	display: flex;
+	flex-wrap: wrap;
+	flex-direction: column;
 	margin-bottom: 10px;
+  }
+
+  .filtro-container{
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+	gap: 1rem;
   }
  
 
   .filtro-seccion-titulo {
-	font-weight: bold;
+	font-weight: 600;
+	font-size: 2rem;
 	display: block;
-	margin-bottom: 5px;
+	margin-bottom: 1rem;
   }
   
-  
   .filtro-label {
-	display: block;
+	display: flex;
+	align-items: center;
 	margin-bottom: 5px;
+	font-size: 10px;
   }
   
   .filtro-checkbox {
 	margin-right: 5px;
   }
+
   .btn-filtros{
 	background-color:var(--primaryYellow);
 	color: white;
 	border: none;
-	height: 2.5em;
-	padding: 5px;
+	width: 35%;
 	border-radius: 5px;
-	padding: 5px 10px;
+	padding: 5px 5px;
 	cursor: pointer;
 	margin-top: 10px;
+	font-size: 12px;
   }
+
+  @media (width >= 950px) {
+	.garmentContainer{
+		flex-direction: row;
+		}
+		.cuadricula-prenda {
+			justify-content: inherit;
+		}
+	}
+	@media (width >= 650px) {
+
+	}
 /* ------------------------------- */
 /* POS styles */
 
