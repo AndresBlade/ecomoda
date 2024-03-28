@@ -4,7 +4,7 @@ import { sizeWrapper } from '../Size/interfaces/sizeWrapper';
 export const useSize = () => {
     
     const getAllSizes = (): Promise<sizeWrapper> =>
-        fetch('http://localhost:3000/api/sizes/getallsize').then(
+        fetch('http://localhost:3000/api/sizes/getallsizes').then(
             response => response.json() as Promise<sizeWrapper>
         );
         
@@ -18,15 +18,15 @@ export const useSize = () => {
 
     // ------------------------------------------------------------------------
 
-    const deleteSizes = (sizeId: number | undefined) =>
-	fetch(`http://localhost:3000/api/sizes/deletesize/${sizeId}`, {
+    const deleteSizes = (idsize: number | undefined) =>
+	fetch(`http://localhost:3000/api/sizes/deletesize/${idsize}`, {
 		method: 'DELETE',
 	}).then(response => response.json());
 
     // ------------------------------------------------------------------------
 
-    const updateSizes = (sizeId: number | undefined, updatedData: Size): Promise<Size> =>
-    fetch(`http://localhost:3000/api/sizes/updatesize/${sizeId}`, {
+    const updateSizes = (idsize: number | undefined, updatedData: Size): Promise<Size> =>
+    fetch(`http://localhost:3000/api/sizes/updatesize/${idsize}`, {
         body: JSON.stringify(updatedData),
 		method: 'PUT',
 		headers: { 'Content-Type': 'application/json' },
