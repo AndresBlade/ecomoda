@@ -1,7 +1,7 @@
 import { createBrowserRouter } from 'react-router-dom';
 import { ClientsPage, POSPage } from './pages';
 import { App } from './App';
-import { MaterialsPage, CollectionsPage, GarmentsPage, SizePage, CategoriesPage } from './pages';
+import { MaterialsPage, CollectionsPage, GarmentsPage, SizePage, CategoriesPage, DesignPage } from './pages';
  import { getAllPOS } from './pages/sales/POS/helpers/getAllPOS';
 import { createPOS } from './pages/sales/POS/helpers/createPOS';
 import { updatePOS } from './pages/sales/POS/helpers/updatePOS';
@@ -60,7 +60,7 @@ export const router = createBrowserRouter([
 					{ index: true, element: <div>En departamento de diseno</div>},
 					{
 						index: true,
-						element: <div>En departamento de diseno</div>,
+						element:  <DesignPage />,
 					},
 				],
 			},
