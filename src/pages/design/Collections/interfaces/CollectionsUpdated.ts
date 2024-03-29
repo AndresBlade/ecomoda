@@ -1,6 +1,6 @@
-export default interface Collection {
+export default interface CollectionUpdated {
     id?: number;
     collection: string;
-    createdAt: Date;
+    updatedAt: Date;
     standard_quantity: number;
 }
