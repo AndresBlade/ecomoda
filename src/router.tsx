@@ -57,7 +57,6 @@ export const router = createBrowserRouter([
 					{ path: '/diseno/materiales', element: <MaterialsPage /> },
 					{ path: '/diseno/categorias', element: <CategoriesPage /> },
 					{ path: '/diseno/tallas', element: <SizePage /> },
-					{ index: true, element: <div>En departamento de diseno</div>},
 					{
 						index: true,
 						element:  <DesignPage />,

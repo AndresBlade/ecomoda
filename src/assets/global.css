@@ -340,6 +340,218 @@ img {
 	}
 }
 
+/* DesignIndexPage styles */
+
+.design-index{
+	display: grid;
+}
+.coleccion-materiales{
+	display: grid;
+	grid-template-columns: 70% 30%;
+    gap: 50px;
+}
+.bloque-coleccion{
+	width: 80%;
+	h3 {
+		font-weight: 400;
+		opacity: 60%;
+		margin-top: 1.5rem;
+	}
+	h1 {
+		margin: 0;
+	}
+	h5 {
+		font-weight: 600;
+		opacity: 60%;
+		cursor: pointer;
+		display: inline-block;
+	}
+
+}
+.cuadro-coleccion{
+	height: auto;
+	display: grid;
+	grid-template-columns: 30% 70%;
+	justify-content: center;
+	align-items: center;
+	gap: 10px;
+	width: 50em;
+	box-shadow: 0px 1px 25px rgba(0, 0, 0, 0.5);
+	border-radius: 10px;
+	padding: 1em;
+	img {
+		width: 15em;
+		margin: 0;
+	}
+}
+
+.contenedor-coleccion {
+	width: 100%;
+	max-width: 600px;
+	margin: 0 auto;
+  }
+
+.row {
+	display: flex;
+	align-items: center;
+	margin-bottom: 15px;
+	justify-content: space-between;
+		h3{
+			font-weight: bold;
+			opacity: 100%;
+		}
+		p {
+			font-weight: 400;
+			opacity: 60%;
+		}
+		button{
+			width: 30px;
+			height: 30px;
+			border-radius: 50%;
+			background: var(--primaryYellow);
+			border: none;
+		}
+}
+.row:last-child{
+	margin-bottom: 0px;
+}
+
+.coleccion-button{
+	display: grid;
+	grid-template-columns: 40% 40%;
+	gap: 20px;
+	width: 100%;
+	justify-content: center;
+
+		button{
+			background-color:var(--primaryYellow);
+			color: white;
+			border: none;
+			width: 100%;
+			height: auto;
+			border-radius: 5px;
+			cursor: pointer;
+			margin-top: 1rem;
+			padding: 10px;
+	}
+		button:first-child {
+			margin-right: 10px;
+			background-color: transparent;
+			border: 2px solid var(--primaryYellow);
+			color: var(--primaryYellow);
+	}
+}
+.button {
+	width: 30px;
+	height: 30px;
+	border-radius: 50%;
+	background-color: var(--primaryYellow);
+	border: none;
+  }
+  
+
+.bloque-materiales-disp{
+	width: 80%;
+	height: 70%;
+	border-radius: 10px;
+	background: linear-gradient(to bottom right, rgba(255, 255, 255, 0), #fca311);
+	margin-top: 5.9em;
+	padding: 2em;
+	display: grid;
+
+	h3 {
+		line-height: 2;
+		font-size: 1.3em;
+	}
+	img {
+		justify-self: end;
+		align-self: center;
+		width: 50%; 
+		cursor: pointer;
+	}
+	h5 {
+		margin-bottom: 50px;
+		display: inline-block;
+		cursor: pointer;
+	}
+
+}
+
+.prendas-materiales{
+	display: grid;
+	grid-template-columns: 70% 30%;
+    gap: 50px;
+}
+
+.bloque-prendas{
+	margin: 0;
+
+	h3 {
+		font-weight: 400;
+		opacity: 60%;
+		margin-top: 1.5rem;
+	}
+	h5 {
+		font-weight: 600;
+		opacity: 60%;
+		cursor: pointer;
+		display: inline-block;
+		margin: 0;
+	}
+}
+
+.cuadrante > .texto-cuadrante h5{
+	font-weight: inherit;
+	opacity: inherit;
+	cursor: inherit;
+	display: inherit;
+}
+.cuadrante-index > .cuadrante h3 {
+    font-weight: bold;
+    opacity: inherit;
+    cursor: inherit;
+    display: inherit;
+}
+.cuadrante-index{
+	display: flex;
+	flex-wrap: wrap;
+	width: 50em;
+	position: relative;
+	justify-content: space-between;
+	margin-bottom: -15px;
+}
+
+.boton-prendas{
+	color: white;
+	border: none;
+	background-color: var(--primaryYellow);
+	border-radius: 50%;
+	width: 30px;
+	height: 30px;
+	cursor: pointer;
+}
+.bloque-materiales-recientes{
+	width: 80%;
+	h2{
+		margin: 0;
+	}
+
+	h3{
+		font-weight: 400;
+		opacity: 60%;
+		margin-top: 0.5rem;
+	}
+	h4{
+		margin: 0;
+	}
+	h5{
+		margin-top: 0.5em;
+		opacity: 60%;
+		font-weight: 400;
+	}
+}
+
+/* ------------------------------- */
 /*CSS for MaterialPage*/
 
 .texto-materiales {
