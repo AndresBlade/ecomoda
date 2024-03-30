@@ -27,7 +27,8 @@ export const router = createBrowserRouter([
 				children: [
 					{ path: "loan", element: <Loan /> },
 					{ path: "account", element: <Account /> },
-					{ path: "History", element: <HistoryComponent /> },
+					{ path: "History", element: <HistoryComponent />},
+					{ path: "requestType", element: <RequestType />},
 					{ index: true, element: <>En finanzas</> },
 				],
 			},

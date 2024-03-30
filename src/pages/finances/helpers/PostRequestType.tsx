@@ -20,8 +20,7 @@ async function PostRequestType({description}: {description: string}){
         }
         return Response.json();
     })
-    console.log(response);
-
+    
 
     return response;
 }

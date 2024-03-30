@@ -4,11 +4,13 @@ import ModalContent from './components/ModalContent'
 import Input from './components/Input';
 import { PostRequestType } from './helpers/PostRequestType';
 import imagen1 from '../../assets/icons_finances/buscando-trabajo (1).png';
-import { GetRequestType } from './helpers/GetRequestType';
+import { GetRequestType, GetActiveRequestType, GetInactiveRequestType} from './helpers/GetRequestType';
 
 const RequestType = () => {
     const [descripcion, setDescripcion]= useState("");
     const requestTypes = GetRequestType();
+    const activeRequestTypes = GetActiveRequestType();
+    const inactiveRequestTypes = GetInactiveRequestType();
     const [inactive, setInactive]= useState(false);
     const [active, setActive]= useState(false);
     const form = useRef<HTMLFormElement>(null);
@@ -31,8 +33,8 @@ const RequestType = () => {
                 {/* Aqui se llama el componente Search que es el encargado de hacer la busqueda de las cuentas */}
                 <div className='account-buttons__filter'>
                     <Buttons type={'submit'} children={'Inactivas'} title={'consultar'} className={'button-finances button-finances__account'} onClick={()=>{
-                        setInactive(true)
-                        setActive(false)
+                        setInactive(true);
+                        setActive(false);
                     }}/>
                     <Buttons type={'submit'} children={'Activas'} title={'consultar'} className={'button-finances button-finances__account'} onClick={()=>{
                         setActive(true)
@@ -56,7 +58,21 @@ const RequestType = () => {
                 <tbody className='modal-body'> 
             
                 {/* En esta parte recorremos la información que nos trae la api para mostrarla en la tabla de consulta cuenta */}
-                    {   
+                    {
+                        active?activeRequestTypes.map(({id,description,status})=>(
+                            <tr className='modal-body modal-color' key={id}>
+                                <td>
+                                    <ModalContent id={id} descripcion={description} estado={status} />
+                                </td>
+                            </tr>
+                        )):
+                        inactive? inactiveRequestTypes.map(({id,description,status})=>(
+                            <tr className='modal-body modal-color' key={id}>
+                                <td>
+                                    <ModalContent id={id} descripcion={description} estado={status} />
+                                </td>
+                            </tr>
+                        )):
                         requestTypes.map(({id,description,status})=>(
                             <tr className='modal-body modal-color' key={id}>
                                 <td>

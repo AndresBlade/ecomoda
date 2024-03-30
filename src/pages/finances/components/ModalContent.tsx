@@ -4,6 +4,7 @@ import Buttons from "./Buttons";
 import imagenEliminar from "../../../assets/icons_finances/basura.png";
 import imagenEditar from "../../../assets/icons_finances/escritura.png";
 import { deleteAccount } from "../helpers/DeleteAccount";
+import { deleteRequestType } from "../helpers/DeleteRequestType";
 import {updateAccount } from "../helpers/UpdateAccount";
 import { updateRequestTypes } from "../helpers/UpdateRequestType";
 import { Modal } from "../../../components/ui/modal/Modal";
@@ -23,7 +24,11 @@ const ModalContent:React.FC<ModalContentProps> = ({id,descripcion,estado}) => {
     const [descripcionUpdate, setDescripcionUpdate]= useState(descripcion);
     const [deleteId, setDeleteId]= useState("");
     const [estadoUpdate, setEstadoUpdate]= useState(estado);
+
+
     const handleUpdate = async(e:React.FormEvent<HTMLFormElement>)=>{
+
+
         e.preventDefault();
         const id = accountId;
         const description = descripcionUpdate ?? "hubo un problema";
@@ -37,9 +42,19 @@ const ModalContent:React.FC<ModalContentProps> = ({id,descripcion,estado}) => {
         }
         setIsOpen(false);
     }
+
+
+
     const handleDelete = async ()=>{
-        deleteAccount({id:deleteId});
+        if(window.location.pathname === "/finanzas/account"){
+            deleteAccount({id:deleteId});
+        }else{
+            deleteRequestType({id:deleteId});
+        }
     }
+
+
+    
     return(
     <>
         <Modal  isOpen={isOpen} setIsOpen={setIsOpen}>
