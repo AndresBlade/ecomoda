@@ -7,7 +7,6 @@ export const GarmentBox: React.FC<getGarment> = ({ id, garment, pattern, type, c
     const garmentImg = imageUrl;
     const garmentImgUrl = getURL(garmentImg)
     const patternUrl = getPattern(pattern)
-    console.log(patternUrl)
     return (
         <article className="cuadrante">
             <img src={garmentImgUrl} alt="Imagen 1" className="imagen-producto"/>

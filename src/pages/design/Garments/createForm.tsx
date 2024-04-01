@@ -5,6 +5,7 @@ import { CreateFormProps } from './interfaces/CreateForm';
 import { Garment } from './interfaces/Garment';
 
 export const CreateForm: React.FC<CreateFormProps> = ({ collections, sizes, garmentTypes, setIsOpen }) => {
+  const baseUrl = 'http://localhost:3000/'; 
   const { handleRefresh } = useContext(RefreshContext)
   const { createGarment } = useGarment()
 
@@ -29,7 +30,7 @@ export const CreateForm: React.FC<CreateFormProps> = ({ collections, sizes, garm
   const handlePatternFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const files = e.target.files;
     if (files) {
-      const patternUrls = Array.from(files).map(file => URL.createObjectURL(file));
+      const patternUrls = Array.from(files).map(file => baseUrl + file.name);
       setPatternFile(patternUrls);
     }
   };
@@ -37,7 +38,7 @@ export const CreateForm: React.FC<CreateFormProps> = ({ collections, sizes, garm
   const handleImagesFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const files = e.target.files;
     if (files) {
-      const imageUrls = Array.from(files).map(file => URL.createObjectURL(file));
+      const imageUrls = Array.from(files).map(file => baseUrl + file.name);
       setSelectedFiles(imageUrls);
     }
   };
@@ -57,7 +58,8 @@ export const CreateForm: React.FC<CreateFormProps> = ({ collections, sizes, garm
         pattern: patternFile,
         imagen: selectedFiles
     };
-
+    console.log(garmentData)
+/* 
     createGarment(garmentData)
     .then(() => {
         handleRefresh(); 
@@ -65,7 +67,7 @@ export const CreateForm: React.FC<CreateFormProps> = ({ collections, sizes, garm
     })
     .catch(error => {
         throw error; 
-    }) 
+    })  */
 }
   //Aca mapeamos los fetch sacados en createModal
   return (
@@ -106,7 +108,7 @@ export const CreateForm: React.FC<CreateFormProps> = ({ collections, sizes, garm
                     name="pattern"
                     onChange={handlePatternFileChange}
                 />
-                <span className="icon">Agregar patrón</span>
+                <span className="iconForm">Agregar patrón</span>
             </label>
         </div>
         
@@ -121,7 +123,7 @@ export const CreateForm: React.FC<CreateFormProps> = ({ collections, sizes, garm
                 multiple
                 onChange={handleImagesFileChange}
                 />
-                <span className="icon">+</span>
+                <span className="iconForm">+</span>
             </label>
             <button className='materiales_button formData' onClick={handleCreateMaterial}>Crear prenda</button>
         </div>   
