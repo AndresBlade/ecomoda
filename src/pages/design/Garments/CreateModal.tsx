@@ -41,9 +41,6 @@ export const CreateModal: React.FC<modalPropsCrud> = ({isOpen, setIsOpen}) => {
             const collectionData = data.collections;
             setCollection(collectionData);
         })
-
-        
-
     }, [])
 
     return (
@@ -54,7 +51,7 @@ export const CreateModal: React.FC<modalPropsCrud> = ({isOpen, setIsOpen}) => {
                     <span>Rellena los campos</span>
                 </div>
                 <article>
-                    <CreateForm garmentTypes={categoriesData} sizes={sizeData} collections={collectionData} />
+                    <CreateForm garmentTypes={categoriesData} sizes={sizeData} collections={collectionData} setIsOpen={setIsOpen}/>
                 </article>
             </section>
         </Modal>

@@ -6,4 +6,5 @@ export interface CreateFormProps {
     collections: Collection[]
     sizes: sizeProps[];
     garmentTypes: categoriesProps[];
+    setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }

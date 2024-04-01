@@ -2,40 +2,60 @@ import { useState, useContext, useEffect } from 'react';
 import { RefreshContext } from '../context/refresh';
 import { useGarment } from '../helpers';
 import { CreateFormProps } from './interfaces/CreateForm';
+import { Garment } from './interfaces/Garment';
 
-export const CreateForm: React.FC<CreateFormProps> = ({ collections, sizes, garmentTypes }) => {
+export const CreateForm: React.FC<CreateFormProps> = ({ collections, sizes, garmentTypes, setIsOpen }) => {
   const { handleRefresh } = useContext(RefreshContext)
-  const [name, setName] = useState('');
-  const [errorMsg, setErrorMsg] = useState('invisibleMsg');
+  const { createGarment } = useGarment()
 
+  const [name, setName] = useState('');
   const [selectedCollectionId, setSelectedCollectionId] = useState(0);
   const [selectedSizeId, setSelectedSizeId] = useState(0);
   const [selectedGarmentTypeId, setSelectedGarmentTypeId] = useState(0);
+  const [patternFile, setPatternFile] = useState<string[]>([]);
+  const [selectedFiles, setSelectedFiles] = useState<string[]>([]);
+  const [errorMsg, setErrorMsg] = useState('invisibleMsg');
 
   const handleCollectionSelectChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setSelectedCollectionId(parseInt(e.target.value));
   };
-  
   const handleSizeSelectChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setSelectedSizeId(parseInt(e.target.value));
   };
-  
   const handleGarmentTypeSelectChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setSelectedGarmentTypeId(parseInt(e.target.value));
   };
 
-  //hacemos el fetch createGarment aca
+  const handlePatternFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const files = e.target.files;
+    if (files) {
+      const patternUrls = Array.from(files).map(file => URL.createObjectURL(file));
+      setPatternFile(patternUrls);
+    }
+  };
+
+  const handleImagesFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const files = e.target.files;
+    if (files) {
+      const imageUrls = Array.from(files).map(file => URL.createObjectURL(file));
+      setSelectedFiles(imageUrls);
+    }
+  };
+
   const handleCreateMaterial = () => {
-/*     if (!name.trim()) {
+    if (!name.trim()) {
         setErrorMsg('');
         setTimeout(() => setErrorMsg('invisibleMsg'), 3000);
         return;
     }
 
-    const garmentData: garment = {
-        collection: name,
-        standard_quantity: quantityValue,
-        createdAt: new Date
+    const garmentData: Garment = {
+        garment: name,
+        collection_id: selectedCollectionId,
+        size_id: selectedSizeId,
+        garment_type_id: selectedGarmentTypeId,
+        pattern: patternFile,
+        imagen: selectedFiles
     };
 
     createGarment(garmentData)
@@ -45,7 +65,7 @@ export const CreateForm: React.FC<CreateFormProps> = ({ collections, sizes, garm
     })
     .catch(error => {
         throw error; 
-    })  */
+    }) 
 }
   //Aca mapeamos los fetch sacados en createModal
   return (
@@ -81,9 +101,10 @@ export const CreateForm: React.FC<CreateFormProps> = ({ collections, sizes, garm
             </select>
             <label className='formData_pattern'>
                 <input
-                    id="fileInput"
+                    id="patternInput"
                     type="file"
-                    name="files"
+                    name="pattern"
+                    onChange={handlePatternFileChange}
                 />
                 <span className="icon">Agregar patrón</span>
             </label>
@@ -93,11 +114,12 @@ export const CreateForm: React.FC<CreateFormProps> = ({ collections, sizes, garm
             <span>Agregar imagenes</span>
             <label className="customFileUpload">
                 <input
-                id="fileInput"
-                type="file"
-                name="files"
-                multiple
+                id="imageInput"
                 className="inputFile"
+                type="file"
+                name="imagen"
+                multiple
+                onChange={handleImagesFileChange}
                 />
                 <span className="icon">+</span>
             </label>
