@@ -7,10 +7,10 @@ import { createPOS } from './pages/sales/POS/helpers/createPOS';
 import { updatePOS } from './pages/sales/POS/helpers/updatePOS';
 import { deletePOS } from './pages/sales/POS/helpers/deletePOS';
 //esto aqui no funciona :)
-import InvoiceDescription from './pages/purchases/InvoiceDescription';
-import InvoiceTotal from './pages/purchases/InvoiceTotal';
-import InvoiceFooter from './pages/purchases/InvoiceFooter';
-
+// import InvoiceDescription from './pages/purchases/InvoiceDescription';
+// import InvoiceTotal from './pages/purchases/InvoiceTotal';
+// import InvoiceFooter from './pages/purchases/InvoiceFooter';
+import Invoice  from "./pages/purchases/purchases";
 
 export const router = createBrowserRouter([
 	{
@@ -50,11 +50,9 @@ export const router = createBrowserRouter([
 					},
 				],
 			},
-			{ path: 'compras', children: [{path:"comprar", element:<h1>elemento</h1>}], element: <>En compras</> },
+			{ path: 'compras', children: [{path:"comprar", element: <Invoice></Invoice> }]},
 			//esto aqui no funciona
-			{ path: '/invoice-description', element: <InvoiceDescription /> },
-			{ path: '/invoice-total', element: <InvoiceTotal /> },
-			{ path: '/invoice-footer', element: <InvoiceFooter /> },
+			
 
 
 			{ path: 'RRHH', element: <>En RRHH</> },
