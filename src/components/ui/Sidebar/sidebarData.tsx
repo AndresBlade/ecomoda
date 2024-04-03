@@ -19,8 +19,8 @@ export const sidebarData = [
 		iconClosed: <MdKeyboardArrowDown size={20} />,
 		Subnav: [
 			{
-				title: 'Opcion',
-				path: '/',
+				title: 'Comprar',
+				path: '/compras/comprar',
 				icon: <HiOutlineCollection size={20} />,
 			},
 		],

@@ -2,10 +2,14 @@ import { createBrowserRouter } from 'react-router-dom';
 import { ClientsPage, POSPage } from './pages';
 import { App } from './App';
 import { MaterialsPage, CollectionsPage, GarmentsPage, SizePage, CategoriesPage, DesignPage } from './pages';
- import { getAllPOS } from './pages/sales/POS/helpers/getAllPOS';
+import { getAllPOS } from './pages/sales/POS/helpers/getAllPOS';
 import { createPOS } from './pages/sales/POS/helpers/createPOS';
 import { updatePOS } from './pages/sales/POS/helpers/updatePOS';
 import { deletePOS } from './pages/sales/POS/helpers/deletePOS';
+import InvoiceDescription from './pages/purchases/InvoiceDescription';
+import InvoiceTotal from './pages/purchases/InvoiceTotal';
+import InvoiceFooter from './pages/purchases/InvoiceFooter';
+
 
 export const router = createBrowserRouter([
 	{
@@ -45,7 +49,13 @@ export const router = createBrowserRouter([
 					},
 				],
 			},
-			{ path: 'compras', element: <>En compras</> },
+			{ path: 'compras', children: [{path:"comprar", element:<h1>elemento</h1>}], element: <>En compras</> },
+
+			{ path: '/invoice-description', element: <InvoiceDescription /> },
+			{ path: '/invoice-total', element: <InvoiceTotal /> },
+			{ path: '/invoice-footer', element: <InvoiceFooter /> },
+
+
 			{ path: 'RRHH', element: <>En RRHH</> },
 			{ path: 'finanzas', element: <>En finanzas</> },
 			{ path: 'produccion', element: <>En producción</> },
