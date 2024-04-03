@@ -1,19 +1,55 @@
 import React from "react";
+import "../../assets/global.css"
 import InvoiceDescription from './InvoiceDescription';
 import InvoiceTotal from './InvoiceTotal';
 import InvoiceHeader from './InvoiceHeader';
 import InvoiceFooter from './InvoiceFooter';
 
+// const Invoice = () => {
+//   return (
+//     <div className="invoice">
+//       <InvoiceHeader />
+//       <InvoiceDescription />
+//       <InvoiceTotal />
+//       <InvoiceFooter />
+//     </div>
+//   );
+// };
+
+
+
 const Invoice = () => {
   return (
-    <div className="invoice">
-      <InvoiceHeader />
-      <InvoiceDescription />
-      <InvoiceTotal />
-      <InvoiceFooter />
-    </div>
+    <table className="invoice-table">
+      <thead>
+        <tr>
+          <th>Descripción</th>
+          <th>Cantidad</th>
+          <th>Precio/Unidad</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <InvoiceHeader />
+          </td>
+          <td>
+            <InvoiceDescription />
+          </td>
+          <td>
+            <InvoiceTotal />
+          </td>
+          <td>
+            <InvoiceFooter />
+          </td>
+        </tr>
+      </tbody>
+    </table>
   );
 };
+
+export default Invoice;
+
 
 // const InvoiceHeader = () => {
 //   return (
@@ -83,4 +119,4 @@ const Invoice = () => {
 //   );
 // };
 
-export default Invoice;
+

@@ -1,4 +1,4 @@
-// InvoiceHeader.js
+// InvoiceHeader.tsx
 import React from "react";
 
 const InvoiceHeader = () => {
