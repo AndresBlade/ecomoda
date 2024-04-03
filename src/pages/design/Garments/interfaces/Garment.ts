@@ -4,8 +4,12 @@ export interface Garment {
     garment_type_id: number;
     collection_id: number;
     size_id: number;
-    pattern: string[];
-    imagen: string[];
+    pattern?: FileList;
+    imagenes?: FileList;
+}
+
+export interface image { 
+    URL: string;
 }
 
 export interface getGarment {

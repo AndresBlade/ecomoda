@@ -9,12 +9,12 @@ export const useGarment = () => {
         );
         
     // ------------------------------------------------------------------------
-    const createGarment = (garmentData: Garment): Promise<Garment> =>
-	fetch('http://localhost:3000/api/garment/creategarment', {
-		body: JSON.stringify(garmentData),
-		method: 'POST',
-		headers: { 'Content-Type': 'application/json' },
-	}).then(response => response.json() as Promise<Garment>);
+    const createGarment = (data: FormData): Promise<Garment> => {
+      return fetch('http://localhost:3000/api/garment/creategarment', {
+        body: data,
+        method: 'POST',
+      }).then(response => response.json() as Promise<Garment>);
+    };
 
     // ------------------------------------------------------------------------
 

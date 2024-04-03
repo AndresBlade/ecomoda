@@ -2,10 +2,8 @@ import { useState, useContext, useEffect } from 'react';
 import { RefreshContext } from '../context/refresh';
 import { useGarment } from '../helpers';
 import { CreateFormProps } from './interfaces/CreateForm';
-import { Garment } from './interfaces/Garment';
 
 export const CreateForm: React.FC<CreateFormProps> = ({ collections, sizes, garmentTypes, setIsOpen }) => {
-  const baseUrl = 'http://localhost:3000/'; 
   const { handleRefresh } = useContext(RefreshContext)
   const { createGarment } = useGarment()
 
@@ -13,8 +11,9 @@ export const CreateForm: React.FC<CreateFormProps> = ({ collections, sizes, garm
   const [selectedCollectionId, setSelectedCollectionId] = useState(0);
   const [selectedSizeId, setSelectedSizeId] = useState(0);
   const [selectedGarmentTypeId, setSelectedGarmentTypeId] = useState(0);
-  const [patternFile, setPatternFile] = useState<string[]>([]);
-  const [selectedFiles, setSelectedFiles] = useState<string[]>([]);
+  
+  const [patternFile, setPatternFile] = useState<FileList | null>(null);
+  const [selectedFiles, setSelectedFiles] = useState<FileList | null>(null);
   const [errorMsg, setErrorMsg] = useState('invisibleMsg');
 
   const handleCollectionSelectChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
@@ -30,103 +29,109 @@ export const CreateForm: React.FC<CreateFormProps> = ({ collections, sizes, garm
   const handlePatternFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const files = e.target.files;
     if (files) {
-      const patternUrls = Array.from(files).map(file => baseUrl + file.name);
-      setPatternFile(patternUrls);
+      setPatternFile(files);
     }
   };
 
   const handleImagesFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const files = e.target.files;
     if (files) {
-      const imageUrls = Array.from(files).map(file => baseUrl + file.name);
-      setSelectedFiles(imageUrls);
+      setSelectedFiles(files);
     }
   };
 
-  const handleCreateMaterial = () => {
-    if (!name.trim()) {
-        setErrorMsg('');
-        setTimeout(() => setErrorMsg('invisibleMsg'), 3000);
-        return;
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const formData = new FormData();
+    if (selectedFiles) {
+      for (let index = 0; index < selectedFiles.length; index++) {
+        const file = selectedFiles.item(index);
+        if (file) {
+          formData.append('imagen', file);
+          console.log(file);
+        }
+      }
     }
+  else { window.alert('no entro')}
+  
+    formData.append('garment', name);
+    formData.append('collection_id', selectedCollectionId.toString());
+    formData.append('size_id', selectedSizeId.toString());
+    formData.append('garment_type_id', selectedGarmentTypeId.toString());
+    if (patternFile) {
+      formData.append('pattern', patternFile[0]); 
+  } else {
+      formData.append('pattern', ''); 
+  }    
+  console.log('Nombre:', name);
+  console.log('Colección ID:', selectedCollectionId);
+  console.log('Talla ID:', selectedSizeId);
+  console.log('Tipo de prenda ID:', selectedGarmentTypeId);
+  console.log('Pattern:', patternFile);
 
-    const garmentData: Garment = {
-        garment: name,
-        collection_id: selectedCollectionId,
-        size_id: selectedSizeId,
-        garment_type_id: selectedGarmentTypeId,
-        pattern: patternFile,
-        imagen: selectedFiles
-    };
-    console.log(garmentData)
-/* 
-    createGarment(garmentData)
-    .then(() => {
-        handleRefresh(); 
-        setIsOpen(false);
-    })
-    .catch(error => {
-        throw error; 
-    })  */
-}
-  //Aca mapeamos los fetch sacados en createModal
+  console.log('FormData:', formData);
+
+    await createGarment(formData); 
+    handleRefresh(); 
+    setIsOpen(false); 
+  };
+
   return (
-    <article className='garmentContainer_form'>
-        <div className='modalMaterial__content formData'>
-                <input 
-                className='content__name'
-                type="text" 
-                placeholder='Nombre de la prenda'
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-                />
-            <select onChange={handleCollectionSelectChange}
-            className='formData_input'>
-                <option value="">Seleccionar colección...</option>
-                {collections.map(collection => (
-                <option key={collection.id} value={collection.id}>{collection.collection}</option>
-                ))}
-            </select>
-            <select onChange={handleSizeSelectChange}
-            className='formData_input'>
-                <option value="">Seleccionar talla...</option>
-                {sizes.map(size => (
-                <option key={size.id} value={size.id}>{size.size}</option>
-                ))}
-            </select>
-            <select onChange={handleGarmentTypeSelectChange}
-            className='formData_input'>
-                <option value="">Seleccionar tipo de prenda...</option>
-                {garmentTypes.map(type => (
-                <option key={type.id} value={type.id}>{type.type}</option>
-                ))}
-            </select>
-            <label className='formData_pattern'>
-                <input
-                    id="patternInput"
-                    type="file"
-                    name="pattern"
-                    onChange={handlePatternFileChange}
-                />
-                <span className="iconForm">Agregar patrón</span>
-            </label>
-        </div>
-        
-        <div className='modalMaterial__content formImg'>
-            <span>Agregar imagenes</span>
-            <label className="customFileUpload">
-                <input
-                id="imageInput"
-                className="inputFile"
-                type="file"
-                name="imagen"
-                multiple
-                onChange={handleImagesFileChange}
-                />
-                <span className="iconForm">+</span>
-            </label>
-            <button className='materiales_button formData' onClick={handleCreateMaterial}>Crear prenda</button>
-        </div>   
-    </article>
+    <form className='garmentContainer_form' onSubmit={handleSubmit}
+    action='/creategarment' encType={'multipart/form-data'}>
+      <div className='modalMaterial__content formData'>
+        <input 
+          className='content__name'
+          type="text" 
+          placeholder='Nombre de la prenda'
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+          name="name" 
+        />
+        <select onChange={handleCollectionSelectChange} className='formData_input' name="collection_id">
+          <option value="">Seleccionar colección...</option>
+          {collections.map(collection => (
+            <option key={collection.id} value={collection.id}>{collection.collection}</option>
+          ))}
+        </select>
+        <select onChange={handleSizeSelectChange} className='formData_input' name="size_id">
+          <option value="">Seleccionar talla...</option>
+          {sizes.map(size => (
+            <option key={size.id} value={size.id}>{size.size}</option>
+          ))}
+        </select>
+        <select onChange={handleGarmentTypeSelectChange} className='formData_input' name="garment_type_id">
+          <option value="">Seleccionar tipo de prenda...</option>
+          {garmentTypes.map(type => (
+            <option key={type.id} value={type.id}>{type.type}</option>
+          ))}
+        </select>
+        <label className='formData_pattern'>
+          <input
+            id="patternInput"
+            type="file"
+            name="pattern" 
+            onChange={handlePatternFileChange}
+          />
+          <span className="iconForm">Agregar patrón</span>
+        </label>
+      </div>
+      
+      <div className='modalMaterial__content formImg'>
+        <span>Agregar imagenes</span>
+        <label className="customFileUpload">
+          <input
+            id="imageInput"
+            className="inputFile"
+            type="file"
+            name="imagen" 
+            onChange={handleImagesFileChange}
+            multiple
+          />
+          <span className="iconForm">+</span>
+        </label>
+        <button type="submit" className='materiales_button formData'>Crear prenda</button>
+      </div>   
+    </form>
   );
 };
