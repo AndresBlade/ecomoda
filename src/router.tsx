@@ -6,6 +6,7 @@ import { getAllPOS } from './pages/sales/POS/helpers/getAllPOS';
 import { createPOS } from './pages/sales/POS/helpers/createPOS';
 import { updatePOS } from './pages/sales/POS/helpers/updatePOS';
 import { deletePOS } from './pages/sales/POS/helpers/deletePOS';
+//esto aqui no funciona :)
 import InvoiceDescription from './pages/purchases/InvoiceDescription';
 import InvoiceTotal from './pages/purchases/InvoiceTotal';
 import InvoiceFooter from './pages/purchases/InvoiceFooter';
@@ -50,7 +51,7 @@ export const router = createBrowserRouter([
 				],
 			},
 			{ path: 'compras', children: [{path:"comprar", element:<h1>elemento</h1>}], element: <>En compras</> },
-
+			//esto aqui no funciona
 			{ path: '/invoice-description', element: <InvoiceDescription /> },
 			{ path: '/invoice-total', element: <InvoiceTotal /> },
 			{ path: '/invoice-footer', element: <InvoiceFooter /> },
