@@ -1011,20 +1011,59 @@ option {
 }
 
 /* -------------ale------------------ */
-.invoice-table {
+
+table {
 	width: 100%;
 	border-collapse: collapse;
+	margin-bottom: 20px;
 }
 
-.invoice-table th,
-.invoice-table td {
-	padding: 8px;
-	border: 1px solid #ccc;
+th,
+td {
+	padding: 12px 15px;
+	text-align: left;
+	border-bottom: 1px solid #ddd;
 }
 
-.invoice-header,
-.invoice-description,
-.invoice-total,
-.invoice-footer {
-	padding: 16px;
+th {
+	background-color: #f2f2f2;
+	font-weight: normal;
+}
+
+tr:hover {
+	background-color: #f5f5f5;
+}
+
+.order-id {
+	width: 80px;
+	text-align: center;
+}
+
+.order-date {
+	width: 150px;
+}
+
+.order-status {
+	width: 120px;
+	text-align: center;
+}
+
+.order-status.confirmed {
+	color: green;
+}
+
+.order-status.delayed {
+	color: red;
+}
+
+.order-status.in-transit {
+	color: orange;
+}
+
+.order-status.returned {
+	color: darkred;
+}
+
+.order-status.pending {
+	color: blue;
 }
