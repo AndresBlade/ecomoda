@@ -1,22 +1,9 @@
 import React from "react";
-import "../../assets/global.css"
-import InvoiceDescription from './InvoiceDescription';
-import InvoiceTotal from './InvoiceTotal';
-import InvoiceHeader from './InvoiceHeader';
-import InvoiceFooter from './InvoiceFooter';
-
-// const Invoice = () => {
-//   return (
-//     <div className="invoice">
-//       <InvoiceHeader />
-//       <InvoiceDescription />
-//       <InvoiceTotal />
-//       <InvoiceFooter />
-//     </div>
-//   );
-// };
-
-
+import "../../assets/global.css";
+import InvoiceDescription from "./InvoiceDescription";
+import InvoiceTotal from "./InvoiceTotal";
+import InvoiceHeader from "./InvoiceHeader";
+import InvoiceFooter from "./InvoiceFooter";
 
 const Invoice = () => {
   return (
@@ -26,6 +13,7 @@ const Invoice = () => {
           <th>Descripción</th>
           <th>Cantidad</th>
           <th>Precio/Unidad</th>
+          <th>Facturado</th>
         </tr>
       </thead>
       <tbody>
@@ -49,7 +37,16 @@ const Invoice = () => {
 };
 
 export default Invoice;
-
+// const Invoice = () => {
+//   return (
+//     <div className="invoice">
+//       <InvoiceHeader />
+//       <InvoiceDescription />
+//       <InvoiceTotal />
+//       <InvoiceFooter />
+//     </div>
+//   );
+// };
 
 // const InvoiceHeader = () => {
 //   return (
@@ -118,5 +115,3 @@ export default Invoice;
 //     </div>
 //   );
 // };
-
-
