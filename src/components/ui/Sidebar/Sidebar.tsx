@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { SubMenu } from './Submenu';
 import { sidebarData } from './sidebarData';
 import { IoIosArrowRoundBack } from "react-icons/io";
-import logoEcomoda from '../../../../public/aguja_Logo.svg'
+import logoEcomoda from '../../../assets/aguja_Logo.svg';
 
 interface SidebarProps {
     handleMenu: () => void;

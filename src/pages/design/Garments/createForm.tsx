@@ -1,4 +1,4 @@
-import { useState, useContext, useEffect } from 'react';
+import { useState, useContext } from 'react';
 import { RefreshContext } from '../context/refresh';
 import { useGarment } from '../helpers';
 import { CreateFormProps } from './interfaces/CreateForm';
@@ -52,7 +52,7 @@ export const CreateForm: React.FC<CreateFormProps> = ({ collections, sizes, garm
         }
       }
     }
-  else { window.alert('no entro')}
+    else { throw Error}
   
     formData.append('garment', name);
     formData.append('collection_id', selectedCollectionId.toString());
@@ -63,14 +63,6 @@ export const CreateForm: React.FC<CreateFormProps> = ({ collections, sizes, garm
   } else {
       formData.append('pattern', ''); 
   }    
-  console.log('Nombre:', name);
-  console.log('Colección ID:', selectedCollectionId);
-  console.log('Talla ID:', selectedSizeId);
-  console.log('Tipo de prenda ID:', selectedGarmentTypeId);
-  console.log('Pattern:', patternFile);
-
-  console.log('FormData:', formData);
-
     await createGarment(formData); 
     handleRefresh(); 
     setIsOpen(false); 
