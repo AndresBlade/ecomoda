@@ -13,7 +13,8 @@ export interface image {
 }
 
 export interface getGarment {
-    id: number
+    id?: number
+    countGarment?: number;
     garment: string;
     pattern: string;
     collection: string;

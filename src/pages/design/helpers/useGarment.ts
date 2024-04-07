@@ -20,7 +20,7 @@ export const useGarment = () => {
 
     const deleteGarment = (garmentId: number | undefined) =>
 	fetch(`http://localhost:3000/api/garment/deletegarment/${garmentId}`, {
-		method: 'DELETE',
+		method: 'PUT',
 	}).then(response => response.json());
 
     // ------------------------------------------------------------------------

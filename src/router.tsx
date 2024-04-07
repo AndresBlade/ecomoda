@@ -1,7 +1,7 @@
 import { createBrowserRouter } from 'react-router-dom';
 import { ClientsPage, POSPage } from './pages';
 import { App } from './App';
-import { MaterialsPage, CollectionsPage, GarmentsPage, SizePage, CategoriesPage, DesignPage } from './pages';
+import { MaterialsPage, CollectionsPage, GarmentsPage, SizePage, CategoriesPage, DesignPage, CollectionsDetails } from './pages';
 import { GarmentDataProvider } from './pages/design/context/garmentProps';
 import { getAllPOS } from './pages/sales/POS/helpers/getAllPOS';
 import { createPOS } from './pages/sales/POS/helpers/createPOS';
@@ -53,7 +53,8 @@ export const router = createBrowserRouter([
 			{
 				path: 'diseno',
 				children: [
-					{ path: '/diseno/colecciones', element: <CollectionsPage /> },
+					{ path: '/diseno/colecciones', element: <CollectionsPage />},
+					{ path: '/diseno/colecciones/:collectionId', element: <CollectionsDetails />},
 					{ path: '/diseno/prendas', element: <GarmentDataProvider> <GarmentsPage /> </GarmentDataProvider>},
 					{ path: '/diseno/materiales', element: <MaterialsPage /> },
 					{ path: '/diseno/categorias', element: <CategoriesPage /> },

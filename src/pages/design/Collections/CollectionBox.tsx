@@ -1,9 +1,10 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { DeleteModal } from './DeleteModal';
 import { UpdateModal } from './UpdateModal';
 import Collection from './interfaces/Collections';
 
-export const CollectionBox: React.FC<Collection> = ({id, collection, createdAt, standard_quantity}) => {
+export const CollectionBox: React.FC<Collection> = ({id, garmentCount, collection, createdAt, standard_quantity, imgUrl}) => {
     
     const fechaActual = new Date(createdAt);
     const fecha = fechaActual.getFullYear().toString()
@@ -17,15 +18,15 @@ export const CollectionBox: React.FC<Collection> = ({id, collection, createdAt, 
 	return (
         <article className="products">
         <div className="product">   
-            <img src="https://m.media-amazon.com/images/I/710iDM5hGPL._AC_SL1500_.jpg" alt="Producto 1"/>             
+            <img src={imgUrl} alt={`imagen de coleccion de ${collection}`} />             
             <div className="product-details">
                 <h3>{collection}</h3>
-                    <p>5 prendas</p>
+                    <p>{`${garmentCount} prendas`}</p>
                     <p>{fecha}</p>
                     <p>Fabricación mínima: {standard_quantity}</p>
                     <div className="button-product">
                         <button onClick={handleEditModal}>Editar</button>
-                        <button>Añadir prenda</button>
+                        <Link className='button-collection' to={`${id}`}>Ver prendas</Link>
                         <button onClick={handleDeleteModal}>Borrar</button>
                     </div>
                     <DeleteModal isOpen={isOpenDeleted} setIsOpen={setIsOpenDeleted} />

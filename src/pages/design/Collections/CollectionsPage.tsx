@@ -6,6 +6,7 @@ import { useState, useEffect, useContext } from 'react';
 import CircularProgress from '@mui/material/CircularProgress';
 import Collection from './interfaces/Collections';
 import { RefreshContext } from '../context/refresh';
+import { getURL } from '../Garments/utils/getUrl';
 
 export const CollectionsPage = () => {
     const {refresh} = useContext(RefreshContext)
@@ -25,7 +26,23 @@ export const CollectionsPage = () => {
         getAllCollection()
             .then(data => {
                 const collectionData = data.collections;
-                setAllCollection(collectionData); 
+                const modifiedCollection = collectionData.map(collection => {
+                    const { id, collection: collectionName, standard_quantity, createdAt } = collection;
+
+                    const firstGarmentImage = collection.GarmentModels?.[0]?.GarmentImagenModels?.[1]?.URL || 'http://localhost:3000/default/not-found.webp';
+                    const imageUrl = getURL(firstGarmentImage)
+
+                    const countGarment = collection.GarmentModels?.length
+                    return {
+                        id: id,
+                        collection: collectionName,
+                        standard_quantity: standard_quantity,
+                        createdAt: createdAt,
+                        imgUrl: imageUrl,
+                        garmentCount: countGarment
+                    };
+                });
+                setAllCollection(modifiedCollection); 
             })
             .catch(error => {
                 throw error; 
@@ -75,6 +92,8 @@ export const CollectionsPage = () => {
                                 collection={collection.collection}
                                 standard_quantity={collection.standard_quantity}
                                 createdAt={collection.createdAt}
+                                imgUrl={collection.imgUrl}
+                                garmentCount={collection.garmentCount}
                             />
                         ))  
                     )

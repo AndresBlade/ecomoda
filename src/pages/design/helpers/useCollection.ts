@@ -35,5 +35,12 @@ export const useCollection = () => {
 
     // ------------------------------------------------------------------------
 
-    return { getAllCollection, createCollection, deleteCollection, updateCollection };
+    const getOneCollection = (id:string | undefined): Promise<collectionsWrapper> =>
+        fetch(`http://localhost:3000/api/collection/getonecollection/${id}`).then(
+            response => response.json() as Promise<collectionsWrapper>
+        );
+
+    // ------------------------------------------------------------------------
+
+    return { getAllCollection, createCollection, deleteCollection, updateCollection, getOneCollection };
 };
