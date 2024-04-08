@@ -60,7 +60,6 @@ export const router = createBrowserRouter([
 					{ path: '/diseno/prendas/:idgarment', element: <GarmentDataProvider><GarmentDetails /></GarmentDataProvider>},
 					{ path: '/diseno/categorias', element: <CategoriesPage /> },
 					{ path: '/diseno/tallas', element: <SizePage /> },
-					{ index: true, element: <div>En departamento de diseno</div>},
 					{
 						index: true,
 						element:  <DesignPage />,
