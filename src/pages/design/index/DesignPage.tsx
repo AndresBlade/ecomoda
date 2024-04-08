@@ -37,9 +37,10 @@ export const DesignPage = () => {
                     
                     <div className="bloque-materiales-disp">
                         <h3>Materiales disponibles para prendas</h3>
-                        <img src="https://casatextil.com.co/cdn/shop/files/Telas_por_rollos.JPGcom.png?v=1699924368&width=1420" alt="Imagen 1" className="imagen-producto"/>
+                        <img src="https://casatextil.com.co/cdn/shop/files/Telas_por_rollos.JPGcom.png?v=1699924368" alt="Imagen 1" className="imagen-producto"/>
                         <h5>Ver todos las materiales 🡢</h5> 
                     </div>
+                    
                 </div>
                 
                <div className="prendas-materiales">
@@ -81,21 +82,49 @@ export const DesignPage = () => {
                          <h5>Ver todas las prendas 🡢</h5>
                            
                  </div>
-                 <div className="bloque-materiales-recientes">
-                    <h2>Materiales</h2>
-                    <h3>Añadido recientemente</h3>
-                    <div className="materiales-recientes">
-                        <h4>Algodón</h4>
-                        <h5>Es suave, transpirable y cómodo, ideal para ropa de verano y ropa interior.</h5>
-                    </div>
-                    <div className="materiales-recientes">
-                        <h4>Seda</h4>
-                        <h5>Suave y lujosa al tacto. Se utiliza en ropa de alta gama como vestidos y blusas.</h5>
-                    </div>
-                    <div className="materiales-recientes">
-                        <h4>Botones de Plástico</h4>
-                        <h5>Pequeños botones de plástico con cuatro agujeros, hechos de poliacrilonitrilo.</h5>
-                    </div>
+                 
+                 <div className="bloque-añadidos-recientes">
+                    <div className="bloque-añadidos">
+                        <h2>Materiales</h2>
+                        <h3>Añadidos recientemente</h3>
+                        <nav className="materiales-recientes">
+                            <ul>
+                                <li>
+                                    <h4>Algodón</h4>
+                                    <h5>Es suave, transpirable y cómodo, ideal para ropa de verano y ropa interior.</h5>
+                                </li>
+                                <li>
+                                <h4>Seda</h4>
+                                    <h5>Suave y lujosa al tacto. Se utiliza en ropa de alta gama como vestidos y blusas.</h5>
+                                </li>
+                                <li>
+                                    <h4>Botones de Plástico</h4>
+                                    <h5>Pequeños botones de plástico con cuatro agujeros, hechos de poliacrilonitrilo.</h5>
+                                </li>
+                            </ul>
+                            </nav>
+                        </div>
+
+                        <div className="bloque-añadidos">
+                        <h2>Colecciones Creadas</h2>
+                        <h3>Añadidas recientemente</h3>
+                        <nav className="materiales-recientes">
+                            <ul>
+                                <li>
+                                    <h4>Algodón</h4>
+                                    <h5>Es suave, transpirable y cómodo, ideal para ropa de verano y ropa interior.</h5>
+                                </li>
+                                <li>
+                                <h4>Seda</h4>
+                                    <h5>Suave y lujosa al tacto. Se utiliza en ropa de alta gama como vestidos y blusas.</h5>
+                                </li>
+                                <li>
+                                    <h4>Botones de Plástico</h4>
+                                    <h5>Pequeños botones de plástico con cuatro agujeros, hechos de poliacrilonitrilo.</h5>
+                                </li>
+                            </ul>
+                            </nav>
+                        </div>
                  </div>
                </div>
             </div>

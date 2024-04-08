@@ -343,14 +343,17 @@ img {
 /* DesignIndexPage styles */
 
 .design-index{
-	display: grid;
+	display: flex;
+	flex-direction: column;
 }
 .coleccion-materiales{
-	display: grid;
-	grid-template-columns: 70% 30%;
-    gap: 50px;
+	display: flex;
+	justify-content: space-between;
+	flex-direction: row;
 }
 .bloque-coleccion{
+	display: flex;
+	flex-direction: column;
 	width: 80%;
 	h3 {
 		font-weight: 400;
@@ -370,7 +373,7 @@ img {
 }
 .cuadro-coleccion{
 	height: auto;
-	display: grid;
+	display: flex;
 	grid-template-columns: 30% 70%;
 	justify-content: center;
 	align-items: center;
@@ -387,7 +390,8 @@ img {
 
 .contenedor-coleccion {
 	width: 100%;
-	max-width: 600px;
+	display: flex;
+	flex-direction: column;
 	margin: 0 auto;
   }
 
@@ -395,7 +399,7 @@ img {
 	display: flex;
 	align-items: center;
 	margin-bottom: 15px;
-	justify-content: space-between;
+	gap: 7.1em;
 		h3{
 			font-weight: bold;
 			opacity: 100%;
@@ -451,34 +455,39 @@ img {
   
 
 .bloque-materiales-disp{
-	width: 80%;
-	height: 70%;
+	display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+	width: 25em;
+	height: 20em;
+	box-sizing: border-box;
 	border-radius: 10px;
 	background: linear-gradient(to bottom right, rgba(255, 255, 255, 0), #fca311);
 	margin-top: 5.9em;
 	padding: 2em;
-	display: grid;
 
 	h3 {
 		line-height: 2;
 		font-size: 1.3em;
+		margin: 0;
+		padding: 0;
 	}
 	img {
-		justify-self: end;
-		align-self: center;
-		width: 50%; 
+		width:100px;
 		cursor: pointer;
+		border: 0;
 	}
 	h5 {
-		margin-bottom: 50px;
-		display: inline-block;
 		cursor: pointer;
+		margin: 0;
+		padding: 0;
 	}
 
 }
 
 .prendas-materiales{
-	display: grid;
+	display: flex;
+	flex-direction: row;
 	grid-template-columns: 70% 30%;
     gap: 50px;
 }
@@ -530,12 +539,13 @@ img {
 	height: 30px;
 	cursor: pointer;
 }
-.bloque-materiales-recientes{
+.bloque-añadidos-recientes{
+	display: flex;
+	flex-wrap: wrap;
+	margin-left: 11%;
+	position: relative;
+	flex-direction: column;
 	width: 80%;
-	h2{
-		margin: 0;
-	}
-
 	h3{
 		font-weight: 400;
 		opacity: 60%;
@@ -549,6 +559,103 @@ img {
 		opacity: 60%;
 		font-weight: 400;
 	}
+	ul {
+		display: none;
+		position: absolute;
+	}
+}
+.bloque-añadidos {
+	margin-bottom: 0;
+  }
+  
+
+.bloque-añadidos:hover .materiales-recientes ul {
+	display: block;
+  }
+  
+.bloque-añadidos:hover + .bloque-añadidos {
+	margin-top: 60%;
+  }
+@media screen and (max-width: 1600px) {
+	.design-index {
+		align-items: center;
+	}
+
+	.bloque-coleccion,
+	.bloque-materiales-disp,
+	.bloque-prendas,
+	.bloque-añadidos-recientes {
+  		max-width: 100%;
+}
+
+.bloque-añadidos-recientes{
+	margin-left: 0;
+}
+    .coleccion-materiales {
+        flex-direction: column;
+    }
+	.prendas-materiales {
+		flex-direction: column;
+	}
+	.cuadrante-index{
+		max-width: 800px;
+	}
+	.bloque-añadidos:hover + .bloque-añadidos {
+		margin-top: 20%;
+	  }
+}
+@media screen and (max-width: 1130px) {
+
+
+	.bloque-coleccion {
+		flex-direction: column;
+	}
+	.row {
+		gap: 2em;
+	}
+    .contenedor-coleccion {
+		flex-direction: column;
+		gap: 0em;
+		align-items: center;
+		p {
+			text-align: center;
+		}
+	}
+	.cuadro-coleccion {
+		flex-direction: column;
+		width: 25em;
+
+	}
+	.cuadrante-index {
+		max-width: 300px;
+	}
+	.bloque-añadidos:hover + .bloque-añadidos {
+		margin-top: 25%;
+	  }
+
+}
+@media screen and (max-width: 430px) {
+	.design-index {
+		align-items: inherit;
+	}
+
+	.bloque-coleccion {
+		flex-direction: column;
+	}
+    .contenedor-coleccion {
+		flex-direction: column;
+
+	}
+	.cuadro-coleccion {
+		flex-direction: column;
+		margin: 0;
+	}
+	.cuadrante-index {
+		max-width: ;
+	}
+	.bloque-añadidos:hover + .bloque-añadidos {
+		margin-top: 100%;
+	  }
 }
 
 /* ------------------------------- */
@@ -1045,8 +1152,11 @@ input:checked + .slider:before {
 	height: 18em;
 	padding: 1%;
 	margin-bottom: 2em;
+	gap: 0em;
 	box-sizing: border-box;
-	display: flexbox;
+	display: flex;
+	flex-wrap: wrap;
+	flex-direction: column;
 	justify-content: center;
 	border: 1px solid #ccc;
 	border-radius: 10px;
@@ -1089,7 +1199,7 @@ input:checked + .slider:before {
 
   }
   .texto-talla {
-	position: absolute; 
+	position: absolute;
 	bottom: 10px; 
 	left: 10px;
   }
