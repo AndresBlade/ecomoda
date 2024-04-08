@@ -4,6 +4,8 @@ import { Loan } from './pages/finances/Loan'
 import RequestType from './pages/finances/RequestType';
 import Account from './pages/finances/Account';
 import HistoryComponent from './pages/finances/History';
+import AcceptLoan from './pages/finances/AcceptLoan';
+import Main from './pages/finances/Main';
 import { App } from './App';
 import { MaterialsPage } from './pages/design/MaterialPage';
 
@@ -29,7 +31,10 @@ export const router = createBrowserRouter([
 					{ path: "account", element: <Account /> },
 					{ path: "History", element: <HistoryComponent />},
 					{ path: "requestType", element: <RequestType />},
+					{path: "acceptLoan", element: <AcceptLoan />},
+					{path: "main", element: <Main/>},
 					{ index: true, element: <>En finanzas</> },
+
 				],
 			},
 			{ path: 'produccion', element: <>En producción</> },

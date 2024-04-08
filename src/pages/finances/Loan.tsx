@@ -3,13 +3,9 @@ import imagen from '../../assets/icons_finances/codigo-de-barras.png';
 import imagen1 from '../../assets/icons_finances/buscando-trabajo (1).png';
 import imagen2 from '../../assets/icons_finances/calendario (1).png';
 import imagen3 from '../../assets/icons_finances/dar-dinero (1).png';
-import imagen7 from '../../assets/icons_finances/advertencia (1).png';
 import ApplicantData from './components/ApplicantData';
 import Input from './components/Input';
 import React, { useRef, useState } from 'react';
-import Alert from './components/Alert';
-import {Modal} from '../../components/ui/modal/Modal';
-import ModalTable from './components/ModalTable';
 import { LoanPost } from './helpers/LoanPost';
 
 export const Loan = () => {
@@ -43,86 +39,55 @@ export const Loan = () => {
             LoanPost({descripcion,tipo,monto});
         }
         setError(false)
-
-        
-
-        // const response = await fetch('url',{
-        //     method:'POST',
-        //     mode : 'cors',
-        //     credentials: 'same-origin',
-        //     headers:{
-        //         'Content-type':'application/json',
-        //     },
-        //     body:
-        //     JSON.stringify({
-        //         id:id,
-        //         fecha:fecha,
-        //         descripcion:descripcion,
-        //         tipo:tipo,
-        //         monto:monto,
-        //     })
-        // }).then(Response=>{
-        //     if(!Response.ok){
-                
-        //         throw new Error(Response.statusText)
-    
-        //         alert(Response.statusText);
-        //     }
-        //     return Response.json();
-        // })
-        // console.log(response);
         clearInputs();
     };
     return (
         <div className="principal-finances">  
-        <form ref={form} action="" method="post" onSubmit={handleSubmit}>
-            {error && <Alert
-                imgSrc={imagen7} altImg={'error'}
-                children="Hay algún campo vacio ó uno de los datos no corresponden al formato solicitado"
-            />}
-            <div className="loan-creation"> {/* div for loan creation */}
-                <div className="loan-creation__title">
-                    <h2>Crear Prestamo</h2>
-                </div>
-                    <div className="loan-creation__elements">
-                    
-                        <div className="loan-creation__container--input
-                        loan-creation__container--input-descripcion">
-                            <Input onChange={
-                                (event)=>{
-                                    setDescripcion(event.target.value);
-                                }
-                            } 
-                            type='text' className='loan__creation--input' placeholder='Descripcion prestamo' title='descripcion' imgSrc={imagen1} altImg='descripcion' classImg='loan-creation__image--width' children='descripcion' /> 
-                        </div>
-                        <div className="loan-creation__container--input
-                        loan-creation__container--input-tipo">
-                            <Input onChange={
-                                (event)=>{
-                                    setTipo(Number(event.target.value));
-                                }
-                            } type='text' className='loan__creation--input' placeholder='Tipo' title='tipo' imgSrc={imagen} altImg={'ID'} classImg='loan-creation__image--width' children='Tipo' /> 
-                        </div>
-                        <div className="loan-creation__container--input loan-creation__container--input-monto">
-                            <Input onChange={
-                                (event)=>{
-                                    setMonto(Number(event.target.value));
-                                }
-                            }type='number' className='loan__creation--input' placeholder='800,00Bs' title='monto' imgSrc={imagen3} altImg='monto' classImg='loan-creation__image--width' children='monto' /> 
-                        </div>
-                    </div>
-                    <div className="loan-creation__input-submit">
+            <form ref={form} action="" method="post" onSubmit={handleSubmit}>
 
+                <div className="loan-creation"> {/* div for loan creation */}
+                    <div className="loan-creation__title">
+                        <h2>Crear Prestamo</h2>
                     </div>
-                    <div className='button-finances__center'>
-                        <Buttons type='submit' title='solicitar' children="Solicitar" className='button-finances button-finances-grid'/>
-                        <Buttons onClick={clearInputs} type='reset' title='limpiar' children="Limpiar" className='button-finances'/>
-                        <Buttons type='button' title='consultar' children='Consultar' className='button-finances button-finances-grid'/>
-                    </div>
-                </div> 
-            </form>
-                {/* Here end div Principal-Finances */}
-            <ApplicantData/>
+                        <div className="loan-creation__elements">
+                        
+                            <div className="loan-creation__container--input
+                            loan-creation__container--input-descripcion">
+                                <Input onChange={
+                                    (event)=>{
+                                        setDescripcion(event.target.value);
+                                    }
+                                } 
+                                type='text' className='loan__creation--input' placeholder='Descripcion prestamo' title='descripcion' imgSrc={imagen1} altImg='descripcion' classImg='loan-creation__image--width' children='descripcion' /> 
+                            </div>
+                            <div className="loan-creation__container--input
+                            loan-creation__container--input-tipo">
+                                <Input onChange={
+                                    (event)=>{
+                                        setTipo(Number(event.target.value));
+                                    }
+                                } type='text' className='loan__creation--input' placeholder='Tipo' title='tipo' imgSrc={imagen} altImg={'ID'} classImg='loan-creation__image--width' children='Tipo' /> 
+                            </div>
+                            <div className="loan-creation__container--input loan-creation__container--input-monto">
+                                <Input onChange={
+                                    (event)=>{
+                                        setMonto(Number(event.target.value));
+                                    }
+                                }type='number' className='loan__creation--input' placeholder='800,00Bs' title='monto' imgSrc={imagen3} altImg='monto' classImg='loan-creation__image--width' children='monto' /> 
+                            </div>
+                        </div>
+                        <div className="loan-creation__input-submit">
+            
+                        </div>
+                        <div className='button-finances__center'>
+                            <Buttons type='submit' title='solicitar' children="Solicitar" className='button-finances button-finances-grid'/>
+                            <Buttons onClick={clearInputs} type='reset' title='limpiar' children="Limpiar" className='button-finances'/>
+                            <Buttons onClick={()=> setIsOpen(true)} type='button' title='consultar'children='Consultar' className='button-finances button-finances-grid'/>
+                        </div>
+                    </div> 
+                </form>
+                    {/* Here end div Principal-Finances */}
+                <ApplicantData/>
         </div>
     )
 }

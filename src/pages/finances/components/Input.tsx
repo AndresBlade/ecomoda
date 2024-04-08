@@ -21,7 +21,7 @@ const Input: FC<InputProps> = ({imgSrc, altImg, classImg,children, ...props}) =>
                 <img src={imgSrc} alt={altImg} className={classImg} />
                 <p className='applicant-data__flex applicant-data__margin'>{children}</p>
             </div>
-            <input {...props} />
+            <input {...props}/>
         </div>
     )
 }

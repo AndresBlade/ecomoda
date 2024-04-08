@@ -1,5 +1,4 @@
 import React, { useState,useRef, useEffect } from 'react'
-import ModalTable from './components/ModalTable'
 import ModalContent from './components/ModalContent'
 import Input from './components/Input';
 import imagen1 from '../../assets/icons_finances/buscando-trabajo (1).png';

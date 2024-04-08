@@ -1,4 +1,5 @@
 import React, { FC } from 'react';
+import { GetRequest } from '../helpers/GetRequest';
 
 interface InfoComponentProps {
   fecha: string;
@@ -6,15 +7,9 @@ interface InfoComponentProps {
   dolares: string;
 }
 
-const data = [
-  { id: 1482, fecha: '01-01-2024', descripcion: 'Prestamo Ventas', monto: 'Bs.800,00' },
-  { id: 1483, fecha: '01-01-2024', descripcion: 'Prestamo Otros', monto: 'Bs.800,00' },
-  { id: 1488, fecha: '01-01-2024', descripcion: 'Prestamo Ventas', monto: 'Bs.800,00' },
-  { id: 1485, fecha: '01-01-2024', descripcion: 'Prestamo Tecnologia', monto: 'Bs.800,00' },
-  { id: 1487, fecha: '01-01-2024', descripcion: 'Prestamo Ventas', monto: 'Bs.800,00' },
-];
 
 const InfoTableComponent: FC<InfoComponentProps> = ({ fecha, bs, dolares }) => {
+  const data = GetRequest();
   return (
     <>
       <div className="info-component">
@@ -30,18 +25,24 @@ const InfoTableComponent: FC<InfoComponentProps> = ({ fecha, bs, dolares }) => {
           <thead>
             <tr className="info-component__table-header">
               <th>ID</th>
-              <th>Fecha</th>
-              <th>Descripción</th>
               <th>Monto</th>
+              <th>Descripción</th>
+              <th>Tipo</th>
+              <th>Status</th>
+              <th>Creada</th>
+              <th>Actualizada</th>
             </tr>
           </thead>
           <tbody>
             {data.map((row, index) => (
               <tr key={index} className="info-component__table-row">
                 <td>{row.id}</td>
-                <td>{row.fecha}</td>
-                <td>{row.descripcion}</td>
-                <td>{row.monto}</td>
+                <td>{row.amount}</td>
+                <td>{row.description}</td>
+                <td>{row.type_id}</td>
+                <td>{row.status}</td>
+                <td>{row.createdAt}</td>
+                <td>{row.updatedAt}</td>
               </tr>
             ))}
           </tbody>

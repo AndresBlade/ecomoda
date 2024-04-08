@@ -28,7 +28,6 @@ const ModalContent:React.FC<ModalContentProps> = ({id,descripcion,estado}) => {
 
     const handleUpdate = async(e:React.FormEvent<HTMLFormElement>)=>{
 
-
         e.preventDefault();
         const id = accountId;
         const description = descripcionUpdate ?? "hubo un problema";
@@ -42,8 +41,6 @@ const ModalContent:React.FC<ModalContentProps> = ({id,descripcion,estado}) => {
         }
         setIsOpen(false);
     }
-
-
 
     const handleDelete = async ()=>{
         if(window.location.pathname === "/finanzas/account"){
