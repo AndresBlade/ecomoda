@@ -1,16 +1,16 @@
-import { useGarment } from '../helpers/useGarment';
-import { Modal } from '../../../components/ui/modal/Modal';
-import { modalPropsCrud } from '../interfaces/modalPropsCRUD';
-import { RefreshContext } from '../context/refresh';
+import { RefreshContext } from '../../context/refresh';
 import { useContext } from 'react';
+import { useGarmentMaterials } from '../../helpers';
+import { Modal } from '../../../../components/ui/modal/Modal';
+import { modalPropsCrud } from '../../interfaces/modalPropsCRUD';
 import { Link } from 'react-router-dom';
 
 export const DeleteModal: React.FC<modalPropsCrud> = ({id, isOpen, setIsOpen }) => {
-    const { deleteGarment } = useGarment();
+    const { deleteGarmentsMaterials } = useGarmentMaterials();
     const { handleRefresh } = useContext(RefreshContext)
 
     const handleDeleteMaterial = () => {
-        deleteGarment(id);
+        deleteGarmentsMaterials(id);
         handleRefresh();
         setIsOpen(false);
     }
@@ -19,7 +19,7 @@ export const DeleteModal: React.FC<modalPropsCrud> = ({id, isOpen, setIsOpen }) 
         <Modal isOpen={isOpen} setIsOpen={setIsOpen}>
             <article>
                 <div className='modalMaterial__header'>
-                    <h2>¿Desea eliminar esta prenda?</h2>
+                    <h2>¿Desea desligar este material de esta prenda?</h2>
                     <span>No podrá recuperarse</span>
                 </div>
 

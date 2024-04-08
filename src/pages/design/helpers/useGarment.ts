@@ -34,5 +34,12 @@ export const useGarment = () => {
 
     // ------------------------------------------------------------------------
 
-    return { getAllGarments, createGarment, deleteGarment, updateGarment };
+    const getOneGarment = (id:string | undefined): Promise<GarmentWrapper> =>
+    fetch(`http://localhost:3000/api/garment/getonegarment/${id}`).then(
+        response => response.json() as Promise<GarmentWrapper>
+    );
+
+  //-------------------------------------------------------------------------------------
+
+    return { getAllGarments, createGarment, deleteGarment, updateGarment, getOneGarment };
 };

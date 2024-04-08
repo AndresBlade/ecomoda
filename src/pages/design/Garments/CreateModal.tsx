@@ -8,7 +8,6 @@ import { GarmentDataContext } from '../context/garmentProps';
 export const CreateModal: React.FC<modalPropsCrud> = ({isOpen, setIsOpen}) => {
     const { categoriesData, sizeData, collectionData } = useContext(GarmentDataContext);
 
-
     return (
         <Modal isOpen={isOpen} setIsOpen={setIsOpen}>
             <section>

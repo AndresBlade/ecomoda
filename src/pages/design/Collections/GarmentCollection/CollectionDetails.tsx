@@ -4,7 +4,7 @@ import Collection from '../interfaces/Collections';
 import { useParams, Link } from 'react-router-dom';
 import { getURL } from "../../Garments/utils/getUrl";
 import { CollectionBox } from "./CollectionBox";
-import { GarmentBox } from "./garmentsBox";
+import { GarmentBox } from "./GarmentsBox";
 
 export const CollectionsDetails = () => {
     const { getOneCollection } = useCollection();

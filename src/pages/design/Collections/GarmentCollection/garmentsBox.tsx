@@ -1,12 +1,11 @@
 import { MdOutlineFileDownload } from "react-icons/md";
 import { getURL } from '../../Garments/utils/getUrl';
 import { getPattern } from '../../Garments/utils/getPattern';
-import { getGarment } from '../../Garments/interfaces/Garment';
+import { GarmentProps } from '../../Garments/interfaces/Garment';
 
-export const GarmentBox: React.FC<getGarment> = ({ garment, pattern, type, collection, size, imageUrl }) => {
+export const GarmentBox: React.FC<GarmentProps> = ({ garment, pattern, type, collection, size, imageUrl }) => {
    
-    const garmentImg = imageUrl;
-    const garmentImgUrl = getURL(garmentImg)
+    const garmentImgUrl = getURL(imageUrl)
     const patternUrl = getPattern(pattern)
     
     return (

@@ -4,14 +4,14 @@ import { useState, useEffect, useContext } from 'react';
 import CircularProgress from '@mui/material/CircularProgress';
 import { RefreshContext } from '../context/refresh';
 import { useGarment } from '../helpers/useGarment';
-import { getGarment } from './interfaces/Garment';
+import { GarmentProps } from './interfaces/Garment';
 import { CreateModal } from './CreateModal';
 
 export const GarmentsPage = () => {
   const {refresh} = useContext(RefreshContext)
   const { getAllGarments } = useGarment();
   const [loading, setLoading] = useState(true);
-  const [allGarments, setAllGarments] = useState<getGarment[]>([]);
+  const [allGarments, setAllGarments] = useState<GarmentProps[]>([]);
   const [searchTerm, setSearchTerm] = useState('');
   const [isOpen, setIsOpen] = useState(false);
   
