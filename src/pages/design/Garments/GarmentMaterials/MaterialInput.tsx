@@ -3,7 +3,6 @@ import { materialWrapper } from '../../Materials/interfaces/materialsWrapper';
 import { RefreshContext } from '../../context/refresh';
 import { useGarmentMaterials } from '../../helpers';
 import { useParams } from 'react-router-dom';
-import { garmentsMaterials } from '../interfaces/GarmentMaterial';
 
 export const MaterialInput: React.FC<materialWrapper> = ({ materials, setIsOpen }) => {
   const [selectedMaterials, setSelectedMaterials] = useState<{ id: number; quantity: string }[]>([]);
@@ -42,9 +41,7 @@ export const MaterialInput: React.FC<materialWrapper> = ({ materials, setIsOpen 
         quantity: parseInt(material.quantity) 
       }))
     });
-  
-    console.log(formattedData);
-  
+    
     createGarmentMaterial(formattedData)
       .then(() => {
         handleRefresh(); 

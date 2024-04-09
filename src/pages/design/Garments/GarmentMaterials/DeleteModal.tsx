@@ -3,13 +3,12 @@ import { useContext } from 'react';
 import { useGarmentMaterials } from '../../helpers';
 import { Modal } from '../../../../components/ui/modal/Modal';
 import { modalPropsCrud } from '../../interfaces/modalPropsCRUD';
-import { Link } from 'react-router-dom';
 
 export const DeleteModal: React.FC<modalPropsCrud> = ({id, isOpen, setIsOpen }) => {
     const { deleteGarmentsMaterials } = useGarmentMaterials();
     const { handleRefresh } = useContext(RefreshContext)
 
-    const handleDeleteMaterial = () => {
+    const handleDeleteMaterialGarment = () => {
         deleteGarmentsMaterials(id);
         handleRefresh();
         setIsOpen(false);
@@ -24,8 +23,8 @@ export const DeleteModal: React.FC<modalPropsCrud> = ({id, isOpen, setIsOpen }) 
                 </div>
 
                 <div className='modalDelete'>
-                    <Link to={'/diseno/prendas'} className='materiales_button' 
-                    onClick={handleDeleteMaterial}>Aceptar</Link>
+                    <button className='materiales_button' 
+                    onClick={handleDeleteMaterialGarment}>Aceptar</button>
 
                     <button className='materiales_button' 
                     onClick={() => setIsOpen(false)}>Cancelar</button>

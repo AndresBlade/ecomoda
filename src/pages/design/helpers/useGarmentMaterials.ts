@@ -1,5 +1,5 @@
-import { garmentsMaterials } from '../Garments/interfaces/GarmentMaterial';
 import { GarmentMaterialWrapper } from '../Garments/interfaces/GarmentMaterialWrapper';
+import { materialWrapper } from '../Materials/interfaces/materialsWrapper';
 
 export const useGarmentMaterials = () => {
     
@@ -29,13 +29,19 @@ export const useGarmentMaterials = () => {
 
     // ------------------------------------------------------------------------
 
-
+    const getOneGarmentMaterial = (id:string | undefined): Promise<GarmentMaterialWrapper> =>
+    fetch(`http://localhost:3000/api/garmentsmaterials/getonegarmentsmaterials/${id}`).then(
+        response => response.json() as Promise<GarmentMaterialWrapper>
+    );
 
     // ------------------------------------------------------------------------
 
-
+    const getUnusedGarmentMaterial = (id:string | undefined): Promise<materialWrapper> =>
+    fetch(`http://localhost:3000/api/garmentsmaterials/getunusedgarmentsmaterials/${id}`).then(
+        response => response.json() as Promise<materialWrapper>
+    );
 
   //---------------------------------------------------------------------------
 
-    return { getAllGarmentsMaterials, deleteGarmentsMaterials, createGarmentMaterial };
+    return { getAllGarmentsMaterials, deleteGarmentsMaterials, createGarmentMaterial, getOneGarmentMaterial, getUnusedGarmentMaterial };
 };

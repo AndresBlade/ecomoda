@@ -3,11 +3,15 @@ import { useState } from "react";
 import { garmentsMaterialsProps } from "../interfaces/GarmentMaterial";
 import { MdOutlineModeEdit, MdOutlineDelete  } from "react-icons/md";
 import { DeleteModal } from './DeleteModal';
+import { UpdateModal } from "./UpdateModal";
 
-export const MaterialsBox: React.FC<garmentsMaterialsProps> = ({ material, unit, quantity }) => {
-
+export const MaterialsBox: React.FC<garmentsMaterialsProps> = ({ id, material, unit, quantity }) => {
+    
+    const [isOpen, setIsOpen] = useState(false);
     const [isOpenDeleted, setIsOpenDeleted] = useState(false);
+
     const handleDeleteModal = () => setIsOpenDeleted(!isOpenDeleted);
+    const handleEditModal = () => setIsOpen(!isOpen);
 
     const quantityFormat = unit === "meters" ? "metros" : "unidades"
     return (
@@ -22,10 +26,12 @@ export const MaterialsBox: React.FC<garmentsMaterialsProps> = ({ material, unit,
                 <MdOutlineDelete/>
             </button>
             <button 
+                onClick={handleEditModal} 
                 className="btn-right info-box_btn">
                 <MdOutlineModeEdit/></button>
-        </div>        
-        <DeleteModal isOpen={isOpenDeleted} setIsOpen={setIsOpenDeleted} id={1}/>
+        </div>    
+        <UpdateModal isOpen={isOpen} setIsOpen={setIsOpen} id={id} quantity={quantity}/>    
+        <DeleteModal isOpen={isOpenDeleted} setIsOpen={setIsOpenDeleted} id={id}/>
     </section>
     );
 }

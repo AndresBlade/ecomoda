@@ -5,8 +5,8 @@ export const DesignPage = () => {
             <div className="design-index">
                 <div className="coleccion-materiales">
                     <div className="bloque-coleccion">
-                            <h2>Primavera</h2>
-                            <h3>Nueva Colección</h3>
+                            <h2>Nuevas Colecciones</h2>
+                            <h3>Primavera</h3>
                             <div className="cuadro-coleccion">
                             <img src="https://i.ibb.co/cDLnTvT/Sin-t-sstulo.png" alt="Imagen 1" className="imagen-producto"/>
                             <div className="contenedor-coleccion">
@@ -87,27 +87,6 @@ export const DesignPage = () => {
                     <div className="bloque-añadidos">
                         <h2>Materiales</h2>
                         <h3>Añadidos recientemente</h3>
-                        <nav className="materiales-recientes">
-                            <ul>
-                                <li>
-                                    <h4>Algodón</h4>
-                                    <h5>Es suave, transpirable y cómodo, ideal para ropa de verano y ropa interior.</h5>
-                                </li>
-                                <li>
-                                <h4>Seda</h4>
-                                    <h5>Suave y lujosa al tacto. Se utiliza en ropa de alta gama como vestidos y blusas.</h5>
-                                </li>
-                                <li>
-                                    <h4>Botones de Plástico</h4>
-                                    <h5>Pequeños botones de plástico con cuatro agujeros, hechos de poliacrilonitrilo.</h5>
-                                </li>
-                            </ul>
-                            </nav>
-                        </div>
-
-                        <div className="bloque-añadidos">
-                        <h2>Colecciones Creadas</h2>
-                        <h3>Añadidas recientemente</h3>
                         <nav className="materiales-recientes">
                             <ul>
                                 <li>

@@ -57,7 +57,7 @@ export const router = createBrowserRouter([
 					{ path: '/diseno/colecciones/:collectionId', element: <CollectionsDetails />},
 					{ path: '/diseno/prendas', element: <GarmentDataProvider> <GarmentsPage /> </GarmentDataProvider>},
 					{ path: '/diseno/materiales', element: <MaterialsPage /> },
-					{ path: '/diseno/prendas/:idgarment', element: <GarmentDataProvider><GarmentDetails /></GarmentDataProvider>},
+					{ path: '/diseno/prendas/:idgarment', element: <GarmentDataProvider><GarmentDetails /></GarmentDataProvider> },
 					{ path: '/diseno/categorias', element: <CategoriesPage /> },
 					{ path: '/diseno/tallas', element: <SizePage /> },
 					{
