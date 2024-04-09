@@ -5,7 +5,7 @@ import {
 	MdOutlineDesignServices,
 } from 'react-icons/md';
 import { AiOutlineInbox } from 'react-icons/ai';
-import { HiOutlineCollection } from 'react-icons/hi';
+import { HiOutlineCollection, HiUser } from 'react-icons/hi';
 import { LuShirt } from 'react-icons/lu';
 import { BiCategoryAlt } from 'react-icons/bi';
 import { GiClothes } from "react-icons/gi";
@@ -36,6 +36,7 @@ export const sidebarData = [
 				path: '/ventas/POS',
 				icon: <HiOutlineCollection size={20} />,
 			},
+			{ title: 'Cliente', path: '/ventas/clientes', icon: <HiUser /> },
 		],
 	},
 	{
