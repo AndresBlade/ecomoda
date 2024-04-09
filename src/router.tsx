@@ -6,6 +6,9 @@ import { getAllPOS } from './pages/sales/POS/helpers/getAllPOS';
 import { createPOS } from './pages/sales/POS/helpers/createPOS';
 import { updatePOS } from './pages/sales/POS/helpers/updatePOS';
 import { deletePOS } from './pages/sales/POS/helpers/deletePOS';
+import { createClient } from './pages/sales/clients/helpers/createClient';
+import { Client } from './pages/sales/clients/interfaces/Client';
+import { updateClient } from './pages/sales/clients/helpers/updateClient';
 
 export const router = createBrowserRouter([
 	{
@@ -16,7 +19,27 @@ export const router = createBrowserRouter([
 			{
 				path: 'ventas',
 				children: [
-					{ path: 'clientes', element: <ClientsPage /> },
+					{
+						path: 'clientes',
+						element: <ClientsPage />,
+						action: async ({ request }) => {
+							const formData = await request.formData();
+
+							const id = +(formData.get('id') as string);
+							const name = formData.get('name') as string;
+							const client: Client = { id, name };
+
+							if (request.method === 'POST')
+								return await createClient(client);
+
+							if (request.method === 'PUT')
+								return await updateClient(client);
+
+							return 'aguas';
+
+							// return await deletePOS(id);
+						},
+					},
 					{
 						path: 'POS',
 						element: <POSPage />,
