@@ -7,7 +7,7 @@ import {
 import { AiOutlineInbox } from 'react-icons/ai';
 import { HiOutlineCollection } from 'react-icons/hi';
 import { LuShirt } from 'react-icons/lu';
-import { BiCategoryAlt } from 'react-icons/bi';
+import { BiCategoryAlt, BiCheckDouble, BiHistory, BiHome, BiMoney, BiMoneyWithdraw, BiSolidUserAccount, BiUserPlus } from 'react-icons/bi';
 
 export const sidebarData = [
 	{
@@ -99,27 +99,27 @@ export const sidebarData = [
 			{
 				title: 'Main',
 				path: '/finanzas/Main',
-				icon: <HiOutlineCollection size={20} />,
-			},
-			{
-				title: 'Accept Loan',
-				path: '/finanzas/acceptLoan',
-				icon: <HiOutlineCollection size={20} />,
-			},
-			{
-				title: 'Account',
-				path: '/finanzas/account',
-				icon: <HiOutlineCollection size={20} />,
-			},
-			{
-				title: 'History',
-				path: '/finanzas/History',
-				icon: <HiOutlineCollection size={20} />,
+				icon: <BiHome size={20} />,
 			},
 			{
 				title: 'Loan',
 				path: '/finanzas/loan',
-				icon: <HiOutlineCollection size={20} />,
+				icon: <BiMoney size={20} />,
+			},
+			{
+				title: 'Account',
+				path: '/finanzas/account',
+				icon: <BiSolidUserAccount size={20} />,
+			},
+			{
+				title: 'Accept Loan',
+				path: '/finanzas/acceptLoan',
+				icon: <BiUserPlus size={20} />,
+			},			
+			{
+				title: 'History',
+				path: '/finanzas/History',
+				icon: <BiHistory size={20} />,
 			},
 			{
 				title: 'Request',
