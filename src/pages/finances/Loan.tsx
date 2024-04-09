@@ -41,16 +41,23 @@ export const Loan = () => {
         setError(false)
         clearInputs();
     };
+
+    const [isOpenRegister, setIsOpenRegister] = useState(false);
+
+    const handleToggleRegister = () => {
+        setIsOpenRegister(!isOpenRegister);
+    };
+
     return (
         <div className="principal-finances">  
-            <form ref={form} action="" method="post" onSubmit={handleSubmit}>
-
-                <div className="loan-creation"> {/* div for loan creation */}
-                    <div className="loan-creation__title">
-                        <h2>Crear Prestamo</h2>
-                    </div>
+            
+            <div className="loan-creation"> {/* div for loan creation */}
+                <div className={`loan-creation__title ${isOpenRegister ? "open-accordion__tittle" : "closed-accordion__tittle"}`} onClick={handleToggleRegister}>
+                    <h2>Crear Prestamo</h2>
+                </div>
+                <div className={`loan-creation__content ${isOpenRegister ? "open-accordion__content" : "closed-accordion__content"}`}>
+                    <form ref={form} action="" method="post" onSubmit={handleSubmit}>
                         <div className="loan-creation__elements">
-                        
                             <div className="loan-creation__container--input
                             loan-creation__container--input-descripcion">
                                 <Input onChange={
@@ -84,8 +91,10 @@ export const Loan = () => {
                             <Buttons onClick={clearInputs} type='reset' title='limpiar' children="Limpiar" className='button-finances'/>
                             <Buttons onClick={()=> setIsOpen(true)} type='button' title='consultar'children='Consultar' className='button-finances button-finances-grid'/>
                         </div>
-                    </div> 
-                </form>
+                    </form>
+                </div>
+            </div> 
+            
                     {/* Here end div Principal-Finances */}
                 <ApplicantData/>
         </div>

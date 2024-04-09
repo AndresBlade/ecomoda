@@ -680,17 +680,22 @@ img {
 .principal-finances{
 	display: flex;
 	justify-content: center;
-
+	width: 100%;
 }
 .request-table{
-	margin: 0 auto;
-	width: 80%;
+	display: flex;
+  flex-direction: column;
+  align-items: center;
+	width: 100%;
 }
 .loan-creation {
-	background-color: #ffffff;
+	position: relative;
+  	margin-bottom: 1rem;
+	width: 100%;
 }
 .loan-creation__title {
 	display: flex;
+	position: relative;
 	place-content: center;
 	height: 6rem;
 	border-radius: 1rem;
@@ -698,7 +703,35 @@ img {
 	margin: 0 auto;
 	margin-top: 2rem;
 	box-shadow: 0 1rem 0.5rem #e5e5e5;
+	z-index: 2;
+	cursor: pointer;
+	width: 100%;
 }
+.loan-creation__content{
+	display: flex;
+	position: relative;
+	flex-direction: column;
+	align-items: center;
+	margin-top: -1rem;
+	padding-top: 2rem;
+	background-color: rgb(255, 255, 255);
+	border-bottom-left-radius: 1rem;
+	border-bottom-right-radius: 1rem;
+	z-index: 1;
+	max-height: 0;
+	overflow: hidden;
+	overflow-x: auto;
+	transition: max-height 0.75s ease;
+	width: 100%;
+}
+.loan-creation__title.open-accordion__tittle{
+	box-shadow: 0 0rem 0rem #e5e5e5;
+}
+
+.loan-creation__content.open-accordion__content {
+	max-height: 100%;
+	box-shadow: 0 1rem 0.5rem #e5e5e5;
+  }
 .loan-creation__elements{
 	display: flex;
 	flex-direction: column;
@@ -717,6 +750,16 @@ img {
 	margin-right: 1rem;
 }
 
+.account-register{
+	position: relative;
+  	margin-bottom: 1rem;
+	  display: flex;
+	  flex-direction: column;
+	  align-items: center;
+	  width: 100%;
+	  
+}
+
 
 .loan__creation--input,
 .account-register__description{
@@ -724,6 +767,7 @@ img {
 	border-color: #fca311;
 	border-width: 0 0 0.2rem 0;
 	box-shadow: 0 1rem 0.5rem #e5e5e5;
+	margin-bottom: 1rem;
 }
 .loan-creation__input-submit {
 	display: flex;
@@ -742,6 +786,7 @@ img {
 	width: 15rem;
 	margin-right: 1rem;
 	margin-top: 2rem;
+	margin-bottom: 1rem;
 	padding: 0.5rem;
 }
 
@@ -855,23 +900,53 @@ height: 100%;
 }
 /*FIN*/
 .applicant-data {
-	background-color: #ffffff;
+	position: relative;
+  	margin-bottom: 1rem;
 	margin-left: 2rem;
+	margin-right: 1rem;
 	width: 100%;
 }
 .applicant-data__input {
 	margin-top: 2rem;
 }
 .applicant-data__tittle{
-	margin-top: 2rem;
+	display: flex;
+	position: relative;
+	place-content: center;
 	text-align: center;
+	height: 6rem;
 	border-radius: 1rem;
 	background-color: var(--primaryYellow);
+	margin-top: 2rem;
 	margin-right: 3rem;
-	box-shadow: 0 1rem 0.5rem #e5e5e5;
-	width: 20rem;
-	height: 6rem;
+	margin-top: 2rem;
+	box-shadow: 0 1rem 0.5rem #e5e5e5;	
+	z-index: 2;
+	cursor: pointer;
+	width: 100%;
+	
 }
+.applicant-data__content{
+	display: flex;
+	position: relative;
+	flex-direction: column;
+	align-items: center;
+	margin-top: -1rem;
+	padding-top: 2rem;
+	background-color: rgb(255, 255, 255);
+	border-bottom-left-radius: 1rem;
+	border-bottom-right-radius: 1rem;
+	z-index: 1;
+	max-height: 0;
+	overflow: hidden;
+	transition: max-height 0.75s ease;
+	
+}
+.applicant-data__content.open-accordion__content {
+	max-height: 100%;
+	box-shadow: 0 1rem 0.5rem #e5e5e5;
+  }
+
 .applicant-data__flex {
 	display: flex;
 	align-items: center;
@@ -910,7 +985,22 @@ height: 100%;
 .modal-table{
 	display: flex;
 	flex-direction: column;
+	overflow: scroll;
+	width: 100%;
+	border-collapse: collapse;
+
 }
+.modal-table.open-accordion__content {
+	max-height: 100%;
+	box-shadow: 0 1rem 0.5rem #e5e5e5;
+  }
+
+  .modal-table th,
+.modal-table td {
+  padding: 1rem;
+  text-align: left;
+}
+
 .modal-table__thead,
 /* .table{
 	display: flex;
@@ -937,6 +1027,7 @@ thead{
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
+	margin-bottom: 1rem;
 }
 .modal-content{
 	display: flex;
@@ -1164,6 +1255,7 @@ thead{
 	gap: 1rem;
 }
 .request-type__table{
+	position: relative;
 	grid-column: 1/3;
 }
 .account{
@@ -1174,14 +1266,30 @@ thead{
 	gap: 1rem;
 }
 .account-table{
+	position: relative;
 	grid-column: 1/3;
 }
 .account-register__elements{
 	display: flex;
+	position: relative;
 	flex-direction: column;
 	align-items: center;
-	margin-top: 2rem;
+	margin-top: -1rem;
+	padding-top: 2rem;
+	background-color: rgb(255, 255, 255);
+	border-bottom-left-radius: 1rem;
+	border-bottom-right-radius: 1rem;
+	z-index: 1;
+	max-height: 0;
+	overflow: hidden;
+	transition: max-height 0.75s ease;
+	width: 100%;
 }
+.account-register__elements.open-accordion__content {
+	max-height: 100%;
+	box-shadow: 0 1rem 0.5rem #e5e5e5;
+  }
+
 .account-buttons__filter{
 	padding: 1rem;
 	display: flex;
@@ -1217,10 +1325,6 @@ thead{
 	}
 }
 @media (width >= 950px) {
-	.principal-finances{
-		transform: scale(1.1);
-
-	}
 	.loan-creation__elements {
 		padding: 2rem;
 		margin: 0 auto;
@@ -1242,3 +1346,14 @@ thead{
 		grid-column: 1/3;
 	}
 }
+
+@media (max-width: 768px) {
+	.modal-table {
+	  width: 100%;
+	}
+	
+	.modal-table th,
+	.modal-table td {
+	  padding: 0.5rem;
+	}
+  }
