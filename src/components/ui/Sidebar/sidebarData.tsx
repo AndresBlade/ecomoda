@@ -97,10 +97,36 @@ export const sidebarData = [
 		iconClosed: <MdKeyboardArrowDown size={20} />,
 		Subnav: [
 			{
-				title: 'Opcion',
-				path: '/',
+				title: 'Main',
+				path: '/finanzas/Main',
 				icon: <HiOutlineCollection size={20} />,
 			},
+			{
+				title: 'Accept Loan',
+				path: '/finanzas/acceptLoan',
+				icon: <HiOutlineCollection size={20} />,
+			},
+			{
+				title: 'Account',
+				path: '/finanzas/account',
+				icon: <HiOutlineCollection size={20} />,
+			},
+			{
+				title: 'History',
+				path: '/finanzas/History',
+				icon: <HiOutlineCollection size={20} />,
+			},
+			{
+				title: 'Loan',
+				path: '/finanzas/loan',
+				icon: <HiOutlineCollection size={20} />,
+			},
+			{
+				title: 'Request',
+				path: '/finanzas/requestType',
+				icon: <HiOutlineCollection size={20} />,
+			}
+			
 		],
 	},
 ];
