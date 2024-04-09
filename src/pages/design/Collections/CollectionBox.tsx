@@ -29,8 +29,8 @@ export const CollectionBox: React.FC<Collection> = ({id, garmentCount, collectio
                         <Link className='button-collection' to={`${id}`}>Ver prendas</Link>
                         <button onClick={handleDeleteModal}>Borrar</button>
                     </div>
-                    <DeleteModal isOpen={isOpenDeleted} setIsOpen={setIsOpenDeleted} />
-                    <UpdateModal id={id} updatedAt={new Date} collection={collection} standard_quantity={standard_quantity} isOpen={isOpen} setIsOpen={setIsOpen} />
+                    <DeleteModal id={id} isOpen={isOpenDeleted} setIsOpen={setIsOpenDeleted} />
+                    <UpdateModal id={id} updatedAt={new Date} collection={collection} standard_quantity={standard_quantity} isOpen={isOpen} setIsOpen={setIsOpen}/>
             </div>
         </div>
     </article>

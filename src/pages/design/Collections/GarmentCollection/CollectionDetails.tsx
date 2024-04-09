@@ -4,7 +4,7 @@ import Collection from '../interfaces/Collections';
 import { useParams, Link } from 'react-router-dom';
 import { getURL } from "../../Garments/utils/getUrl";
 import { CollectionBox } from "./CollectionBox";
-import { GarmentBox } from "./GarmentsBox";
+import { GarmentBox } from "./garmentsBox";
 
 export const CollectionsDetails = () => {
     const { getOneCollection } = useCollection();
@@ -24,6 +24,7 @@ export const CollectionsDetails = () => {
 
     const firstGarmentImage = collectionData?.GarmentModels?.[0]?.GarmentImagenModels?.[1]?.URL || 'http://localhost:3000/default/not-found.webp';
     const imageUrl = getURL(firstGarmentImage);
+
     return (
         <section>
         <h1>{`Prendas de ${collectionData?.collection}`}</h1>
@@ -40,11 +41,11 @@ export const CollectionsDetails = () => {
                 {collectionData?.GarmentModels && collectionData.GarmentModels.map((garment, index) => (
                     <GarmentBox
                         key={index}
-                        garment={garment.garment}
+                        garment={garment.garment || ""}
                         pattern={garment.pattern || ""}
                         type={garment.GarmentTypeModel?.type || ""}
                         size={garment.SizeModel?.size || ""}
-                        collection={collectionData.collection}
+                        collection={collectionData.collection || ""}
                         imageUrl={garment.GarmentImagenModels?.[1]?.URL || "http://localhost:3000/default/not-found.webp"}
                     />
                 ))}

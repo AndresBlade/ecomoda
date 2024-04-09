@@ -26,6 +26,7 @@ export const CollectionsPage = () => {
         getAllCollection()
             .then(data => {
                 const collectionData = data.collections;
+                console.log('aca',collectionData)
                 const modifiedCollection = collectionData.map(collection => {
                     const { id, collection: collectionName, standard_quantity, createdAt } = collection;
 

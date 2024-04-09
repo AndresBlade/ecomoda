@@ -14,7 +14,6 @@ export const CreateForm: React.FC<CreateFormProps> = ({ collections, sizes, garm
   
   const [patternFile, setPatternFile] = useState<FileList | null>(null);
   const [selectedFiles, setSelectedFiles] = useState<FileList | null>(null);
-  const [errorMsg, setErrorMsg] = useState('invisibleMsg');
 
   const handleCollectionSelectChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setSelectedCollectionId(parseInt(e.target.value));

@@ -21,7 +21,7 @@ export const useCollection = () => {
 
     const deleteCollection = (collectionId: number | undefined) =>
 	fetch(`http://localhost:3000/api/collection/deletecollection/${collectionId}`, {
-		method: 'DELETE',
+		method: 'PUT',
 	}).then(response => response.json());
 
     // ------------------------------------------------------------------------
