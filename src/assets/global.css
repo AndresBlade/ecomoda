@@ -1572,9 +1572,21 @@ input:checked + .slider:before {
 	font-size: 18px;
 }
 
+.inputMaterial-box{
+	display: flex;
+	gap: 1rem;
+	flex-wrap: wrap;
+	justify-content: center;
+}
 
+.info-box_container{
+	display: flex;
+	gap: 1rem;
+}
 
-
+.info-box_number{
+	width: 100%;
+}
 /* ---------------------------- */
 
 /* POS styles */
@@ -1626,6 +1638,7 @@ input:checked + .slider:before {
 
 .modal__close-button {
 	align-self: end;
+	margin-top: 1rem;
 	right: 0.5rem;
 	border: none;
 	width: 4rem;

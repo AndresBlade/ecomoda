@@ -17,6 +17,7 @@ export const CreateModal: React.FC<modalPropsCrud> = ({isOpen, setIsOpen}) => {
                 <article>
                     <MaterialInput 
                         materials={materialData}
+                        setIsOpen={setIsOpen}
                     />
                 </article>
             </section>

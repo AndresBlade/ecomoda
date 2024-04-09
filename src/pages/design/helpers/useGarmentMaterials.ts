@@ -10,6 +10,15 @@ export const useGarmentMaterials = () => {
         
     // ------------------------------------------------------------------------
 
+    const createGarmentMaterial = (data: string): Promise<GarmentMaterialWrapper> => {
+        return fetch('http://localhost:3000/api/garmentsmaterials/creategarmentsmaterials', {
+            body: data,
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+        }).then(response => response.json() as Promise<GarmentMaterialWrapper>);
+      };
 
     // ------------------------------------------------------------------------
 
@@ -28,5 +37,5 @@ export const useGarmentMaterials = () => {
 
   //---------------------------------------------------------------------------
 
-    return { getAllGarmentsMaterials, deleteGarmentsMaterials };
+    return { getAllGarmentsMaterials, deleteGarmentsMaterials, createGarmentMaterial };
 };
