@@ -1,8 +1,9 @@
 import { createBrowserRouter } from 'react-router-dom';
 import { ClientsPage, POSPage } from './pages';
 import { App } from './App';
-import { MaterialsPage, CollectionsPage, GarmentsPage, SizePage, CategoriesPage, DesignPage } from './pages';
- import { getAllPOS } from './pages/sales/POS/helpers/getAllPOS';
+import { MaterialsPage, CollectionsPage, GarmentsPage, SizePage, CategoriesPage, DesignPage, CollectionsDetails, GarmentDetails } from './pages';
+import { GarmentDataProvider } from './pages/design/context/garmentProps';
+import { getAllPOS } from './pages/sales/POS/helpers/getAllPOS';
 import { createPOS } from './pages/sales/POS/helpers/createPOS';
 import { updatePOS } from './pages/sales/POS/helpers/updatePOS';
 import { deletePOS } from './pages/sales/POS/helpers/deletePOS';
@@ -82,12 +83,13 @@ export const router = createBrowserRouter([
 			{
 				path: 'diseno',
 				children: [
-					{ path: '/diseno/colecciones', element: <CollectionsPage /> },
-					{ path: '/diseno/prendas', element: <GarmentsPage /> },
+					{ path: '/diseno/colecciones', element: <CollectionsPage />},
+					{ path: '/diseno/colecciones/:collectionId', element: <CollectionsDetails />},
+					{ path: '/diseno/prendas', element: <GarmentDataProvider> <GarmentsPage /> </GarmentDataProvider>},
 					{ path: '/diseno/materiales', element: <MaterialsPage /> },
+					{ path: '/diseno/prendas/:idgarment', element: <GarmentDataProvider><GarmentDetails /></GarmentDataProvider> },
 					{ path: '/diseno/categorias', element: <CategoriesPage /> },
 					{ path: '/diseno/tallas', element: <SizePage /> },
-					{ index: true, element: <div>En departamento de diseno</div>},
 					{
 						index: true,
 						element:  <DesignPage />,

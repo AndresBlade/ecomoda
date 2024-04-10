@@ -26,7 +26,7 @@ export const MaterialBox: React.FC<materials> = ({ id, material, description, un
             </div>
 
             <div className="seccion">
-                <label className="medida-materiales">CM | M</label> 
+                <label className="medida-materiales">M</label> 
                 <label className="switch">
                     <span className={`slider round ${sliderActive}`}></span>
                 </label>
