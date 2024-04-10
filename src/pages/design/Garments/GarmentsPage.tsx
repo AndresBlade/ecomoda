@@ -14,6 +14,8 @@ export const GarmentsPage = () => {
   const [allGarments, setAllGarments] = useState<GarmentProps[]>([]);
   const [searchTerm, setSearchTerm] = useState('');
   const [isOpen, setIsOpen] = useState(false);
+  const [sizeFilters, setSizeFilters] = useState<string[]>([]);
+  const [typeFilters, setTypeFilters] = useState<string[]>([]);
   
   const handleCreateModal = () => {
     setIsOpen(!isOpen);
@@ -53,8 +55,10 @@ export const GarmentsPage = () => {
   }, [refresh]);
 
   const filteredGarments = allGarments.filter(garment =>
-    garment.garment.toLowerCase().includes(searchTerm.toLowerCase())
-  );
+    garment.garment.toLowerCase().includes(searchTerm.toLowerCase()) &&
+    (sizeFilters.length === 0 || sizeFilters.includes(garment.size)) &&
+    (typeFilters.length === 0 || typeFilters.includes(garment.type))
+);
 
 	return (
       <section>
@@ -98,7 +102,24 @@ export const GarmentsPage = () => {
                       )
                   )}
               </section>
-            <GarmentFilter />
+              <GarmentFilter
+                    onSizeFilterChange={(e) => {
+                        const size = e.target.value;
+                        if (sizeFilters.includes(size)) {
+                            setSizeFilters(sizeFilters.filter(item => item !== size));
+                        } else {
+                            setSizeFilters([...sizeFilters, size]);
+                        }
+                    }}
+                    onTypeFilterChange={(e) => {
+                        const type = e.target.value;
+                        if (typeFilters.includes(type)) {
+                            setTypeFilters(typeFilters.filter(item => item !== type));
+                        } else {
+                            setTypeFilters([...typeFilters, type]);
+                        }
+                    }}
+                />
           </article>                                              
         </section>
     );

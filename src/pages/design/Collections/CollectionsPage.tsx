@@ -1,4 +1,3 @@
-import { FiltersBox } from './FiltersBox';
 import { CollectionBox } from './CollectionBox';
 import { useCollection } from '../helpers/useCollection';
 import { CreateModal } from './CreateModal';
@@ -79,7 +78,6 @@ export const CollectionsPage = () => {
             </article>
 
             <article className="collectionsContainer">
-                <FiltersBox />
                 {loading ? 
                 (<div className='NotFound'><CircularProgress color="primary" /></div>)
                 : (

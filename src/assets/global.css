@@ -1173,7 +1173,6 @@ input:checked + .slider:before {
 	display: flex;
 	flex-wrap: wrap;
 	justify-content:space-around;
-	width: 100%;
 	height: auto;
 	gap: 1rem;
 	border: none;
@@ -1441,9 +1440,6 @@ input:checked + .slider:before {
 	@media (width >= 950px) {
 		.garmentContainer{
 			flex-direction: row;
-		}
-		.cuadricula-prenda {
-			justify-content: inherit;
 		}
 		.garmentContainer_form {
 		flex-direction: row;
