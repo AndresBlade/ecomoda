@@ -1,41 +1,41 @@
 import { useState } from 'react';
 import { Modal } from '../../../components/ui/modal/Modal';
 import { useForm } from '../../../hooks/useForm';
-import { useFetcher /*useLoaderData*/ } from 'react-router-dom';
+import { useFetcher, useLoaderData } from 'react-router-dom';
 // import { POSList } from './POSList';
 // import { POSWrapper } from './interfaces/POSWrapper';
-import posCss from './assets/client.module.css';
-import { ClientFormType } from './types/ClientFormType';
+import posCss from './assets/clients.module.css';
+import { ClientsWrapper } from './interfaces/ClientsWrapper';
+import { ClientList } from './ClientList';
+import { Client } from './interfaces/Client';
+import { FormType } from '../../../types/FormType';
 
 export const ClientsPage = () => {
 	const fetcher = useFetcher();
 	const [modalIsOpen, setmodalIsOpen] = useState(false);
-	const [form, setForm] = useState<ClientFormType>({ method: 'POST' });
-	const { onInputChange, name, cedula } = useForm({
+	const [form, setForm] = useState<FormType<Client>>({ method: 'POST' });
+	const { onInputChange, name, id } = useForm({
 		name: '',
-		cedula: '',
+		id: '',
 	});
 
-	// const { stores: pointsOfSale } = useLoaderData() as POSWrapper;
+	const { clients } = useLoaderData() as ClientsWrapper;
 	return (
 		<>
 			<h1 className={posCss.title}>Lista de Clientes</h1>
-			{
-				/* {pointsOfSale.length ? (
-				<POSList
+
+			{clients.length ? (
+				<ClientList
 					setModalIsOpen={setmodalIsOpen}
-					pointsOfSale={pointsOfSale}
+					clients={clients}
 					setForm={setForm}
 				/>
 			) : (
-				*/
 				<>
 					Todavía no has creado un cliente. clickea en 'Crear Cliente'
 					para comenzar!
 				</>
-				/*
-			)} */
-			}
+			)}
 
 			<button
 				className={`${posCss['button']} ${posCss['button--corner-fixed']}`}
@@ -62,12 +62,12 @@ export const ClientsPage = () => {
 							cliente{' '}
 							{form.method === 'POST'
 								? ''
-								: `de ID ${form.client.id}`}
+								: `de cédula ${form.value.id}`}
 						</h2>
 						{form.method !== 'POST' && (
 							<input
 								type="hidden"
-								value={form.client.id}
+								value={form.value.id}
 								name="id"
 							></input>
 						)}
@@ -75,18 +75,18 @@ export const ClientsPage = () => {
 							<fieldset className={`${posCss['form__fieldset']}`}>
 								<div className={posCss['form__field-wrapper']}>
 									<label
-										htmlFor="cedula"
+										htmlFor="id"
 										className={posCss['form__label']}
 									>
 										Cédula
 									</label>
 									<input
 										required
-										id="cedula"
-										name="cedula"
+										id="id"
+										name="id"
 										type="number"
 										className={posCss['form__input']}
-										value={cedula}
+										value={id}
 										onChange={onInputChange}
 									/>
 								</div>

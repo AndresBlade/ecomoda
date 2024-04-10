@@ -89,7 +89,7 @@
 	border-bottom: #e5e5e5 solid 2px;
 }
 
-.POS__headers {
+.clients__headers {
 	display: flex;
 	background-color: var(--primaryYellow);
 	width: 100%;
@@ -100,12 +100,12 @@
 	border-radius: 1rem 1rem 0 0;
 }
 
-.POS__header {
+.clients__header {
 	flex: 1 1 20rem;
 	text-align: center;
 }
 
-.POS {
+.clients {
 	display: flex;
 	flex-direction: column;
 	border-radius: 0 0 1rem 1rem;

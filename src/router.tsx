@@ -9,6 +9,8 @@ import { deletePOS } from './pages/sales/POS/helpers/deletePOS';
 import { createClient } from './pages/sales/clients/helpers/createClient';
 import { Client } from './pages/sales/clients/interfaces/Client';
 import { updateClient } from './pages/sales/clients/helpers/updateClient';
+import { getAllClients } from './pages/sales/clients/helpers/getAllClients';
+import { deleteClient } from './pages/sales/clients/helpers/deleteClient';
 
 export const router = createBrowserRouter([
 	{
@@ -22,6 +24,11 @@ export const router = createBrowserRouter([
 					{
 						path: 'clientes',
 						element: <ClientsPage />,
+						loader: async () => {
+							const clientsWrapper = await getAllClients();
+
+							return clientsWrapper;
+						},
 						action: async ({ request }) => {
 							const formData = await request.formData();
 
@@ -29,15 +36,15 @@ export const router = createBrowserRouter([
 							const name = formData.get('name') as string;
 							const client: Client = { id, name };
 
+							console.log(client);
+
 							if (request.method === 'POST')
 								return await createClient(client);
 
 							if (request.method === 'PUT')
 								return await updateClient(client);
 
-							return 'aguas';
-
-							// return await deletePOS(id);
+							return await deleteClient(id);
 						},
 					},
 					{
