@@ -14,7 +14,6 @@ export const GarmentBox: React.FC<GarmentProps> = ({ id, garment, pattern, type,
    
     const garmentImagesUrl: GarmentImageModel[] = images ? images.map(image => ({ imgUrl: getURL(image.URL) })) : [];
     const patternUrl = getPattern(pattern)
-    console.log(garmentImagesUrl)
     
     return (
         <article className="cuadrante-max cuadrante">

@@ -49,9 +49,9 @@ export const GarmentDetails = () => {
                         id={garmentData.id}
                         garment={garmentData.garment}
                         pattern={garmentData.pattern}
-                        type={garmentData.GarmentTypeModel.type}
-                        collection={garmentData.CollectionModel.collection}
-                        size={garmentData.SizeModel.size}
+                        type={garmentData.GarmentTypeModel?.type ?? 'N/A'}                        
+                        collection={garmentData.CollectionModel?.collection ?? 'N/A'}
+                        size={garmentData.SizeModel?.size ?? 'N/A'}
                         images={garmentData.GarmentImagenModels}
                     />
                 )}

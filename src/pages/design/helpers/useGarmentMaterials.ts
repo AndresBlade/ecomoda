@@ -24,7 +24,7 @@ export const useGarmentMaterials = () => {
 
     const deleteGarmentsMaterials = (idgarmentsmaterials: number | undefined) =>
 	fetch(`http://localhost:3000/api/garmentsmaterials/deletegarmentsmaterials/${idgarmentsmaterials}`, {
-		method: 'DELETE',
+		method: 'PUT',
 	}).then(response => response.json());
 
     // ------------------------------------------------------------------------
@@ -36,7 +36,7 @@ export const useGarmentMaterials = () => {
 
     // ------------------------------------------------------------------------
 
-    const getUnusedGarmentMaterial = (id:string | undefined): Promise<materialWrapper> =>
+    const getUnusedGarmentMaterial = (id:number | undefined): Promise<materialWrapper> =>
     fetch(`http://localhost:3000/api/garmentsmaterials/getunusedgarmentsmaterials/${id}`).then(
         response => response.json() as Promise<materialWrapper>
     );
