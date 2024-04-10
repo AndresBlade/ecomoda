@@ -22,6 +22,20 @@ export const useGarmentMaterials = () => {
 
     // ------------------------------------------------------------------------
 
+    const updateGarmentMaterial = (id: number | undefined, quantity: number): Promise<GarmentMaterialWrapper> => {
+        const data = {
+            quantity: quantity
+        };
+    
+        return fetch(`http://localhost:3000/api/garmentsmaterials/updategarmentsmaterials/${id}`, {
+            body: JSON.stringify(data),
+            method: 'PUT',
+            headers: { 'Content-Type': 'application/json' },
+        }).then(response => response.json() as Promise<GarmentMaterialWrapper>);
+    };
+
+    // ------------------------------------------------------------------------
+
     const deleteGarmentsMaterials = (idgarmentsmaterials: number | undefined) =>
 	fetch(`http://localhost:3000/api/garmentsmaterials/deletegarmentsmaterials/${idgarmentsmaterials}`, {
 		method: 'PUT',
@@ -36,12 +50,18 @@ export const useGarmentMaterials = () => {
 
     // ------------------------------------------------------------------------
 
-    const getUnusedGarmentMaterial = (id:number | undefined): Promise<materialWrapper> =>
+    const getUnusedGarmentMaterial = (id:string | undefined): Promise<materialWrapper> =>
     fetch(`http://localhost:3000/api/garmentsmaterials/getunusedgarmentsmaterials/${id}`).then(
         response => response.json() as Promise<materialWrapper>
     );
 
   //---------------------------------------------------------------------------
 
-    return { getAllGarmentsMaterials, deleteGarmentsMaterials, createGarmentMaterial, getOneGarmentMaterial, getUnusedGarmentMaterial };
+    return { 
+        getAllGarmentsMaterials, 
+        deleteGarmentsMaterials, 
+        createGarmentMaterial,
+        getOneGarmentMaterial, 
+        getUnusedGarmentMaterial, 
+        updateGarmentMaterial };
 };

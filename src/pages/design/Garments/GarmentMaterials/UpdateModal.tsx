@@ -5,14 +5,14 @@ import { useGarmentMaterials } from '../../helpers';
 import { updateGarmentMaterialProps } from '../interfaces/UpdateProps';
 
 export const UpdateModal: React.FC<updateGarmentMaterialProps> = ({ id, isOpen, setIsOpen, quantity }) => {
-    const { updateCollection } = useGarmentMaterials();
+    const { updateGarmentMaterial } = useGarmentMaterials();
     const { handleRefresh } = useContext(RefreshContext);
 
     const [updateQuantity, setUpdateQuantity] = useState<string>(quantity.toString());
 
     const handleUpdateMaterial = () => {
         const quantityInt = parseInt(updateQuantity);
-        updateCollection(id, quantityInt) 
+        updateGarmentMaterial(id, quantityInt) 
             .then(() => {
                 handleRefresh();
                 setIsOpen(false);
@@ -29,7 +29,8 @@ export const UpdateModal: React.FC<updateGarmentMaterialProps> = ({ id, isOpen, 
                     <span>Edita la cantidad</span>
                 </div>
                 <input
-                    type="text"
+                    className='garmentQuantity'
+                    type="number"
                     value={updateQuantity}
                     onChange={(e) => setUpdateQuantity(e.target.value)}
                 /> 

@@ -59,7 +59,7 @@ export const GarmentDetails = () => {
                 <button className='materiales_button' onClick={handleCreateModal}>Añadir Materiales</button>
                 <CreateModal setIsOpen={setIsOpen} isOpen={isOpen} />
 
-                <div className="cuadricula-prenda">
+                <div className="material-prenda cuadricula-prenda">
                     {materialsGarmentData && materialsGarmentData.map(material => (
                         <MaterialsBox 
                         key={material.id}
