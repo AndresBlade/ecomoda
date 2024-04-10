@@ -25,9 +25,6 @@ export const Modal = ({ children, isOpen, setIsOpen }: ModalProps) => {
 			return;
 		}
 
-		console.log(isOpen);
-
-		console.log('cerrando');
 		dialogRef.current?.close();
 		document.removeEventListener('keydown', closeModalWithKeyboard);
 	}, [isOpen, closeModalWithKeyboard]);

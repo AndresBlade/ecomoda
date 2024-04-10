@@ -1,5 +1,11 @@
 import { createBrowserRouter } from 'react-router-dom';
 import { ClientsPage, POSPage } from './pages';
+import { Loan } from './pages/finances/Loan'
+import RequestType from './pages/finances/RequestType';
+import Account from './pages/finances/Account';
+import HistoryComponent from './pages/finances/History';
+import AcceptLoan from './pages/finances/AcceptLoan';
+import Main from './pages/finances/Main';
 import { App } from './App';
 import { MaterialsPage, CollectionsPage, GarmentsPage, SizePage, CategoriesPage, DesignPage, CollectionsDetails, GarmentDetails } from './pages';
 import { GarmentDataProvider } from './pages/design/context/garmentProps';
@@ -78,7 +84,16 @@ export const router = createBrowserRouter([
 			},
 			{ path: 'compras', element: <>En compras</> },
 			{ path: 'RRHH', element: <>En RRHH</> },
-			{ path: 'finanzas', element: <>En finanzas</> },
+			{ path: 'finanzas', children: [
+				{ path: "loan", element: <Loan /> },
+				{ path: "account", element: <Account /> },
+				{ path: "History", element: <HistoryComponent />},
+				{ path: "requestType", element: <RequestType />},
+				{path: "acceptLoan", element: <AcceptLoan />},
+				{path: "main", element: <Main/>},
+				{ index: true, element: <>En finanzas</> },
+
+			], },
 			{ path: 'produccion', element: <>En producción</> },
 			{
 				path: 'diseno',

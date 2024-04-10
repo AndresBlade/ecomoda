@@ -7,9 +7,17 @@ import {
 import { AiOutlineInbox } from 'react-icons/ai';
 import { HiOutlineCollection, HiUser } from 'react-icons/hi';
 import { LuShirt } from 'react-icons/lu';
-import { BiCategoryAlt } from 'react-icons/bi';
-import { GiClothes } from "react-icons/gi";
-
+import {
+	BiCategoryAlt,
+	BiCheckDouble,
+	BiHistory,
+	BiHome,
+	BiMoney,
+	BiMoneyWithdraw,
+	BiSolidUserAccount,
+	BiUserPlus,
+} from 'react-icons/bi';
+import { GiClothes } from 'react-icons/gi';
 
 export const sidebarData = [
 	{
@@ -105,8 +113,33 @@ export const sidebarData = [
 		iconClosed: <MdKeyboardArrowDown size={20} />,
 		Subnav: [
 			{
-				title: 'Opcion',
-				path: '/',
+				title: 'Main',
+				path: '/finanzas/Main',
+				icon: <BiHome size={20} />,
+			},
+			{
+				title: 'Loan',
+				path: '/finanzas/loan',
+				icon: <BiMoney size={20} />,
+			},
+			{
+				title: 'Account',
+				path: '/finanzas/account',
+				icon: <BiSolidUserAccount size={20} />,
+			},
+			{
+				title: 'Accept Loan',
+				path: '/finanzas/acceptLoan',
+				icon: <BiUserPlus size={20} />,
+			},
+			{
+				title: 'History',
+				path: '/finanzas/History',
+				icon: <BiHistory size={20} />,
+			},
+			{
+				title: 'Request',
+				path: '/finanzas/requestType',
 				icon: <HiOutlineCollection size={20} />,
 			},
 		],
