@@ -15,7 +15,7 @@ export const CreateModal: React.FC<modalPropsCrud> = ({isOpen, setIsOpen}) => {
     const { idgarment } = useParams();
 
     useEffect(() => {
-        getUnusedGarmentMaterial(idgarment)
+        getUnusedGarmentMaterial(parseInt(idgarment))
             .then(data => {
                 const materialsData = data.unusedMaterials;
                 setUnusedMaterial(materialsData);

@@ -20,7 +20,7 @@ export const useMaterials = () => {
 
     const deleteMaterial = (materialId: number | undefined) =>
 	fetch(`http://localhost:3000/api/materials/deletematerial/${materialId}`, {
-		method: 'DELETE',
+		method: 'PUT',
 	}).then(response => response.json());
 
     // ------------------------------------------------------------------------

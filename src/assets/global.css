@@ -1173,12 +1173,23 @@ input:checked + .slider:before {
 	display: flex;
 	flex-wrap: wrap;
 	justify-content:space-around;
-	width: 100%;
 	height: auto;
 	gap: 1rem;
 	border: none;
   }
+
+.material-prenda.cuadricula-prenda{
+	justify-content: inherit;
+	gap: 2rem;
+}
   
+.garmentQuantity{
+	padding: 1rem;
+	border-radius: 12px;
+	border: 1px solid #ccc;
+	margin-bottom: 2rem;
+}
+
   .cuadrante {
 	position: relative;
 	width: 15em;
@@ -1442,9 +1453,6 @@ input:checked + .slider:before {
 		.garmentContainer{
 			flex-direction: row;
 		}
-		.cuadricula-prenda {
-			justify-content: inherit;
-		}
 		.garmentContainer_form {
 		flex-direction: row;
 		}
@@ -1576,6 +1584,7 @@ input:checked + .slider:before {
 	gap: 1rem;
 	flex-wrap: wrap;
 	justify-content: center;
+	margin-bottom: 2rem;
 }
 
 .info-box_container{

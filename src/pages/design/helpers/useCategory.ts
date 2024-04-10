@@ -20,7 +20,7 @@ export const useCategory = () => {
 
     const deleteCategories = (categoryId: number | undefined) =>
 	fetch(`http://localhost:3000/api/GarmentType/deletetype/${categoryId}`, {
-		method: 'DELETE',
+		method: 'PUT',
 	}).then(response => response.json());
 
     // ------------------------------------------------------------------------

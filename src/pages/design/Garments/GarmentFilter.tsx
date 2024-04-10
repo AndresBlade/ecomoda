@@ -1,4 +1,8 @@
-export const GarmentFilter = () => {
+import { useGarmentData } from "./utils/useGarmentData";
+
+export const GarmentFilter = ({ onSizeFilterChange, onTypeFilterChange }) => {
+    const { categoriesData, sizeData} = useGarmentData()
+
 	return (
         <aside className="filtro" id="#filtros">
             <h2 className="filtro-titulo">Filtrar</h2>
@@ -6,43 +10,26 @@ export const GarmentFilter = () => {
                 <div className="filtro-seccion">
                     <span className="filtro-seccion-titulo">Tallas</span>
                     <div className="filtro-container">
-                        <label className="filtro-label">
-                        <input type="checkbox" className="filtro-checkbox" /> S
-                        </label>
-                        <label className="filtro-label">
-                        <input type="checkbox" className="filtro-checkbox" /> M
-                        </label>
-                        <label className="filtro-label">
-                        <input type="checkbox" className="filtro-checkbox" /> L
-                        </label>
-                        <label className="filtro-label">
-                        <input type="checkbox" className="filtro-checkbox" /> XL
-                        </label>
+                        {sizeData && sizeData.map(size => (
+                            <label className="filtro-label">
+                                <input type="checkbox" className="filtro-checkbox" 
+                                onChange={onSizeFilterChange} value={size.size}/>
+                                {size.size}
+                            </label>
+                        ))}
                     </div>
                 </div>
 
                 <div className="filtro-seccion">
                     <span className="filtro-seccion-titulo">Tipos de Prenda</span>
-
                     <div className="filtro-container">
-                        <label className="filtro-label">
-                        <input type="checkbox" className="filtro-checkbox" /> Camisas
-                        </label>
-                        <label className="filtro-label">
-                        <input type="checkbox" className="filtro-checkbox" /> Pantalones
-                        </label>
-                        <label className="filtro-label">
-                        <input type="checkbox" className="filtro-checkbox" /> Vestidos
-                        </label>
-                        <label className="filtro-label">
-                        <input type="checkbox" className="filtro-checkbox" /> Faldas
-                        </label>
-                        <label className="filtro-label">
-                        <input type="checkbox" className="filtro-checkbox" /> Frenelas
-                        </label>
-                        <label className="filtro-label">
-                        <input type="checkbox" className="filtro-checkbox" />  Shorts 
-                        </label>
+                        {categoriesData && categoriesData.map(category => (
+                            <label className="filtro-label">
+                                <input type="checkbox" className="filtro-checkbox" 
+                                onChange={onTypeFilterChange} value={category.type}/> 
+                                {category.type}
+                            </label>
+                        ))}
                     </div>
                 </div>
             </article>

@@ -20,7 +20,7 @@ export const useSize = () => {
 
     const deleteSizes = (idsize: number | undefined) =>
 	fetch(`http://localhost:3000/api/sizes/deletesize/${idsize}`, {
-		method: 'DELETE',
+		method: 'PUT',
 	}).then(response => response.json());
 
     // ------------------------------------------------------------------------

@@ -41,6 +41,7 @@ export const CollectionsDetails = () => {
                 {collectionData?.GarmentModels && collectionData.GarmentModels.map((garment, index) => (
                     <GarmentBox
                         key={index}
+                        id={garment.id}
                         garment={garment.garment || ""}
                         pattern={garment.pattern || ""}
                         type={garment.GarmentTypeModel?.type || ""}
